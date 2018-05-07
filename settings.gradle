@@ -1,0 +1,8 @@
+rootProject.name = 'kusv2018t1'
+include 'src'
+rootProject.name = 'kusv2018t1'
+include 'code'
+findProject(':code')?.name = 'src'
+rootProject.name = 'kusv2018t1'
+include 'src'
+
