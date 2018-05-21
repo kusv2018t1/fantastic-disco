@@ -19,6 +19,9 @@ public class Card {
 	public Card(int aid, int index) {
 		String getStr = null;
 		int count = 0;
+		cid = 0000;
+		cpwd = 0000;
+		
 		//file I/O
 		//format :  Accountid	Cardid	Cardpwd
 		//cid = Card.txt ~-> indexing aid,index
@@ -40,9 +43,14 @@ public class Card {
 						cid = Integer.parseInt(getStr.substring(6, 10));
 						System.out.println("cpwd : " + getStr.substring(12, 16));
 						cpwd = Integer.parseInt(getStr.substring(12, 16));
+						break;
 					}
 					count++;
 				}
+			}
+			//exception
+			if(cid == 0000) {
+				System.out.println("Error: No card...");
 			}
 			
 		}catch(IOException e){
