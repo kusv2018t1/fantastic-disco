@@ -25,7 +25,6 @@ public class Card {
 		//cpwd = Card.txt ~-> indexing aid,index
 		try {
 			path = new File("src/Item");
-			//System.out.println("/Users/aeomhs/eclipse-workspace/softwareModelingAnalasis/src/Item");	
 			card = new File(path.getAbsolutePath() + "/Card.txt");
 			fr = new FileReader(card);
 			br = new BufferedReader(fr);
