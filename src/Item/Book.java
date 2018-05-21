@@ -16,6 +16,8 @@ public class Book {
 	//int aid -> diagram 수정 필
 	public Book(int aid) {
 		String getStr = null;
+		bid = 0000;
+		bpwd = 0000;
 		//file I/O
 		//format : Accountid	Bookid	Bookpwd
 		//bid = Book.txt ~-> indexing aid,index
@@ -36,6 +38,11 @@ public class Book {
 					bid = Integer.parseInt(getStr.substring(6, 10));
 					//System.out.println("bpwd : " + getStr.substring(12, 16));
 					bpwd = Integer.parseInt(getStr.substring(12, 16));
+					break;
+				}
+				//exception
+				if(bid == 0000) {
+					System.out.println("Error: No book...");
 				}
 			}
 			
