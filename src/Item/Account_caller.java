@@ -9,7 +9,7 @@ public class Account_caller {
 	public static void main(String[] args) {
 		Book book;
 		Card [] card = new Card[2];
-		//TrafficCard tc;
+		TrafficCard tc;
 		int aid = 1011;
 		
 		//testing value
@@ -26,5 +26,10 @@ public class Account_caller {
 			System.out.println("Account[" +aid + "] cid   :"+card[i].getCid());
 			System.out.println("Account[" +aid + "] cpwd  :"+card[i].getCpwd());
 		}
+		System.out.println("-------------------trafficCard--------------------");
+		tc = new TrafficCard();
+		System.out.println("first tcid : "+tc.getTcid());
+		tc = new TrafficCard();
+		System.out.println("second tcid : "+tc.getTcid());
 	}
 }
