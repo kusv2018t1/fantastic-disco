@@ -1,5 +1,11 @@
 package ATM;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class ATM {
     private Bank[]  bank;
     private TrafficCard[] tCard;
@@ -74,8 +80,10 @@ public class ATM {
 
    public int slelctNation(int nation)
    {
+       //gui
+       System.out.println("Nation :" + nation );
+
        return nation;
-       //출금
    }
 
    public int confirm(int itemType , int pwd)
@@ -176,7 +184,8 @@ public class ATM {
            balance =bank[usingBankID].getBalance();
        }
 
-       //print한다...return print;
+       //gui
+       System.out.print(accountID +" :"+ balance);
        receiptAmount--;
        return 0;
    }
@@ -210,6 +219,9 @@ public class ATM {
        String name ;
         name = bank.checkAccount(usingBankID,usingAccountID);
         destTransAccountID = accoutID;
+
+        //gui
+       System.out.println("name : "+name);
    }
 
    public void readManagementItem(int adminID)
@@ -249,10 +261,18 @@ public class ATM {
        {
            tCard[i] = new TrafficCard();
        }
+
+       return 0;
    }
 
-   private int bootATM(int cash , int tcard , int receipt)
+   //**인자 없앰
+   private int bootATM()
    {
+
+       int cash =0,receipt=0 ,tcard=0 ;
+       private File bootATM, path;
+       private FileReader fr;
+       private BufferedReader br;
 
        billcode[0] = "thousandwon";
        billcode[1] = "fivdthousandwon";
@@ -261,6 +281,27 @@ public class ATM {
        billcode[4] = "tendollor";
        billcode[5] = "twentydollor";
        billcode[6] = "ondhundreddollor";
+
+       try
+       {
+           path = new File("src/ATM");
+           bootATM = new File(path.getAbsolutePath() + "/management.txt");
+           fr = new FileReader(bootATM);
+           br = new BufferedReader(fr);
+
+           String getStr = br.readLine();
+           cash = Integer.parseInt(getStr);
+           getStr = br.readLine();
+           receipt = Integer.parseInt(getStr);
+           getStr = br.readLine();
+           tcard = Integer.parseInt(getStr);
+       } catch (FileNotFoundException e) {
+           e.printStackTrace();
+       } catch (IOException e) {
+           e.printStackTrace();
+       }
+
+
        rate = 1000;
        cashAmount[0] = cash;
        cashAmount[1] = cash;
@@ -270,6 +311,14 @@ public class ATM {
        trafficCardAmount = tcard;
 
    }
+
+
+   //**새 메소드
+   private void end()
+   {
+       bootATM();
+   }
+
 
 
 }
