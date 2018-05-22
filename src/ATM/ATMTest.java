@@ -1,5 +1,7 @@
 package ATM;
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ATMTest {
@@ -17,6 +19,10 @@ class ATMTest {
         at.enterAmount();
         at.printReceipt();
         at.destAccount();
+        at.setDataRange();
+        at.readManagementItem();
+        at.selectService();
+        at.end();
 
     }
 
@@ -34,7 +40,7 @@ class ATMTest {
 
     @org.junit.jupiter.api.Test
     void confirm() {
-        assertEquals(1,atm.confirm(0,0));
+        assertEquals(0,atm.confirm(0,0));
     }
 
     @org.junit.jupiter.api.Test
@@ -52,7 +58,7 @@ class ATMTest {
 
     @org.junit.jupiter.api.Test
     void enterAmount() {
-        assertEquals(1,atm.enterAmount(10000));
+        assertEquals(0,atm.enterAmount(10000));
     }
 
     @org.junit.jupiter.api.Test
@@ -63,5 +69,26 @@ class ATMTest {
     @org.junit.jupiter.api.Test
     void destAccount() {
         assertEquals(1,atm.destAccount(1,1010));
+    }
+
+    @Test
+    void selectService() {
+        atm.selectService(1);
+
+    }
+
+    @Test
+    void setDataRange() {
+        atm.setDataRange(10);
+    }
+
+    @Test
+    void readManagementItem() {
+        atm.readManagementItem(123);
+    }
+
+    @Test
+    void end() {
+        atm.end();
     }
 }
