@@ -40,10 +40,10 @@ public class Book {
 					bpwd = Integer.parseInt(getStr.substring(12, 16));
 					break;
 				}
-				//exception
-				if(bid == 0000) {
-					System.out.println("Error: No book...");
-				}
+			}
+			//exception
+			if(bid == 0000) {
+				System.out.println("Error: No book...");
 			}
 			
 		}catch(IOException e){
