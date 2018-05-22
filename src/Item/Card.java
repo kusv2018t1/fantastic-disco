@@ -16,7 +16,7 @@ public class Card {
 	private BufferedReader br;
 	
 	//int aid / int idex 수정 필
-	public Card(int aid, int index) {
+	public Card(String bank, int aid, int index) {
 		String getStr = null;
 		int count = 0;
 		cid = 0000;
@@ -24,11 +24,11 @@ public class Card {
 		
 		//file I/O
 		//format :  Accountid	Cardid	Cardpwd
-		//cid = Card.txt ~-> indexing aid,index
-		//cpwd = Card.txt ~-> indexing aid,index
+		//cid = shinhan_Card.txt ~-> indexing aid,index
+		//cpwd = shinhan_Card.txt ~-> indexing aid,index
 		try {
 			path = new File("src/Item");
-			card = new File(path.getAbsolutePath() + "/Card.txt");
+			card = new File(path.getAbsolutePath() + "/" + bank + "_Card.txt");
 			fr = new FileReader(card);
 			br = new BufferedReader(fr);
 			
