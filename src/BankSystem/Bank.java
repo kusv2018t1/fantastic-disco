@@ -24,7 +24,7 @@ public class Bank {
 	File file;
 
 	// //test code
-	// public static void main(String[] args) throws IOException {
+	// public static void main(String[] args) {
 	// Bank shinhan = new Bank("test");
 	//
 	// shinhan.WriteData();
@@ -76,14 +76,20 @@ public class Bank {
 	}
 
 	// write data
-	public void WriteData() throws IOException {
-		PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
-
-		for (Account value : this.accountInfo) {
-			pw.println(
-					value.get_name() + "\t" + value.get_aid() + "\t" + value.get_balance() + "\t" + value.get_tcid());
+	public void WriteData() {
+		PrintWriter pw;
+		try {
+			pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
+			
+			for (Account value : this.accountInfo) {
+				pw.println(
+						value.get_name() + "\t" + value.get_aid() + "\t" + value.get_balance() + "\t" + value.get_tcid());
+			}
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		pw.close();
 	}
 
 	// valid check
@@ -122,7 +128,7 @@ public class Bank {
 	}
 
 	// get balance
-	public int getBalance() throws IOException {
+	public int getBalance(){
 		this.WriteData();
 		return A.get_balance();
 	}
@@ -163,7 +169,7 @@ public class Bank {
 	}
 
 	// transfer [modified] boolean
-	public boolean transfer(int _money) throws IOException {
+	public boolean transfer(int _money) {
 		// renew my Balance & Dest Balance
 		if ((this.withdraw(this.A.get_balance() - _money)) && (Dest.deposit(_money))) {
 			Dest.WriteData();
