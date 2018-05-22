@@ -26,8 +26,6 @@ public class ATM {
     private int languageMode;
     private int ATMadminID;
     private int rate;
-    //한국돈은 1000 5000 10000 50000 외국돈은 10 20 100
-    private String[] billcode = new String[7];
     //출금 원/달러인지 확인
     private int ATMnation;
 
