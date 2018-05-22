@@ -7,9 +7,9 @@ public class Account {
 	private String name;
 	private int tcid;
 	// card
-	Card card = new Card();
+	Card card;
 	// book
-	Book book = new Book();
+	Book book;
 
 	// name : _name account id : _aid balance : _bal trafficCard id : tcid
 	Account(String _bankID, String _name, int _aid, int _bal, int _tcid) {
