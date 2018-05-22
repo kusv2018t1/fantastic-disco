@@ -28,7 +28,7 @@ public class Book {
 			fr = new FileReader(book);
 			br = new BufferedReader(fr);
 			
-			System.out.println("linked file success");
+			//System.out.println("linked file success");
 			
 			while((getStr = br.readLine()) != null) {
 				//finding..
@@ -43,7 +43,7 @@ public class Book {
 			}
 			//exception
 			if(bid == 0000) {
-				System.out.println("Error: No book...");
+				//System.out.println("Error: No book...");
 			}
 			
 		}catch(IOException e){
