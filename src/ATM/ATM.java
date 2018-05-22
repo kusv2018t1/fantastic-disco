@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+//전체적으로 바뀐 것은 ok를 모두 boolean type으로 해서 method의 타입이 바뀌었다.
 
 public class ATM {
 
@@ -21,7 +22,7 @@ public class ATM {
     private int receiptAmount ;
     private int usingAccountID;
     private int usingBankID;
-    private int destTransAccountID;
+   /* private int destTransAccountID;*/
     private int transactionAmount = 0;
     private int languageMode;
     private int ATMadminID;
@@ -42,7 +43,7 @@ public class ATM {
 
 
 
-    public boolean readItem(int itemType , int itemID, String bankID ,int accountID )
+    public boolean readItem(int itemType, int itemID,String bankID , int accountID)
    {
        //return value  : ok
        boolean ok ;
@@ -69,7 +70,8 @@ public class ATM {
        {
            usingBankID = 3;
            languageMode = 1;
-       }
+       }else return false;
+
        ok= bank[usingBankID].validCheck(itemType,itemID , accountID);
 
        usingAccountID = accountID;
@@ -99,7 +101,6 @@ public class ATM {
             case 5 :
                 break;
         }
-
         return;
    }
 
@@ -114,10 +115,7 @@ public class ATM {
 
    public int confirm(int pwd)
    {
-        int accept;
-        accept  = bank[usingBankID].confirm(pwd);
-
-        if(accept==1)
+        if(bank[usingBankID].confirm(pwd))
             return transactionAmount;
         else return 0;
 
@@ -219,7 +217,10 @@ public class ATM {
            ok = bank[usingBankID].withDraw(money);
        }
        else if(transactionAmount==4)
+       {
+           // money는 송금의 경우 무조건 외국계좌면 달러를 입력하고 한국 계좌이면 한화를 입력한다
            ok = bank[usingBankID].Transfer(money);
+       }
        else return false;
 
        return ok;
@@ -274,24 +275,23 @@ public class ATM {
        {
            id= 0;
        }
-       //shinhan (usingBankID 1 ) 한국 은행(한국 0)
+       //shinhan (usingBankID 1 ) 한국 은행
        else if(bankID.equals("shinhan"))
        {
            id = 1;
        }
-       //city (usingBankID 2 ) 외국 은행(미국 1)
+       //city (usingBankID 2 ) 외국 은행
        else if(bankID.equals("citi"))
        {
            id = 2;
        }
-       //bankofAmerican (usingBankID 3) 외국 은행(미국 1)
+       //bankofAmerican (usingBankID 3) 외국 은행
        else if(bankID.equals("bankofAmerican"))
        {
            id = 3;
        }else return false;
 
         name = bank[id].checkAccount(bankID,usingAccountID);
-        destTransAccountID = accountID;
 
         //gui 이름이 떠야 한다.
        System.out.println("name : "+name);
@@ -307,23 +307,23 @@ public class ATM {
        }
    }
 
-   private int checkResource()
+   private void checkResource()
    {
        for(int i = 0;i<4;i++)
        {
            if(cashAmount[i]<10||cashAmount[i]>200)
            {
                //관리자에게 알람
-               return 0;
+               return ;
            }
        }
        if(trafficCardAmount<2||receiptAmount<10)
        {
            //관리자에게 알람
-           return 0;
+           return ;
        }
 
-       return 1;
+       return ;
    }
 
 
