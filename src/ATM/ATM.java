@@ -6,8 +6,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+
 public class ATM {
-    private Bank[]  bank;
+
+    private File bootATM, path;
+    private FileReader fr;
+    private BufferedReader br;
+    private Bank[] bank = new Bank[4];
     private TrafficCard[] tCard;
     private int[] cashAmount = new int[4];
     private int trafficCardAmount;
@@ -19,6 +24,8 @@ public class ATM {
     private int destTransAccountID;
     private int transactionAmount;
     private int languageMode;
+   //**admin ID입력
+    private int ATMadminID;
     //**환율
     private int rate;
     //**bill에 대한 기본 저장 값
@@ -27,20 +34,24 @@ public class ATM {
 
 
 
-    public static void main()
-    {
-
+  /*  public static void main(String[] args){
         ATM atm = new ATM();
-        atm.bankDataDownload();
-        atm.bootATM(100,10,100);
+        atm.initATM();
+    }*/
+   
+    //**새 메소드
+    public void initATM()
+    {
+        bankDataDownload();
+        bootATM();
     }
 
 
 
     public int readItem(int itemType , int itemID, int bankID ,int accountID )
    {
-       int ok = bank[itemID].validCheck(itemType,itemID , accountID);
-       //ok -> nation
+       int ok ;
+       ok= bank[bankID].validCheck(itemType,itemID , accountID);
 
        //lagnuage = 1 은 외국계좌
        if(bankID>2)
@@ -76,9 +87,11 @@ public class ATM {
             case 5 :
                 break;
         }
+
+        return;
    }
 
-   public int slelctNation(int nation)
+   public int selectNation(int nation)
    {
        //gui
        System.out.println("Nation :" + nation );
@@ -89,7 +102,9 @@ public class ATM {
    public int confirm(int itemType , int pwd)
    {
         int accept;
-        account  = bank[usingBankID].confirm(itemType , pwd , accountID);
+        accept  = bank[usingBankID].confirm(itemType , pwd , usingAccountID);
+
+        return accept;
 
    }
 
@@ -165,6 +180,9 @@ public class ATM {
       int ok;
        ok = bank[usingBankID].deposit(money);
 
+       //
+       System.out.print("money :" + money);
+
        return ok;
 
    }
@@ -185,25 +203,24 @@ public class ATM {
        }
 
        //gui
-       System.out.print(accountID +" :"+ balance);
        receiptAmount--;
        return 0;
    }
 
    public void setDataRange(int date_range)
    {
-       tCard.setDaterange(date_range);
+       tCard[0].setDateRange(date_range);
        return;
    }
 
    public int agreement(boolean approval)
    {
-       int tcid = tCard.getTcid();
+       int tcid = tCard[0].getTcid();
        int ok = bank[usingBankID].linkAccount(tcid);
        if(ok==1)
        {
            //교통카드 비용 3000원
-           if(nation==0)
+           if(languageMode==0)
            {ok = bank[usingBankID].chargeTrafficCard(3000);}
            else  {ok = bank[usingBankID].chargeTrafficCard(3000/rate);}
        }
@@ -211,17 +228,23 @@ public class ATM {
        if(ok==1)
        {
            trafficCardAmount--;
+           tCard[0] = tCard[trafficCardAmount];
+           tCard[trafficCardAmount] = null;
        }
+
+       return 1;
    }
 
    public int destAccount(int bankID , int accountID)
    {
        String name ;
-        name = bank.checkAccount(usingBankID,usingAccountID);
-        destTransAccountID = accoutID;
+        name = bank[bankID].checkAccount(usingBankID,usingAccountID);
+        destTransAccountID = accountID;
 
         //gui
        System.out.println("name : "+name);
+
+       return 1;
    }
 
    public void readManagementItem(int adminID)
@@ -247,10 +270,12 @@ public class ATM {
            //관리자에게 알람
            return 0;
        }
+
+       return 1;
    }
 
 
-   private int bankDataDownlad()
+   private int bankDataDownload()
    {
        for(int i=0;i<4;i++)
        {
@@ -265,14 +290,12 @@ public class ATM {
        return 0;
    }
 
-   //**인자 없앰
-   private int bootATM()
+   //**인자 없앰+ void
+   private void bootATM()
    {
 
        int cash =0,receipt=0 ,tcard=0 ;
-       private File bootATM, path;
-       private FileReader fr;
-       private BufferedReader br;
+
 
        billcode[0] = "thousandwon";
        billcode[1] = "fivdthousandwon";
@@ -295,6 +318,8 @@ public class ATM {
            receipt = Integer.parseInt(getStr);
            getStr = br.readLine();
            tcard = Integer.parseInt(getStr);
+           getStr = br.readLine();
+           ATMadminID = Integer.parseInt(getStr);
        } catch (FileNotFoundException e) {
            e.printStackTrace();
        } catch (IOException e) {
@@ -318,7 +343,6 @@ public class ATM {
    {
        bootATM();
    }
-
 
 
 }
