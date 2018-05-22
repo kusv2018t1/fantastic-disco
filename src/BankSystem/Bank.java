@@ -19,6 +19,7 @@ public class Bank {
 	// Cache
 	private Account A;
 	private Bank Dest;
+	private int type;
 	// File IO
 	File file;
 
@@ -32,7 +33,7 @@ public class Bank {
 
 	// Bank init
 	Bank(String _bankName) {
-		bankName = "src/BankSystem/"+_bankName + ".txt";
+		bankName = "src/BankSystem/" + _bankName + ".txt";
 		this.file = new File(bankName);
 		this.loadData();
 	}
@@ -56,8 +57,9 @@ public class Bank {
 
 				// put chunked Data to Account list (Account composition : Name AccountID
 				// Balance)
-				this.accountInfo.add(new Account(bankName.replace(".txt", ""), splitedStr[0], Integer.valueOf(splitedStr[1]),
-						Integer.valueOf(splitedStr[2]), Integer.valueOf(splitedStr[3])));
+				this.accountInfo
+						.add(new Account(bankName.replace(".txt", ""), splitedStr[0], Integer.valueOf(splitedStr[1]),
+								Integer.valueOf(splitedStr[2]), Integer.valueOf(splitedStr[3])));
 
 				// // test code
 				// System.out.println("Name : " + splitedStr[0]);
@@ -88,11 +90,15 @@ public class Bank {
 	public boolean validCheck(int _itemType, int _itemID, int _accountID) {
 		// loop until find the right Account
 		for (Account value : this.accountInfo) {
-			if (value.get_aid() == _accountID) // Account Id check
-				if (value.getItemID(_itemType) == _itemID) { // Item Id check
-					A = value;
-					return true;
+			if (value.get_aid() == _accountID) {// Account Id check
+				for (int i = 0; i < 2; i++) {
+					if (value.getItemID(_itemType)[i] == _itemID) { // Item Id check
+						A = value;
+						type = _itemType;
+						return true;
+					}
 				}
+			}
 		}
 		return false;
 	}
@@ -100,9 +106,10 @@ public class Bank {
 	// confirm [modified] only pwd
 	public boolean confirm(int _pwd) {
 		// loop until find the right Account
-		if (A.getPwd() == _pwd) // Account Id check
-			return true;
-
+		for (int i = 0; i < 2; i++) {
+			if (A.getPwd(type)[i] == _pwd) // Account Id check
+				return true;
+		}
 		return false;
 	}
 
