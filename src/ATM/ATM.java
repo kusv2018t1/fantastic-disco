@@ -1,5 +1,7 @@
 package ATM;
 
+import Item.TrafficCard;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,10 +21,11 @@ public class ATM {
     private int receiptAmount ;
     private int usingAccountID;
     private int usingBankID;
-    private boolean confirmedItem;
-    private boolean confirmedPwd;
+    //없어진 변수 들
+/*    private boolean confirmedItem;
+    private boolean confirmedPwd;*/
     private int destTransAccountID;
-    private int transactionAmount;
+    private int transactionAmount = 0;
     private int languageMode;
    //**admin ID입력
     private int ATMadminID;
@@ -32,18 +35,18 @@ public class ATM {
     //한국돈은 1000 5000 10000 50000 외국돈은 10 20 100
     private String[] billcode = new String[7];
 
+    //** 출금 원/달러인지 확인
+    private int ATMnation;
 
-
-  /*  public static void main(String[] args){
+    public static void main(String[] args){
         ATM atm = new ATM();
-        atm.initATM();
-    }*/
-   
-    //**새 메소드
+    }
+
     public void initATM()
     {
-        bankDataDownload();
+
         bootATM();
+        bankDataDownload();
     }
 
 
@@ -68,6 +71,7 @@ public class ATM {
 
    public void selectService(int service)
    {
+       transactionAmount = service;
 
         switch(service)
         {
@@ -93,9 +97,10 @@ public class ATM {
 
    public int selectNation(int nation)
    {
+       ATMnation = nation;
        //gui
        System.out.println("Nation :" + nation );
-
+        //nation 1 = 달러 nation 0 = 한화
        return nation;
    }
 
@@ -104,7 +109,9 @@ public class ATM {
         int accept;
         accept  = bank[usingBankID].confirm(itemType , pwd , usingAccountID);
 
-        return accept;
+        if(accept==1)
+            return transactionAmount;
+        else return 0;
 
    }
 
@@ -124,24 +131,41 @@ public class ATM {
                            case 1:
                                money += 5000;
                                break;
-                           case 2:
-                               money += 10000;
-                               cashAmount[0]++;
+                           case 2: //1만원권
+                               if(cashAmount[0]<200)
+                               {
+                                   money += 10000;
+                                   cashAmount[0]++;
+                               }
+                               else
+                                   return 0;
                                break;
-                           case 3:
-                               money += 50000;
-                               cashAmount[1]++;
+                           case 3: //5만원권
+                               if(cashAmount[1]<200)
+                               {
+                                   money += 50000;
+                                   cashAmount[1]++;
+                               }
+                               else return 0;
                                break;
-                           case 4:
-                               money += 10 * rate;
-                               cashAmount[2]++;
+                           case 4: //10달러
+                               if(cashAmount[2]<250)
+                               {
+                                   money += 10*rate;
+                                   cashAmount[2]++;
+                               }
+                               else return 0;
                                break;
-                           case 5:
+                           case 5: //20달러
                                money += 20 * rate;
                                break;
-                           case 6:
-                               money += 100 * rate;
-                               cashAmount[3]++;
+                           case 6: //100달러
+                               if(cashAmount[3]<250)
+                               {
+                                   money += 10*rate;
+                                   cashAmount[3]++;
+                               }
+                               else return 0;
                                break;
                        }
                    } else {
@@ -153,23 +177,39 @@ public class ATM {
                                money += 5000 / rate;
                                break;
                            case 2:
-                               money += 10000;
-                               cashAmount[0]++;
+                               if(cashAmount[0]<250)
+                               {
+                                   money += 10000/rate;
+                                   cashAmount[0]++;
+                               }
+                               else return 0;
                                break;
                            case 3:
-                               money += 50000 / rate;
-                               cashAmount[1]++;
+                               if(cashAmount[1]<250)
+                               {
+                                   money += 50000/rate;
+                                   cashAmount[1]++;
+                               }
+                               else return 0;
                                break;
                            case 4:
-                               money += 10;
-                               cashAmount[2]++;
+                               if(cashAmount[2]<250)
+                               {
+                                   money += 10;
+                                   cashAmount[2]++;
+                               }
+                               else return 0;
                                break;
                            case 5:
                                money += 20;
                                break;
                            case 6:
-                               money += 100;
-                               cashAmount[3]++;
+                               if(cashAmount[3]<250)
+                               {
+                                   money += 100;
+                                   cashAmount[3]++;
+                               }
+                               else return 0;
                                break;
                        }
                    }
@@ -187,10 +227,30 @@ public class ATM {
 
    }
 
-   public int enterAmount(int money)
+    public int enterAmount(int money)
    {
+
        int ok;
-       ok = bank[usingBankID].withDraw(money,usingAccountID);
+       if(transactionAmount==3)
+       {
+           if(ATMnation==1)
+           {
+               if(cashAmount[3]<money/100||cashAmount[2]<(money%100)/10)
+                   return 0;
+           }
+           else if(ATMnation==0)
+           {
+               if(cashAmount[1]<money/50000||cashAmount[0]<(money%50000)/10000)
+                   return 0;
+           }
+           else return 0;
+
+           ok = bank[usingBankID].withDraw(money,usingAccountID);
+       }
+       else if(transactionAmount==4)
+           ok = bank[usingBankID].Transfer(money,destTransAccountID,usingAccountID);
+       else return 0;
+
        return ok;
    }
 
@@ -277,15 +337,14 @@ public class ATM {
 
    private int bankDataDownload()
    {
+       tCard = new TrafficCard[trafficCardAmount];
        for(int i=0;i<4;i++)
        {
            bank[i] = new Bank();
        }
 
-       for(int i = 0;i<trafficCardAmount;i++)
-       {
+      for(int i = 0;i<trafficCardAmount;i++)
            tCard[i] = new TrafficCard();
-       }
 
        return 0;
    }
@@ -335,14 +394,14 @@ public class ATM {
        receiptAmount = receipt;
        trafficCardAmount = tcard;
 
+
    }
 
 
    //**새 메소드
-   private void end()
+   public void end()
    {
        bootATM();
    }
-
 
 }
