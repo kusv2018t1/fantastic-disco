@@ -39,8 +39,8 @@ public class Card {
 				//System.out.println(String.valueOf(aid));
 				if(getStr.substring(0, 4).equals(String.valueOf(aid))) {
 					if(index == count) {
-						System.out.println("cid : " + getStr.substring(6, 10));
-						cid = Integer.parseInt(getStr.substring(6, 10));
+						System.out.println("cid : " + getStr.substring(6, 11));
+						cid = Integer.parseInt(getStr.substring(6, 11));
 						System.out.println("cpwd : " + getStr.substring(12, 16));
 						cpwd = Integer.parseInt(getStr.substring(12, 16));
 						break;
