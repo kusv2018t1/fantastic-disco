@@ -50,13 +50,13 @@ class ATMTest {
     @org.junit.jupiter.api.Test
     void insertCash() {
         String[] bill = new String[7];
-        bill[0] = "thousandwon";
-        bill[1] = "fivdthousandwon";
-        bill[2] = "tenthousandwon";
-        bill[3] = "fiftythousandwon";
-        bill[4] = "tendollor";
-        bill[5] = "twentydollor";
-        bill[6] = "ondhundreddollor";
+        bill[0] = "0000";
+        bill[1] = "0001";
+        bill[2] = "0010";
+        bill[3] = "0011";
+        bill[4] = "0100";
+        bill[5] = "0101";
+        bill[6] = "0110";
         assertEquals(1,atm.insertCash(bill));
     }
 
