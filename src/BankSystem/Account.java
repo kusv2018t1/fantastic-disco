@@ -9,7 +9,7 @@ public class Account {
 	private String name;
 	private int tcid;
 	// card
-	Card[] card;
+	Card[] card = new Card[2];
 	// book
 	Book book;
 	// card amount
@@ -26,9 +26,8 @@ public class Account {
 		card[0] = new Card(_bankID,_aid,0);
 		card[1] = new Card(_bankID,_aid,1);
 		book = new Book(_bankID,_aid);
-
 	}
-
+	
 	// get name
 	public String get_name() {
 		return name;
@@ -58,8 +57,9 @@ public class Account {
 		int[] _cards=new int[cardAmount], _book=new int[cardAmount];
 		
 		if (type == 1) { // card
-			for (int i = 0; i < cardAmount; i++)
+			for (int i = 0; i < cardAmount; i++) {
 				_cards[i] = card[i].getCid();
+			}
 			return _cards;
 		} else { // book
 			_book[0] = book.getBid();
