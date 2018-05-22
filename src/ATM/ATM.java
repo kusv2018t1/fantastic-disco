@@ -32,14 +32,10 @@ public class ATM {
 	// 출금 원/달러인지 확인
 	private int ATMnation;
 
-	public static void main(String[] args) {
-		ATM atm = new ATM();
-	}
-
-	public void ATM() {
-
+	public ATM() {
 		bootATM();
-		bankDataDownload();
+		//bankDataDownload();
+		
 	}
 
 	public boolean readItem(int itemType, int itemID, String bankID, int accountID) {
@@ -47,21 +43,25 @@ public class ATM {
 		boolean ok;
 		// kb(usingBankID 0 ) 한국 은행(한국 0)
 		if (bankID.equals("kb")) {
+			bank[0] = new Bank(bankID);
 			usingBankID = 0;
 			languageMode = 0;
 		}
 		// shinhan (usingBankID 1 ) 한국 은행(한국 0)
 		else if (bankID.equals("shinhan")) {
+			bank[1] = new Bank(bankID);
 			usingBankID = 1;
 			languageMode = 0;
 		}
 		// city (usingBankID 2 ) 외국 은행(미국 1)
 		else if (bankID.equals("citi")) {
+			bank[2] = new Bank(bankID);
 			usingBankID = 2;
 			languageMode = 1;
 		}
 		// bankofAmerican (usingBankID 3) 외국 은행(미국 1)
-		else if (bankID.equals("bankofAmerican")) {
+		else if (bankID.equals("bankofamerica")) {
+			bank[3] = new Bank(bankID);
 			usingBankID = 3;
 			languageMode = 1;
 		} else
@@ -105,11 +105,8 @@ public class ATM {
 		return nation;
 	}
 
-	public int confirm(int pwd) {
-		if (bank[usingBankID].confirm(pwd))
-			return transactionAmount;
-		else
-			return 0;
+	public boolean confirm(int pwd) {
+		return bank[usingBankID].confirm(pwd);
 
 	}
 
@@ -285,10 +282,12 @@ public class ATM {
 		}
 	}
 
-	private void checkResource() {
+	public void checkResource() {
+		System.out.println("관리자 알람 ");
 		for (int i = 0; i < 4; i++) {
 			if (cashAmount[i] < 10 || cashAmount[i] > 200) {
 				// 관리자에게 알람
+				System.out.println("관리자 알");
 				return;
 			}
 		}
