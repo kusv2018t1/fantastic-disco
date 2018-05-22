@@ -11,7 +11,7 @@ class ATMTest {
     public static void main(String[] args)
     {
         ATMTest at = new ATMTest();
-        at.atm.initATM();
+
         at.readItem();
         at.selectNation();
         at.confirm();
@@ -28,19 +28,23 @@ class ATMTest {
 
     @org.junit.jupiter.api.Test
     void readItem() {
-        assertEquals(1,atm.readItem(0,0,0,0));
+        assertEquals(1,atm.readItem(0,0,"kb",0));
     }
 
 
 
     @org.junit.jupiter.api.Test
     void selectNation() {
-        assertEquals(1,atm.selectNation(1));
+        atm.selectService(0);
+        atm.selectService(1);
+        atm.selectService(2);
+        atm.selectService(3);
+        atm.selectService(4);
     }
 
     @org.junit.jupiter.api.Test
     void confirm() {
-        assertEquals(0,atm.confirm(0,0));
+        assertEquals(0,atm.confirm(0));
     }
 
     @org.junit.jupiter.api.Test
@@ -68,7 +72,7 @@ class ATMTest {
 
     @org.junit.jupiter.api.Test
     void destAccount() {
-        assertEquals(1,atm.destAccount(1,1010));
+        assertEquals(1,atm.destAccount("kb",1010));
     }
 
     @Test
