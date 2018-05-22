@@ -15,34 +15,27 @@ public class ATM {
     private FileReader fr;
     private BufferedReader br;
     private Bank[] bank = new Bank[4];
-    private TrafficCard[] tCard;
+    private TrafficCard tCard;
     private int[] cashAmount = new int[4];
     private int trafficCardAmount;
     private int receiptAmount ;
     private int usingAccountID;
     private int usingBankID;
-    //없어진 변수 들
-/*    private boolean confirmedItem;
-    private boolean confirmedPwd;*/
     private int destTransAccountID;
     private int transactionAmount = 0;
     private int languageMode;
-   //**admin ID입력
     private int ATMadminID;
-    //**환율
     private int rate;
-    //**bill에 대한 기본 저장 값
     //한국돈은 1000 5000 10000 50000 외국돈은 10 20 100
     private String[] billcode = new String[7];
-
-    //** 출금 원/달러인지 확인
+    //출금 원/달러인지 확인
     private int ATMnation;
 
     public static void main(String[] args){
         ATM atm = new ATM();
     }
 
-    public void initATM()
+    public void ATM()
     {
 
         bootATM();
@@ -51,21 +44,38 @@ public class ATM {
 
 
 
-    public int readItem(int itemType , int itemID, int bankID ,int accountID )
+    public boolean readItem(int itemType , int itemID, String bankID ,int accountID )
    {
-       int ok ;
-       ok= bank[bankID].validCheck(itemType,itemID , accountID);
-
-       //lagnuage = 1 은 외국계좌
-       if(bankID>2)
+       //return value  : ok
+       boolean ok ;
+       //kb(usingBankID 0 ) 한국 은행(한국 0)
+       if(bankID.equals("kb"))
        {
+           usingBankID = 0;
+           languageMode = 0;
+       }
+       //shinhan (usingBankID 1 ) 한국 은행(한국 0)
+       else if(bankID.equals("shinhan"))
+       {
+           usingBankID = 1;
+           languageMode = 0;
+       }
+       //city (usingBankID 2 ) 외국 은행(미국 1)
+       else if(bankID.equals("citi"))
+       {
+           usingBankID = 2;
            languageMode = 1;
        }
-       if(ok>=1)
+       //bankofAmerican (usingBankID 3) 외국 은행(미국 1)
+       else if(bankID.equals("bankofAmerican"))
        {
-           usingBankID = itemID;
-           usingAccountID =accountID;
+           usingBankID = 3;
+           languageMode = 1;
        }
+       ok= bank[usingBankID].validCheck(itemType,itemID , accountID);
+
+       usingAccountID = accountID;
+
        return ok;
    }
 
@@ -104,10 +114,10 @@ public class ATM {
        return nation;
    }
 
-   public int confirm(int itemType , int pwd)
+   public int confirm(int pwd)
    {
         int accept;
-        accept  = bank[usingBankID].confirm(itemType , pwd , usingAccountID);
+        accept  = bank[usingBankID].confirm(pwd);
 
         if(accept==1)
             return transactionAmount;
@@ -115,141 +125,104 @@ public class ATM {
 
    }
 
-   public int insertCash(String[] bill)
+   public boolean insertCash(String[] bill)
    {
+
+       //insertCash를 통해 읽는 총 돈, deposit 하는 값
        int money = 0 ;
 
-       for(int j = 0;j<bill.length;j++)
-       {
-           for(int i =0; i< 7;i++) {
-               if (billcode[i].equals(bill[j])) {
-                   if (languageMode == 0) {
-                       switch (i) {
-                           case 0:
-                               money += 1000;
-                               break;
-                           case 1:
-                               money += 5000;
-                               break;
-                           case 2: //1만원권
-                               if(cashAmount[0]<200)
-                               {
-                                   money += 10000;
-                                   cashAmount[0]++;
-                               }
-                               else
-                                   return 0;
-                               break;
-                           case 3: //5만원권
-                               if(cashAmount[1]<200)
-                               {
-                                   money += 50000;
-                                   cashAmount[1]++;
-                               }
-                               else return 0;
-                               break;
-                           case 4: //10달러
-                               if(cashAmount[2]<250)
-                               {
-                                   money += 10*rate;
-                                   cashAmount[2]++;
-                               }
-                               else return 0;
-                               break;
-                           case 5: //20달러
-                               money += 20 * rate;
-                               break;
-                           case 6: //100달러
-                               if(cashAmount[3]<250)
-                               {
-                                   money += 10*rate;
-                                   cashAmount[3]++;
-                               }
-                               else return 0;
-                               break;
-                       }
-                   } else {
-                       switch (i) {
-                           case 0:
-                               money += 1000 / rate;
-                               break;
-                           case 1:
-                               money += 5000 / rate;
-                               break;
-                           case 2:
-                               if(cashAmount[0]<250)
-                               {
-                                   money += 10000/rate;
-                                   cashAmount[0]++;
-                               }
-                               else return 0;
-                               break;
-                           case 3:
-                               if(cashAmount[1]<250)
-                               {
-                                   money += 50000/rate;
-                                   cashAmount[1]++;
-                               }
-                               else return 0;
-                               break;
-                           case 4:
-                               if(cashAmount[2]<250)
-                               {
-                                   money += 10;
-                                   cashAmount[2]++;
-                               }
-                               else return 0;
-                               break;
-                           case 5:
-                               money += 20;
-                               break;
-                           case 6:
-                               if(cashAmount[3]<250)
-                               {
-                                   money += 100;
-                                   cashAmount[3]++;
-                               }
-                               else return 0;
-                               break;
-                       }
-                   }
+       //들어온 bill의 갯수 만큼 돈다.
+       for(int i =0;i<bill.length;i++) {
+           //bill의 1번쨰 자리가 0이면 한국 돈
+           if (bill[i].substring(0, 1).equals("0")) {
+               switch (Integer.parseInt(bill[i].substring(1, 3))) {
+                   //1000원 bill
+                   case 0:
+                       money += 1000;
+                       break;
+                   //5000원 bill
+                   case 1:
+                       money += 5000;
+                       break;
+                   //10000원 bill cashAmount[0]- 10000원 양이 250보다 적으면  증가
+                   case 2:
+                       money += 10000;
+                       if (cashAmount[0] < 250)
+                           cashAmount[0]++;
+                       else return false;//ATM안 돈이 가득 차서 더 못들어간다.
+                       break;
+                   //50000원  bill cashAmount[1]- 50000원 양이 250보다 적으면  증가
+                   case 3:
+                       money += 50000;
+                       if (cashAmount[1] < 250)
+                           cashAmount[1]++;
+                       else return false;//ATM안 돈이 가득 차서 더 못들어간다.
+                       break;
                }
            }
+           //bill의 1번쨰 자리가 1이면 외국돈
+           else if (bill[i].substring(0, 1).equals("0")) {
+               switch (Integer.parseInt(bill[i].substring(1, 3))) {
+                   //10달러 bill cashAmount[2]- 10달러 양이 250보다 적으면  증가
+                   case 0:
+                       money += 10 * rate;
+                       if (cashAmount[2] < 250)
+                           cashAmount[2]++;
+                       else return false ;//ATM안 돈이 가득 차서 더 못들어간다.
+                       break;
+                   //20달러 bill
+                   case 1:
+                       money += 20 * rate;
+                       break;
+                   //100달러 bill cashAmount[3]- 100달러 양이 250보다 적으면  증가
+                   case 2:
+                       money += 100 * rate;
+                       if (cashAmount[3] < 250)
+                           cashAmount[3]++;
+                       else return false; //ATM안 돈이 가득 차서 더 못들어간다.
+                       break;
+               }
+           }
+
        }
 
-      int ok;
+       //만약 입금하려는 계좌가 외국계좌일 경우,(languagemode ==1) 환율로 나눠준다.
+       if (languageMode == 1)
+           money = money / rate;
+
+       //return 값 ok / deposit이 제대로 되었는가.
+      boolean ok;
        ok = bank[usingBankID].deposit(money);
 
-       //
        System.out.print("money :" + money);
 
        return ok;
 
    }
 
-    public int enterAmount(int money)
+    public boolean enterAmount(int money)
    {
 
-       int ok;
+       boolean ok;
        if(transactionAmount==3)
        {
            if(ATMnation==1)
            {
                if(cashAmount[3]<money/100||cashAmount[2]<(money%100)/10)
-                   return 0;
+                   return false;
            }
            else if(ATMnation==0)
            {
                if(cashAmount[1]<money/50000||cashAmount[0]<(money%50000)/10000)
-                   return 0;
+                   return false;
            }
-           else return 0;
+           else return false;
 
-           ok = bank[usingBankID].withDraw(money,usingAccountID);
+           ok = bank[usingBankID].withDraw(money);
        }
        else if(transactionAmount==4)
-           ok = bank[usingBankID].Transfer(money,destTransAccountID,usingAccountID);
-       else return 0;
+           ok = bank[usingBankID].Transfer(money);
+       else return false;
 
        return ok;
    }
@@ -269,13 +242,14 @@ public class ATM {
 
    public void setDataRange(int date_range)
    {
-       tCard[0].setDateRange(date_range);
+       tCard = new TrafficCard();
+       tCard.setDateRange(date_range);
        return;
    }
 
    public int agreement(boolean approval)
    {
-       int tcid = tCard[0].getTcid();
+       int tcid = tCard.getTcid();
        int ok = bank[usingBankID].linkAccount(tcid);
        if(ok==1)
        {
@@ -288,23 +262,43 @@ public class ATM {
        if(ok==1)
        {
            trafficCardAmount--;
-           tCard[0] = tCard[trafficCardAmount];
-           tCard[trafficCardAmount] = null;
+           //여기서 교통카드 발급 GUI
        }
 
        return 1;
    }
 
-   public int destAccount(int bankID , int accountID)
+   public boolean destAccount(String bankID , int accountID)
    {
+       int id;
        String name ;
-        name = bank[bankID].checkAccount(usingBankID,usingAccountID);
+       if(bankID.equals("kb"))
+       {
+           id= 0;
+       }
+       //shinhan (usingBankID 1 ) 한국 은행(한국 0)
+       else if(bankID.equals("shinhan"))
+       {
+           id = 1;
+       }
+       //city (usingBankID 2 ) 외국 은행(미국 1)
+       else if(bankID.equals("citi"))
+       {
+           id = 2;
+       }
+       //bankofAmerican (usingBankID 3) 외국 은행(미국 1)
+       else if(bankID.equals("bankofAmerican"))
+       {
+           id = 3;
+       }else return false;
+
+        name = bank[id].checkAccount(bankID,usingAccountID);
         destTransAccountID = accountID;
 
-        //gui
+        //gui 이름이 떠야 한다.
        System.out.println("name : "+name);
 
-       return 1;
+       return true;
    }
 
    public void readManagementItem(int adminID)
@@ -337,33 +331,19 @@ public class ATM {
 
    private int bankDataDownload()
    {
-       tCard = new TrafficCard[trafficCardAmount];
-       for(int i=0;i<4;i++)
-       {
-           bank[i] = new Bank();
-       }
-
-      for(int i = 0;i<trafficCardAmount;i++)
-           tCard[i] = new TrafficCard();
-
+       //bank생성
+       //한국 은행 생성
+       bank[0] = new Bank("kb");
+       bank[1] = new Bank("shinhan");
+       //외국 은행 생성
+       bank[2] = new Bank("city");
+       bank[3] = new Bank("bankofAmerican");
        return 0;
    }
 
-   //**인자 없앰+ void
    private void bootATM()
    {
-
-       int cash =0,receipt=0 ,tcard=0 ;
-
-
-       billcode[0] = "thousandwon";
-       billcode[1] = "fivdthousandwon";
-       billcode[2] = "tenthousandwon";
-       billcode[3] = "fiftythousandwon";
-       billcode[4] = "tendollor";
-       billcode[5] = "twentydollor";
-       billcode[6] = "ondhundreddollor";
-
+       //txt파일로 부터 ATM안 현금, 교통카드 . 명세표 용지 량을 받아온다.
        try
        {
            path = new File("src/ATM");
@@ -372,35 +352,30 @@ public class ATM {
            br = new BufferedReader(fr);
 
            String getStr = br.readLine();
-           cash = Integer.parseInt(getStr);
+           int cash= Integer.parseInt(getStr);
+           cashAmount[0] =cash;
+           cashAmount[1] =cash;
+           cashAmount[2] =cash;
+           cashAmount[3] =cash;
            getStr = br.readLine();
-           receipt = Integer.parseInt(getStr);
+           receiptAmount  = Integer.parseInt(getStr);
            getStr = br.readLine();
-           tcard = Integer.parseInt(getStr);
+           trafficCardAmount = Integer.parseInt(getStr);
            getStr = br.readLine();
            ATMadminID = Integer.parseInt(getStr);
+           getStr = br.readLine();
+           rate = Integer.parseInt(getStr);
        } catch (FileNotFoundException e) {
            e.printStackTrace();
        } catch (IOException e) {
            e.printStackTrace();
        }
 
-
-       rate = 1000;
-       cashAmount[0] = cash;
-       cashAmount[1] = cash;
-       cashAmount[2] = cash;
-       cashAmount[3] = cash;
-       receiptAmount = receipt;
-       trafficCardAmount = tcard;
-
-
    }
 
-
-   //**새 메소드
    public void end()
    {
+       //manager가 txt파일을 바꾼다고 생각하고 bootATM을 해서 ATM안 새로운 item갯수를 넣는다.
        bootATM();
    }
 
