@@ -14,17 +14,17 @@ public class Book {
 	private FileReader fr;
 	private BufferedReader br;
 	//int aid -> diagram 수정 필
-	public Book(int aid) {
+	public Book(String bank, int aid) {
 		String getStr = null;
 		bid = 0000;
 		bpwd = 0000;
 		//file I/O
 		//format : Accountid	Bookid	Bookpwd
-		//bid = Book.txt ~-> indexing aid,index
-		//bpwd = Book.txt ~-> indexing aid,index
+		//bid = shinhan_Book.txt ~-> indexing aid,index
+		//bpwd = shinhan_Book.txt ~-> indexing aid,index
 		try {
 			path = new File("src/Item");
-			book = new File(path.getAbsolutePath() + "/Book.txt");
+			book = new File(path.getAbsolutePath() + "/" + bank +"_Book.txt");
 			fr = new FileReader(book);
 			br = new BufferedReader(fr);
 			
@@ -50,11 +50,11 @@ public class Book {
 			e.printStackTrace();
 		}
 	}
-	//bid = Book.txt ~-> indexing aid.
+	//bid = shinhan_Book.txt ~-> indexing aid.
 	public int getBid() {
 		return bid;
 	}
-	//bpwd = Book.txt ~-> indexing aid.
+	//bpwd = shinhan_Book.txt ~-> indexing aid.
 	public int getBpwd() {
 		return bpwd;
 	}	
