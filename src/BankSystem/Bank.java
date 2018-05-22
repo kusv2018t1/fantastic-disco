@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class Bank {
 	// bank name
-	String bankName;
+	String bankID;
 	// Account list
 	private ArrayList<Account> accountInfo = new ArrayList<>();
 	// Cache
@@ -22,6 +22,8 @@ public class Bank {
 	private int type;
 	// File IO
 	File file;
+	// card number
+	private int cardNum;
 
 	// //test code
 	// public static void main(String[] args) {
@@ -33,7 +35,9 @@ public class Bank {
 
 	// Bank init
 	public Bank(String _bankName) {
-		bankName = "src/BankSystem/" + _bankName + ".txt";
+		String bankName;
+		bankID = _bankName;
+		bankName = "src/BankSystem/" + bankID + ".txt";
 		this.file = new File(bankName);
 		this.loadData();
 	}
@@ -57,9 +61,9 @@ public class Bank {
 
 				// put chunked Data to Account list (Account composition : Name AccountID
 				// Balance)
-				this.accountInfo
-						.add(new Account(bankName.replace(".txt", ""), splitedStr[0], Integer.valueOf(splitedStr[1]),
-								Integer.valueOf(splitedStr[2]), Integer.valueOf(splitedStr[3])));
+
+				this.accountInfo.add(new Account(bankID, splitedStr[0], Integer.valueOf(splitedStr[1]),
+						Integer.valueOf(splitedStr[2]), Integer.valueOf(splitedStr[3])));
 
 				// // test code
 				// System.out.println("Name : " + splitedStr[0]);
@@ -80,10 +84,10 @@ public class Bank {
 		PrintWriter pw;
 		try {
 			pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
-			
+
 			for (Account value : this.accountInfo) {
-				pw.println(
-						value.get_name() + "\t" + value.get_aid() + "\t" + value.get_balance() + "\t" + value.get_tcid());
+				pw.println(value.get_name() + "\t" + value.get_aid() + "\t" + value.get_balance() + "\t"
+						+ value.get_tcid());
 			}
 			pw.close();
 		} catch (IOException e) {
@@ -97,8 +101,17 @@ public class Bank {
 		// loop until find the right Account
 		for (Account value : this.accountInfo) {
 			if (value.get_aid() == _accountID) {// Account Id check
-				for (int i = 0; i < 2; i++) {
-					if (value.getItemID(_itemType)[i] == _itemID) { // Item Id check
+				if (_itemType == 1) { // card
+					for (int i = 0; i < 2; i++) {
+						if (value.getItemID(_itemType)[i] == _itemID) { // Item Id check
+							A = value;
+							type = _itemType;
+							cardNum = i;
+							return true;
+						}
+					}
+				} else { // book
+					if (value.getItemID(_itemType)[0] == _itemID) {
 						A = value;
 						type = _itemType;
 						return true;
@@ -111,12 +124,16 @@ public class Bank {
 
 	// confirm [modified] only pwd
 	public boolean confirm(int _pwd) {
-		// loop until find the right Account
-		for (int i = 0; i < 2; i++) {
-			if (A.getPwd(type)[i] == _pwd) // Account Id check
+		if(type ==1)	{	// card
+			if (A.getPwd(type)[cardNum] == _pwd) {// Account Id check
+				return true;
+			}
+		} else {
+			if(A.getPwd(type)[0] == _pwd)
 				return true;
 		}
 		return false;
+
 	}
 
 	// Link Account
@@ -128,7 +145,7 @@ public class Bank {
 	}
 
 	// get balance
-	public int getBalance(){
+	public int getBalance() {
 		this.WriteData();
 		return A.get_balance();
 	}
