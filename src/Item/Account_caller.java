@@ -15,12 +15,12 @@ public class Account_caller {
 		//testing value
 		//int [] account = {1001, 1011, 1110};
 		System.out.println("-------------------Book--------------------------");
-		book = new Book(aid);
+		book = new Book("shinhan", aid);
 		System.out.println("Account[" +aid + "] bid  :"+book.getBid());
 		System.out.println("Account[" +aid + "] bpwd :"+book.getBpwd());
 		System.out.println("-------------------Card--------------------------");
 		for(int i = 0; i < card.length; i++) {
-			card[i] = new Card(aid, i);
+			card[i] = new Card("shinhan", aid, i);
 		}
 		for(int i = 0; i < card.length; i++) {
 			System.out.println("Account[" +aid + "] cid   :"+card[i].getCid());
