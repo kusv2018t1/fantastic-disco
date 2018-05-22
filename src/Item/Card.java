@@ -32,16 +32,16 @@ public class Card {
 			fr = new FileReader(card);
 			br = new BufferedReader(fr);
 			
-			System.out.println("linked file success");
+			//System.out.println("linked file success");
 			
 			while((getStr = br.readLine()) != null) {
 				//finding..
 				//System.out.println(String.valueOf(aid));
 				if(getStr.substring(0, 4).equals(String.valueOf(aid))) {
 					if(index == count) {
-						System.out.println("cid : " + getStr.substring(6, 11));
+						//System.out.println("cid : " + getStr.substring(6, 11));
 						cid = Integer.parseInt(getStr.substring(6, 11));
-						System.out.println("cpwd : " + getStr.substring(12, 16));
+						//System.out.println("cpwd : " + getStr.substring(12, 16));
 						cpwd = Integer.parseInt(getStr.substring(12, 16));
 						break;
 					}
@@ -50,9 +50,9 @@ public class Card {
 			}
 			//exception
 			if(cid == 0000) {
-				System.out.println("Error: No card...");
+				//System.out.println("Error: No card...");
 			}
-			
+			//System.out.println("end linking--------------------------");
 		}catch(IOException e){
 			e.printStackTrace();
 		}
