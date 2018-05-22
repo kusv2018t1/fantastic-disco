@@ -32,7 +32,7 @@ public class Bank {
 
 	// Bank init
 	Bank(String _bankName) {
-		bankName = _bankName + ".txt";
+		bankName = "src/BankSystem/"+_bankName + ".txt";
 		this.file = new File(bankName);
 		this.loadData();
 	}
