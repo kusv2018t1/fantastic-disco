@@ -2,7 +2,6 @@ package Item;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -27,7 +26,7 @@ public class Card {
 		//cid = shinhan_Card.txt ~-> indexing aid,index
 		//cpwd = shinhan_Card.txt ~-> indexing aid,index
 		try {
-			path = new File("src/Item");
+			path = new File("code/src/main/java/Item");
 			card = new File(path.getAbsolutePath() + "/" + bank + "_Card.txt");
 			fr = new FileReader(card);
 			br = new BufferedReader(fr);
