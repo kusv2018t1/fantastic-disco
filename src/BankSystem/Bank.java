@@ -37,7 +37,7 @@ public class Bank {
 	public Bank(String _bankName) {
 		String bankName;
 		bankID = _bankName;
-		bankName = "src/BankSystem/" + bankID + ".txt";
+		bankName = "code/src/main/java/BankSystem/" + bankID + ".txt";
 		this.file = new File(bankName);
 		this.loadData();
 	}
@@ -81,11 +81,12 @@ public class Bank {
 
 	// write data
 	public void WriteData() {
+
 		PrintWriter pw;
 		try {
 			pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
 
-			for (Account value : this.accountInfo) {
+			for (Account value : accountInfo) {
 				pw.println(value.get_name() + "\t" + value.get_aid() + "\t" + value.get_balance() + "\t"
 						+ value.get_tcid());
 			}
@@ -99,13 +100,13 @@ public class Bank {
 	// valid check
 	public boolean validCheck(int _itemType, int _itemID, int _accountID) {
 		// loop until find the right Account
+		type = _itemType;
 		for (Account value : this.accountInfo) {
 			if (value.get_aid() == _accountID) {// Account Id check
 				if (_itemType == 1) { // card
 					for (int i = 0; i < 2; i++) {
 						if (value.getItemID(_itemType)[i] == _itemID) { // Item Id check
 							A = value;
-							type = _itemType;
 							cardNum = i;
 							return true;
 						}
@@ -113,7 +114,6 @@ public class Bank {
 				} else { // book
 					if (value.getItemID(_itemType)[0] == _itemID) {
 						A = value;
-						type = _itemType;
 						return true;
 					}
 				}
@@ -124,16 +124,15 @@ public class Bank {
 
 	// confirm [modified] only pwd
 	public boolean confirm(int _pwd) {
-		if(type ==1)	{	// card
+		if (type == 1) {    // card
 			if (A.getPwd(type)[cardNum] == _pwd) {// Account Id check
 				return true;
 			}
 		} else {
-			if(A.getPwd(type)[0] == _pwd)
+			if (A.getPwd(type)[0] == _pwd)
 				return true;
 		}
 		return false;
-
 	}
 
 	// Link Account
@@ -159,7 +158,9 @@ public class Bank {
 	public boolean withdraw(int _money) {
 		int bal;
 		// verify sufficient fund
-		if ((bal = A.get_balance() - _money) >= 0) {
+
+		bal = A.get_balance() - _money;
+		if (bal >= 0) {
 			A.set_balance(bal);
 			return true;
 		}
@@ -176,10 +177,13 @@ public class Bank {
 	public String checkAccount(String _bankID, int _accountID) {
 		Dest = new Bank(_bankID);
 
-		for (Account value : Dest.accountInfo) {
-			if (value.get_aid() == _accountID) {
-				Dest.A = value;
-				return value.get_name();
+		// this account != dest account
+		if( (!_bankID.equals(this.bankID)) && (_accountID != this.A.get_aid()) ) {
+			for (Account value : Dest.accountInfo) {
+				if (value.get_aid() == _accountID) {
+					Dest.A = value;
+					return value.get_name();
+				}
 			}
 		}
 		return null;
@@ -188,10 +192,19 @@ public class Bank {
 	// transfer [modified] boolean
 	public boolean transfer(int _money) {
 		// renew my Balance & Dest Balance
-		if ((this.withdraw(this.A.get_balance() - _money)) && (Dest.deposit(_money))) {
-			Dest.WriteData();
-			return true;
-		} else
+		if ((this.withdraw(_money)) && (Dest.deposit(_money))) {
+			if (this.bankID.equals(Dest.bankID)) {
+				for (Account value : accountInfo) {
+					if (value.get_name().equals(Dest.A.get_name()))
+						value.set_balance(Dest.A.get_balance());
+				}
+				return true;
+			} else{
+				Dest.WriteData();
+				return true;
+			}
+		} else {
 			return false;
+		}
 	}
 }
