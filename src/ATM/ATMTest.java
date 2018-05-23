@@ -1,9 +1,6 @@
 package ATM;
 
 import java.util.Scanner;
-
-import BankSystem.*;
-import Item.*;
 //import org.junit.jupiter.api.Test;
 //import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,6 +14,8 @@ class ATMTest {
 		int service;
 		int pwd;
 		boolean wants;
+        int money_amount=0, print=0;
+        int mode=0;
 		Scanner sc = new Scanner(System.in);
 
 		ATMTest at = new ATMTest();
@@ -39,39 +38,145 @@ class ATMTest {
 			System.out.println("----------------------");
 			System.out.print("1.check  2.deposit  3.withdraw  4.transfer 5.issue traffic card : ");
 			service = Integer.valueOf(sc.nextLine());
+			atm.selectService(service);
 
 			switch (service) {
-			// 계좌조회
-			case 1:
-				System.out.println("----------------------");
-				System.out.print("PassWord (****) : ");
-				pwd = Integer.valueOf(sc.nextLine());
-				
-				if(atm.confirm(pwd)) {
-					System.out.println("----------------------");
-					System.out.print("Do you want to print receit? (yes(1)/no(0)) : ");
-					wants = Integer.valueOf(sc.nextLine()) != null;
-					atm.printReceipt(wants);
-					
-					atm.checkResource();
-					break;
-				} else {
-					System.out.println("----------------------");
-					System.out.println("Wrong Pass Word");
-				}
-			// 입금
-			case 2:
-				break;
-			// 출금
-			case 3:
-				break;
-			// 송금
-			case 4:
-				break;
-			// 교통카드 발급
-			case 5:
-				break;
-			}
+                // 계좌조회
+                case 1:
+                    System.out.println("----------------------");
+                    System.out.print("PassWord (****) : ");
+                    pwd = Integer.valueOf(sc.nextLine());
+
+                    if (atm.confirm(pwd)) {
+                        print=1;
+                    } else {
+                        System.out.println("----------------------");
+                        System.out.println("Wrong Pass Word");
+                    }
+                    money_amount=0;
+                    mode=0;
+                    break;
+                // 입금 not ready
+                case 2:
+                    System.out.println("----------------------");
+                    System.out.print("insert money (10$ ~ 100$) : ");
+                    money_amount = Integer.valueOf(sc.nextLine());
+                    //atm.insertCash(money_amount);
+
+                    break;
+                // 출금
+                case 3:
+                    System.out.println("----------------------");
+                    System.out.print("PassWord (****) : ");
+                    pwd = Integer.valueOf(sc.nextLine());
+
+                    if (atm.confirm(pwd)) {
+                        int money_type;
+                        System.out.println("----------------------");
+                        System.out.print("select money type (won(0) / $(1)) : ");
+                        money_type = Integer.valueOf(sc.nextLine());
+                        atm.selectNation(money_type);
+
+                        System.out.println("----------------------");
+                        System.out.print("How much will you withdraw? (10$ ~ 1000$) : ");
+                        money_amount = Integer.valueOf(sc.nextLine());
+                        atm.enterAmount(money_amount);
+
+                        print=1;
+                    } else {
+                        System.out.println("----------------------");
+                        System.out.println("Wrong Pass Word");
+                    }
+                    break;
+                // 송금
+                case 4:
+                    System.out.println("----------------------");
+                    System.out.print("PassWord (****) : ");
+                    pwd = Integer.valueOf(sc.nextLine());
+
+                    if (atm.confirm(pwd)) {
+                        String dest_bankID;
+                        System.out.println("----------------------");
+                        System.out.print("(Destination) Bank ID (shinhan/kb/) : ");
+                        dest_bankID = sc.nextLine();
+
+                        int dest_account;
+                        System.out.println("----------------------");
+                        System.out.print("(Destination) Account ID (1000/1001/1010/) : ");
+                        dest_account = Integer.valueOf(sc.nextLine());
+
+                        String name;
+                        System.out.println("----------------------");
+                        if( (name=atm.destAccount(dest_bankID,dest_account)) != null)
+                            System.out.println("Receiver Name : "+name);
+                        else{
+                            System.out.println("Wrong Receiver !!");
+                            break;
+                        }
+
+                        System.out.println("----------------------");
+                        System.out.print("How much will you send? (10$ ~ 1000$) : ");
+                        money_amount = Integer.valueOf(sc.nextLine());
+                        atm.enterAmount(money_amount);
+
+                        print=1;
+                    } else {
+                        System.out.println("----------------------");
+                        System.out.println("Wrong Pass Word");
+                    }
+                    break;
+                // 교통카드 발급
+                case 5:
+                    System.out.println("----------------------");
+                    System.out.print("PassWord (****) : ");
+                    pwd = Integer.valueOf(sc.nextLine());
+
+                    if (atm.confirm(pwd)) {
+                        int setdaterange;
+                        System.out.println("----------------------");
+                        System.out.print("set date range (1~7) : ");
+                        setdaterange = Integer.valueOf(sc.nextLine());
+                        atm.setDataRange(setdaterange);
+
+                        boolean approval;
+                        System.out.println("----------------------");
+                        System.out.print("Do you want to charge traffic Card(30$) and agree with linking account? (yes(1)/no(0)) : ");
+                        approval = Integer.valueOf(sc.nextLine()) != 0;
+                        atm.agreement(approval);
+
+                        System.out.println("----------------------");
+                        System.out.println("Traffic Card Issued!");
+
+                        money_amount=3000;
+                        print = 1;
+                    } else {
+                        System.out.println("----------------------");
+                        System.out.println("Wrong Pass Word");
+                    }
+                    break;
+            }
+
+            if(print==1) {
+
+                System.out.println("----------------------");
+                if(mode!=0)
+                    System.out.print("Transaction Amount : -" + money_amount + " $\n");
+                System.out.print("Balance : " + atm.getBalance() + " $\n");
+                System.out.println("----------------------");
+
+                System.out.println("----------------------");
+                System.out.print("Do you want to print receit? (yes(1)/no(0)) : ");
+                wants = Integer.valueOf(sc.nextLine()) != 0;
+                if (wants == true) {
+                    System.out.println("----------------------");
+                    System.out.println("print receit!");
+                    System.out.println("----------------------");
+                    atm.printReceipt(wants);
+                }
+                atm.checkResource();
+            }
+            print=0;
+
 		}
 	}
 }
