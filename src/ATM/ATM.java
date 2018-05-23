@@ -1,14 +1,9 @@
 package ATM;
 
-import BankSystem.*;
-import Item.*;
+import BankSystem.Bank;
 import Item.TrafficCard;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 //전체적으로 바뀐 것은 ok를 모두 boolean type으로 해서 method의 타입이 바뀌었다.
 
@@ -80,18 +75,23 @@ public class ATM {
 		switch (service) {
 		// 계좌조회
 		case 1:
+			transactionAmount = 1;
 			break;
 		// 입금
 		case 2:
+			transactionAmount = 2;
 			break;
 		// 출금
 		case 3:
+			transactionAmount = 3;
 			break;
 		// 송금
 		case 4:
+			transactionAmount = 4;
 			break;
 		// 교통카드 발급
 		case 5:
+			transactionAmount = 5;
 			break;
 		}
 		return;
@@ -100,7 +100,7 @@ public class ATM {
 	public int selectNation(int nation) {
 		ATMnation = nation;
 		// gui
-		System.out.println("Nation :" + nation);
+		//System.out.println("Nation :" + nation);
 		// nation 1 = 달러 nation 0 = 한화
 		return nation;
 	}
@@ -191,6 +191,7 @@ public class ATM {
 	public boolean enterAmount(int money) {
 
 		boolean ok;
+
 		if (transactionAmount == 3) {
 			if (ATMnation == 1) {
 				if (cashAmount[3] < money / 100 || cashAmount[2] < (money % 100) / 10)
@@ -248,9 +249,10 @@ public class ATM {
 		return 1;
 	}
 
-	public boolean destAccount(String bankID, int accountID) {
+	public String destAccount(String bankID, int accountID) {
 		int id;
 		String name;
+
 		if (bankID.equals("kb")) {
 			id = 0;
 		}
@@ -265,15 +267,13 @@ public class ATM {
 		// bankofAmerican (usingBankID 3) 외국 은행
 		else if (bankID.equals("bankofAmerican")) {
 			id = 3;
-		} else
-			return false;
+		} else{
+			return null;
+		}
 
-		name = bank[id].checkAccount(bankID, usingAccountID);
+		return bank[usingBankID].checkAccount(bankID, accountID);
 
 		// gui 이름이 떠야 한다.
-		System.out.println("name : " + name);
-
-		return true;
 	}
 
 	public void readManagementItem(int adminID) {
@@ -287,7 +287,6 @@ public class ATM {
 		for (int i = 0; i < 4; i++) {
 			if (cashAmount[i] < 10 || cashAmount[i] > 200) {
 				// 관리자에게 알람
-				System.out.println("관리자 알");
 				return;
 			}
 		}
@@ -313,7 +312,7 @@ public class ATM {
 	private void bootATM() {
 		// txt파일로 부터 ATM안 현금, 교통카드 . 명세표 용지 량을 받아온다.
 		try {
-			path = new File("src/ATM");
+			path = new File("code/src/main/java/ATM");
 			bootATM = new File(path.getAbsolutePath() + "/management.txt");
 			fr = new FileReader(bootATM);
 			br = new BufferedReader(fr);
@@ -337,7 +336,10 @@ public class ATM {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
 
+	public int getBalance(){
+		return bank[usingBankID].getBalance();
 	}
 
 	public void end() {
