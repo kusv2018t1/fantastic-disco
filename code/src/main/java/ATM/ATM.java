@@ -9,18 +9,16 @@ import java.io.*;
 
 public class ATM {
 
-	private File bootATM;
-	private File path;
+	private File bootATM, path;
 	private FileReader fr;
 	private BufferedReader br;
 	private Bank[] bank = new Bank[4];
-	private TrafficCard tCard;
+	private TrafficCard tCard = new TrafficCard();;
 	private int[] cashAmount = new int[4];
 	private int trafficCardAmount;
 	private int receiptAmount;
 	private int usingAccountID;
 	private int usingBankID;
-	/* private int destTransAccountID; */
 	private int transactionAmount = 0;
 	private int languageMode;
 	private int ATMadminID;
@@ -29,14 +27,37 @@ public class ATM {
 	private int ATMnation;
 
 	public ATM() {
-		bootATM();
-		//bankDataDownload();
-		
+		try {
+			path = new File("java/ATM");
+			bootATM = new File(path.getAbsolutePath() + "/management.txt");
+			fr = new FileReader(bootATM);
+			br = new BufferedReader(fr);
+
+			String getStr = br.readLine();
+			int cash = Integer.parseInt(getStr);
+			cashAmount[0] = cash;
+			cashAmount[1] = cash;
+			cashAmount[2] = cash;
+			cashAmount[3] = cash;
+			getStr = br.readLine();
+			receiptAmount = Integer.parseInt(getStr);
+			getStr = br.readLine();
+			trafficCardAmount = Integer.parseInt(getStr);
+			getStr = br.readLine();
+			ATMadminID = Integer.parseInt(getStr);
+			getStr = br.readLine();
+			rate = Integer.parseInt(getStr);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public boolean readItem(int itemType, int itemID, String bankID, int accountID) {
 		// return value : ok
 		boolean ok;
+		usingAccountID=accountID;
 		// kb(usingBankID 0 ) 한국 은행(한국 0)
 		if (bankID.equals("kb")) {
 			bank[0] = new Bank(bankID);
@@ -72,27 +93,21 @@ public class ATM {
 
 	public void selectService(int service) {
 		transactionAmount = service;
-
 		switch (service) {
 		// 계좌조회
 		case 1:
-			transactionAmount = 1;
 			break;
 		// 입금
 		case 2:
-			transactionAmount = 2;
 			break;
 		// 출금
 		case 3:
-			transactionAmount = 3;
 			break;
 		// 송금
 		case 4:
-			transactionAmount = 4;
 			break;
 		// 교통카드 발급
 		case 5:
-			transactionAmount = 5;
 			break;
 		}
 		return;
@@ -108,11 +123,9 @@ public class ATM {
 
 	public boolean confirm(int pwd) {
 		return bank[usingBankID].confirm(pwd);
-
 	}
 
 	public boolean insertCash(String[] bill) {
-
 		// insertCash를 통해 읽는 총 돈, deposit 하는 값
 		int money = 0;
 
@@ -172,9 +185,7 @@ public class ATM {
 					break;
 				}
 			}
-
 		}
-
 		// 만약 입금하려는 계좌가 외국계좌일 경우,(languagemode ==1) 환율로 나눠준다.
 		if (languageMode == 1)
 			money = money / rate;
@@ -182,8 +193,6 @@ public class ATM {
 		// return 값 ok / deposit이 제대로 되었는가.
 		boolean ok;
 		ok = bank[usingBankID].deposit(money);
-
-		System.out.print("money :" + money);
 
 		return ok;
 
@@ -225,14 +234,15 @@ public class ATM {
 	}
 
 	public void setDataRange(int date_range) {
-		tCard = new TrafficCard();
 		tCard.setDateRange(date_range);
 		return;
 	}
 
-	public int agreement(boolean approval) {
-		int tcid = tCard.getTcid();
-		boolean ok = bank[usingBankID].linkAccount(tcid);
+	public boolean agreement(boolean approval) {
+		if(approval==false)
+			return false;
+
+		boolean ok = bank[usingBankID].linkAccount(tCard.getTcid());
 		if (ok == true) {
 			// 교통카드 비용 3000원
 			if (languageMode == 0) {
@@ -246,35 +256,32 @@ public class ATM {
 			trafficCardAmount--;
 			// 여기서 교통카드 발급 GUI
 		}
-
-		return 1;
+		return true;
 	}
 
 	public String destAccount(String bankID, int accountID) {
 		int id;
-		String name;
-
-		if (bankID.equals("kb")) {
-			id = 0;
+		if(usingAccountID!=accountID ) {
+			if (bankID.equals("kb")) {
+				id = 0;
+			}
+			// shinhan (usingBankID 1 ) 한국 은행
+			else if (bankID.equals("shinhan")) {
+				id = 1;
+			}
+			// city (usingBankID 2 ) 외국 은행
+			else if (bankID.equals("citi")) {
+				id = 2;
+			}
+			// bankofAmerican (usingBankID 3) 외국 은행
+			else if (bankID.equals("bankofAmerican")) {
+				id = 3;
+			} else {
+				return null;
+			}
+			return bank[usingBankID].checkAccount(bankID, accountID);
 		}
-		// shinhan (usingBankID 1 ) 한국 은행
-		else if (bankID.equals("shinhan")) {
-			id = 1;
-		}
-		// city (usingBankID 2 ) 외국 은행
-		else if (bankID.equals("citi")) {
-			id = 2;
-		}
-		// bankofAmerican (usingBankID 3) 외국 은행
-		else if (bankID.equals("bankofAmerican")) {
-			id = 3;
-		} else{
-			System.out.println("%%%%%%%");
-			return null;
-		}
-
-		return bank[usingBankID].checkAccount(bankID, accountID);
-
+		return null;
 		// gui 이름이 떠야 한다.
 	}
 
@@ -285,43 +292,22 @@ public class ATM {
 	}
 
 	public void checkResource() {
-		System.out.println("관리자 알람 ");
+		//System.out.println("관리자 알람 ");
 		for (int i = 0; i < 4; i++) {
 			if (cashAmount[i] < 10 || cashAmount[i] > 200) {
 				// 관리자에게 알람
-				return;
 			}
 		}
 		if (trafficCardAmount < 2 || receiptAmount < 10) {
 			// 관리자에게 알람
-			return;
 		}
-
-		return;
 	}
 
-	private int bankDataDownload() {
-		// bank생성
-		// 한국 은행 생성
-		bank[0] = new Bank("kb");
-		bank[1] = new Bank("shinhan");
-		// 외국 은행 생성
-		bank[2] = new Bank("city");
-		bank[3] = new Bank("bankofAmerican");
-		return 0;
-	}
-
-	private void bootATM() {
-		// txt파일로 부터 ATM안 현금, 교통카드 . 명세표 용지 량을 받아온다.
+	public void end() {
 		try {
 			path = new File("code/src/main/java/ATM");
 			bootATM = new File(path.getAbsolutePath() + "/management.txt");
 			fr = new FileReader(bootATM);
-			String _path = ATM.class.getResource("").getPath();
-			System.out.println();
-			//path = new File("code/src/main/java/ATM");
-			//bootATM = new File(_path + "/management.txt");
-			fr = new FileReader(_path + "management.txt");
 			br = new BufferedReader(fr);
 
 			String getStr = br.readLine();
@@ -335,8 +321,6 @@ public class ATM {
 			getStr = br.readLine();
 			trafficCardAmount = Integer.parseInt(getStr);
 			getStr = br.readLine();
-			ATMadminID = Integer.parseInt(getStr);
-			getStr = br.readLine();
 			rate = Integer.parseInt(getStr);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -344,14 +328,49 @@ public class ATM {
 			e.printStackTrace();
 		}
 	}
-
-	public int getBalance(){
-		return bank[usingBankID].getBalance();
-	}
-
-	public void end() {
-		// manager가 txt파일을 바꾼다고 생각하고 bootATM을 해서 ATM안 새로운 item갯수를 넣는다.
-		bootATM();
-	}
-
 }
+
+//	private int bankDataDownload() {
+//		// bank생성
+//		// 한국 은행 생성
+//		bank[0] = new Bank("kb");
+//		bank[1] = new Bank("shinhan");
+//		// 외국 은행 생성
+//		bank[2] = new Bank("city");
+//		bank[3] = new Bank("bankofAmerican");
+//		return 0;
+//	}
+
+//	private void bootATM() {
+//		// txt파일로 부터 ATM안 현금, 교통카드 . 명세표 용지 량을 받아온다.
+//		try {
+//			path = new File("src/ATM");
+//			bootATM = new File(path.getAbsolutePath() + "/management.txt");
+//			fr = new FileReader(bootATM);
+//			br = new BufferedReader(fr);
+//
+//			String getStr = br.readLine();
+//			int cash = Integer.parseInt(getStr);
+//			cashAmount[0] = cash;
+//			cashAmount[1] = cash;
+//			cashAmount[2] = cash;
+//			cashAmount[3] = cash;
+//			getStr = br.readLine();
+//			receiptAmount = Integer.parseInt(getStr);
+//			getStr = br.readLine();
+//			trafficCardAmount = Integer.parseInt(getStr);
+//			getStr = br.readLine();
+//			ATMadminID = Integer.parseInt(getStr);
+//			getStr = br.readLine();
+//			rate = Integer.parseInt(getStr);
+//		} catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
+
+//	public int getBalance(){
+//		return bank[usingBankID].getBalance();
+//	}
+

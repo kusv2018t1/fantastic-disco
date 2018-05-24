@@ -18,7 +18,8 @@ public class TrafficCard {
 	//tcid list index 
 	//increment each time reading tcid
 	//next time, next tcid
-	private static int count = 0;
+	//read id second line so change 0->-1
+	private static int count = -1;
 
 	public TrafficCard() {
 		String getStr = null;	
@@ -37,18 +38,15 @@ public class TrafficCard {
 		//9011
 
 		try {
-			path = new File("code/src/main/java/Item");
+			path = new File("java/Item");
 			trfc = new File(path.getAbsolutePath() + "/TrafficCard.txt");
 			fr = new FileReader(trfc);
 			br = new BufferedReader(fr);
 
-
-			System.out.println("linked file success");
-
 			//one line pass
 			br.readLine();
 			//pass already using tcid
-			for(int i = 0; i < count; i++) {
+			for(int i = 0; i <count; i++) {
 				br.readLine();
 			}
 			//get tcid

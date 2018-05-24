@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class Bank {
 	// bank name
-	private String bankID;
+	String bankID;
 	// Account list
 	private ArrayList<Account> accountInfo = new ArrayList<>();
 	// Cache
@@ -25,19 +25,11 @@ public class Bank {
 	// card number
 	private int cardNum;
 
-	// //test code
-	// public static void main(String[] args) {
-	// Bank shinhan = new Bank("test");
-	//
-	// shinhan.WriteData();
-	// }
-	// //test code
-
 	// Bank init
 	public Bank(String _bankName) {
 		String bankName;
 		bankID = _bankName;
-		bankName = "code/src/main/java/BankSystem/" + bankID + ".txt";
+		bankName = "java/BankSystem/" + bankID + ".txt";
 		this.file = new File(bankName);
 		this.loadData();
 	}
@@ -61,7 +53,6 @@ public class Bank {
 
 				// put chunked Data to Account list (Account composition : Name AccountID
 				// Balance)
-
 				this.accountInfo.add(new Account(bankID, splitedStr[0], Integer.valueOf(splitedStr[1]),
 						Integer.valueOf(splitedStr[2]), Integer.valueOf(splitedStr[3])));
 
@@ -81,7 +72,6 @@ public class Bank {
 
 	// write data
 	public void WriteData() {
-
 		PrintWriter pw;
 		try {
 			pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
@@ -176,16 +166,14 @@ public class Bank {
 	// check Account [modified] bank ID string
 	public String checkAccount(String _bankID, int _accountID) {
 		Dest = new Bank(_bankID);
-
 		// this account != dest account
-		if( (bankID.equals(this.bankID) && _accountID != this.A.get_aid()) || (!_bankID.equals(this.bankID)) ) {
-			for (Account value : Dest.accountInfo) {
-				if (value.get_aid() == _accountID) {
-					Dest.A = value;
-					return value.get_name();
-				}
-			}
-		}
+		//**change && -> ||  &&-> it can't transfer even if it isn't same account becase of bank
+        for (Account value : Dest.accountInfo) {
+            if (value.get_aid() == _accountID) {
+                Dest.A = value;
+                return value.get_name();
+            }
+        }
 		return null;
 	}
 

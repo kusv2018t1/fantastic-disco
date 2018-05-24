@@ -54,7 +54,8 @@ public class Account {
 
 	// get Item Id
 	public int[] getItemID(int type) {
-		int[] _cards=new int[cardAmount], _book=new int[cardAmount];
+		//**change book lengh 1
+		int[] _cards=new int[cardAmount], _book=new int[1];
 		
 		if (type == 1) { // card
 			for (int i = 0; i < cardAmount; i++) {
@@ -69,7 +70,8 @@ public class Account {
 
 	// get PassWord
 	public int[] getPwd(int type) {
-		int[] _cards=new int[cardAmount], _book=new int[cardAmount];
+		//**change book lengh 1
+		int[] _cards=new int[cardAmount], _book=new int[1];
 		
 		if (type == 1) {// card
 			for (int i = 0; i < cardAmount; i++)
@@ -77,7 +79,8 @@ public class Account {
 			return _cards;
 		}
 		else {// book
-			_book[0] = book.getBid();
+			//**change id->pwd
+			_book[0] = book.getBpwd();
 			return _book;
 		}
 	}
