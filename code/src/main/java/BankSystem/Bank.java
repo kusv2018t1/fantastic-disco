@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class Bank {
 	// bank name
-	String bankID;
+	private String bankID;
 	// Account list
 	private ArrayList<Account> accountInfo = new ArrayList<>();
 	// Cache
@@ -178,7 +178,7 @@ public class Bank {
 		Dest = new Bank(_bankID);
 
 		// this account != dest account
-		if( (!_bankID.equals(this.bankID)) && (_accountID != this.A.get_aid()) ) {
+		if( (bankID.equals(this.bankID) && _accountID != this.A.get_aid()) || (!_bankID.equals(this.bankID)) ) {
 			for (Account value : Dest.accountInfo) {
 				if (value.get_aid() == _accountID) {
 					Dest.A = value;

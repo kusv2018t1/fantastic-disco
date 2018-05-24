@@ -2,7 +2,6 @@ package Item;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -38,7 +37,7 @@ public class TrafficCard {
 		//9011
 
 		try {
-			path = new File("src/Item");
+			path = new File("code/src/main/java/Item");
 			trfc = new File(path.getAbsolutePath() + "/TrafficCard.txt");
 			fr = new FileReader(trfc);
 			br = new BufferedReader(fr);

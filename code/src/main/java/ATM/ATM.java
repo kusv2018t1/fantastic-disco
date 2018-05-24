@@ -9,7 +9,8 @@ import java.io.*;
 
 public class ATM {
 
-	private File bootATM, path;
+	private File bootATM;
+	private File path;
 	private FileReader fr;
 	private BufferedReader br;
 	private Bank[] bank = new Bank[4];
@@ -268,6 +269,7 @@ public class ATM {
 		else if (bankID.equals("bankofAmerican")) {
 			id = 3;
 		} else{
+			System.out.println("%%%%%%%");
 			return null;
 		}
 
@@ -315,6 +317,11 @@ public class ATM {
 			path = new File("code/src/main/java/ATM");
 			bootATM = new File(path.getAbsolutePath() + "/management.txt");
 			fr = new FileReader(bootATM);
+			String _path = ATM.class.getResource("").getPath();
+			System.out.println();
+			//path = new File("code/src/main/java/ATM");
+			//bootATM = new File(_path + "/management.txt");
+			fr = new FileReader(_path + "management.txt");
 			br = new BufferedReader(fr);
 
 			String getStr = br.readLine();
