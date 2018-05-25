@@ -10,7 +10,7 @@ class ATMTest {
 
     @org.junit.jupiter.api.Test
     void readItem() {
-        assertEquals(true, atm.readItem(1, 60000,"shinhan" , 1000));
+        assertEquals(0, atm.readItem(1, 60000,"shinhan" , 1000));
     }
 
     @org.junit.jupiter.api.Test
@@ -25,14 +25,18 @@ class ATMTest {
 
     @org.junit.jupiter.api.Test
     void insertCash() {
-        String[] bill = new String[7];
-        bill[0] = "0000";
-        bill[1] = "0001";
-        bill[2] = "0010";
-        bill[3] = "0011";
-        bill[4] = "0100";
-        bill[5] = "0101";
-        bill[6] = "0110";
+        String[] bill = new String[100];
+        //
+        bill[0] = "000"; // 1000
+        bill[1] = "001";
+        bill[2] = "010";
+        bill[3] = "011";
+        //
+        bill[4] = "100";
+        bill[5] = "101";
+        bill[6] = "110";
+        //
+        bill[7] = null;
         assertEquals(true,atm.insertCash(bill));
     }
 

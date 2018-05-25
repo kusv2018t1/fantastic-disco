@@ -15,8 +15,6 @@ class TrafficCardTest {
         //second TrafficCrad Tcid =>9001
         TrafficCard tt = new TrafficCard();
         assertEquals(9901,tt.getTcid());
-
-
     }
 
     @Test

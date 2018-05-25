@@ -54,9 +54,7 @@ public class ATM {
 		}
 	}
 
-	public boolean readItem(int itemType, int itemID, String bankID, int accountID) {
-		// return value : ok
-		boolean ok;
+	public int readItem(int itemType, int itemID, String bankID, int accountID) {
 		usingAccountID=accountID;
 		// kb(usingBankID 0 ) 한국 은행(한국 0)
 		if (bankID.equals("kb")) {
@@ -81,14 +79,14 @@ public class ATM {
 			bank[3] = new Bank(bankID);
 			usingBankID = 3;
 			languageMode = 1;
-		} else
-			return false;
+		} else	// 유효하지 않은 은행
+			return -1;
 
-		ok = bank[usingBankID].validCheck(itemType, itemID, accountID);
-
-		usingAccountID = accountID;
-
-		return ok;
+		if( bank[usingBankID].validCheck(itemType, itemID, accountID) ){
+			usingAccountID = accountID;
+			return languageMode;
+		} else // 유효하지 않은 계좌
+			return -1;
 	}
 
 	public void selectService(int service) {
@@ -130,10 +128,13 @@ public class ATM {
 		int money = 0;
 
 		// 들어온 bill의 갯수 만큼 돈다.
-		for (int i = 0; i < bill.length; i++) {
+		for (int i = 0; i < 100; i++) {
+			if(bill[i] == null){
+				break;
+			}
 			// bill의 1번쨰 자리가 0이면 한국 돈
-			if (bill[i].substring(0, 1).equals("0")) {
-				switch (Integer.parseInt(bill[i].substring(1, 3))) {
+			if (bill[i].substring(0, 0).equals("0")) {
+				switch (Integer.parseInt(bill[i].substring(1, 2))) {
 				// 1000원 bill
 				case 0:
 					money += 1000;
@@ -161,8 +162,8 @@ public class ATM {
 				}
 			}
 			// bill의 1번쨰 자리가 1이면 외국돈
-			else if (bill[i].substring(0, 1).equals("0")) {
-				switch (Integer.parseInt(bill[i].substring(1, 3))) {
+			else if (bill[i].substring(0, 0).equals("0")) {
+				switch (Integer.parseInt(bill[i].substring(1, 2))) {
 				// 10달러 bill cashAmount[2]- 10달러 양이 250보다 적으면 증가
 				case 0:
 					money += 10 * rate;
