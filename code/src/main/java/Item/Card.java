@@ -27,7 +27,7 @@ public class Card {
 		//cpwd = shinhan_Card.txt ~-> indexing aid,index
 		try {
 			path = new File("code/src/main/java/Item");
-			card = new File(path.getAbsolutePath() + "/" + bank + "_Card.txt");
+			card = new File(bank + "_Card.txt");//path.getAbsolutePath() +
 			fr = new FileReader(card);
 			br = new BufferedReader(fr);
 			

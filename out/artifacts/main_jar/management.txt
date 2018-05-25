@@ -1,0 +1,6 @@
+cashAmount/receiptAmount/tccardAmount/admin/rate
+100
+100
+100
+9999
+1000

@@ -37,7 +37,7 @@ public class ATM {
 	public ATM() {
 		try {
 			path = new File("code/src/main/java/ATM");
-			bootATM = new File(path.getAbsolutePath() + "/management.txt");
+			bootATM = new File("management.txt");//path.getAbsolutePath() +
 			fr = new FileReader(bootATM);
 			br = new BufferedReader(fr);
 

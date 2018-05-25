@@ -29,7 +29,8 @@ public class Bank {
 	public Bank(String _bankName) {
 		String bankName;
 		bankID = _bankName;
-		bankName = "code/src/main/java/BankSystem/" + bankID + ".txt";
+		//code/src/main/java/BankSystem
+		bankName = bankID + ".txt";
 		this.file = new File(bankName);
 		this.loadData();
 	}
