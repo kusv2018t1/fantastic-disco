@@ -1,27 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ArtifactsWorkspaceSettings">
-    <artifacts-to-build>
-      <artifact name="code_main:jar" />
-    </artifacts-to-build>
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7d44963-1af4-41a0-b7b2-d876c6fb1cf6" name="Default" comment="">
+    <list default="true" id="48996a12-23b3-4854-9525-ded58a1521c9" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/code/src/main/java/GUI/GUIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/code_main_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/code.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/code/src.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/code/src_main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/code/src_test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/code_main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/code_test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/kusv2018t1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/kusv2018t1_main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/kusv2018t1_test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/src.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarIssues.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarIssues.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/out/production/classes/ATM/ATM.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/out/production/classes/ATM/ATM.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/out/production/classes/ATM/ATMTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/out/production/classes/ATM/ATMTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/out/production/classes/Item/TrafficCardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/code/out/production/classes/Item/TrafficCardTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/src/main/java/ATM/ATM.java" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/main/java/ATM/ATM.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/src/main/java/ATM/ATMTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/main/java/ATM/ATMTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/src/main/java/ATM/management.txt" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/main/java/ATM/management.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/src/main/java/BankSystem/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/main/java/BankSystem/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/src/main/java/BankSystem/citi.txt" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/main/java/BankSystem/citi.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/src/main/java/BankSystem/shinhan.txt" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/main/java/BankSystem/shinhan.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/main/java/Item/TrafficCardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/main/java/Item/TrafficCardTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/src/main/java/Item/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/main/java/Item/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/src/main/java/Item/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/main/java/Item/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/src/main/java/Item/TrafficCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/main/java/Item/TrafficCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/src/test/java/test.txt" beforeDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/.gradle/" />
-    <ignored path="$PROJECT_DIR$/build/" />
     <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/code/.gradle/" />
-    <ignored path="$PROJECT_DIR$/code/build/" />
-    <ignored path="$PROJECT_DIR$/code/out/" />
+    <ignored path="$PROJECT_DIR$/code/src/test/.gradle/" />
+    <ignored path="$PROJECT_DIR$/code/src/test/build/" />
+    <ignored path="$PROJECT_DIR$/code/src/test/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,80 +44,84 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CodeInsightWorkspaceSettings">
-    <option name="optimizeImportsOnTheFly" value="true" />
-  </component>
   <component name="ExternalProjectsData">
-    <projectState path="$PROJECT_DIR$/code">
+    <projectState path="$PROJECT_DIR$/code/src/test">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="ATM.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/src/main/java/ATM/ATM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="133" column="13" lean-forward="true" selection-start-line="133" selection-start-column="13" selection-end-line="133" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ATMTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/code/src/main/java/ATM/ATMTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="37" column="10" lean-forward="true" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
+            <state relative-caret-position="377">
+              <caret line="322" lean-forward="true" selection-start-line="322" selection-end-line="322" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#210#211#0" expanded="true" />
-                <element signature="e#285#286#0" expanded="true" />
-                <element signature="e#344#345#0" expanded="true" />
-                <element signature="e#395#396#0" expanded="true" />
-                <element signature="e#449#450#0" expanded="true" />
-                <element signature="e#501#502#0" expanded="true" />
-                <element signature="e#1038#1039#0" expanded="true" />
-                <element signature="e#1092#1093#0" expanded="true" />
-                <element signature="e#1439#1440#0" expanded="true" />
-                <element signature="e#1475#1476#0" expanded="true" />
+                <element signature="method#ATM#0;class#ATM#0" />
+                <element signature="method#readItem#0;class#ATM#0" />
+                <element signature="method#selectService#0;class#ATM#0" />
+                <element signature="method#selectNation#0;class#ATM#0" />
+                <element signature="method#insertCash#0;class#ATM#0" />
+                <element signature="method#enterAmount#0;class#ATM#0" />
+                <element signature="method#printReceipt#0;class#ATM#0" />
+                <element signature="method#destAccount#0;class#ATM#0" />
+                <element signature="method#readManagementItem#0;class#ATM#0" />
+                <element signature="method#checkResource#0;class#ATM#0" />
+                <element signature="method#end#0;class#ATM#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Bank.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/Bank.java">
+      <file leaf-file-name="ATMTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/src/main/java/ATM/ATMTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="161" column="48" selection-start-line="161" selection-start-column="48" selection-end-line="161" selection-end-column="48" />
+            <state relative-caret-position="381">
+              <caret line="50" column="22" lean-forward="true" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GUIController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/code/src/main/java/GUI/GUIController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="169">
+              <caret line="2106" column="17" lean-forward="true" selection-start-line="2106" selection-start-column="17" selection-end-line="2106" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#main#0;class#GUIController#0" />
+                <element signature="method#readyReadCard#0;class#GUIController#0" />
+                <element signature="method#selectService#0;class#GUIController#0" />
+                <element signature="method#inputPassword#0;class#GUIController#0" />
+                <element signature="method#printReceipt#0;class#GUIController#0" />
+                <element signature="method#inputCash#0;class#GUIController#0" />
+                <element signature="method#selectNation#0;class#GUIController#0" />
+                <element signature="method#inputAmount#0;class#GUIController#0" />
+                <element signature="method#inputTransfer#0;class#GUIController#0" />
+                <element signature="method#inputDateRange#0;class#GUIController#0" />
+                <element signature="method#returnCard#0;class#GUIController#0" />
+                <element signature="method#getReceipt#0;class#GUIController#0" />
+                <element signature="method#canceled#0;class#GUIController#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JUnit5 Test Class" />
-        <option value="JUnit4 Test Class" />
-      </list>
-    </option>
-  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>agree</find>
-      <find>ch</find>
-      <find>charge</find>
-      <find>insert</find>
-      <find>selectn</find>
-      <find>dest</find>
-      <find>enter</find>
-      <find>select</find>
-      <find>checkac</find>
-      <find>writedata</find>
-      <find />
-      <find>deposit</find>
+      <find>rate</find>
+      <find>transactionAm</find>
+      <find>mode</find>
+      <find>mode =</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -111,12 +130,12 @@
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
       <map>
-        <entry key="$PROJECT_DIR$/code" value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.4-bin/bgaq7vklkazwgxox0hdadxbvi/gradle-4.4" />
+        <entry key="$PROJECT_DIR$/code/src/test" value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.4-bin/bgaq7vklkazwgxox0hdadxbvi/gradle-4.4" />
       </map>
     </option>
     <option name="myGradleVersions">
       <map>
-        <entry key="$PROJECT_DIR$/code" value="4.4" />
+        <entry key="$PROJECT_DIR$/code/src/test" value="4.4" />
       </map>
     </option>
     <option name="availableProjects">
@@ -124,15 +143,15 @@
         <entry>
           <key>
             <ExternalProjectPojo>
-              <option name="name" value="code" />
-              <option name="path" value="$PROJECT_DIR$/code" />
+              <option name="name" value="test" />
+              <option name="path" value="$PROJECT_DIR$/code/src/test" />
             </ExternalProjectPojo>
           </key>
           <value>
             <list>
               <ExternalProjectPojo>
-                <option name="name" value="code" />
-                <option name="path" value="$PROJECT_DIR$/code" />
+                <option name="name" value="test" />
+                <option name="path" value="$PROJECT_DIR$/code/src/test" />
               </ExternalProjectPojo>
             </list>
           </value>
@@ -141,142 +160,142 @@
     </option>
     <option name="availableTasks">
       <map>
-        <entry key="$PROJECT_DIR$/code">
+        <entry key="$PROJECT_DIR$/code/src/test">
           <value>
             <list>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the components produced by root project 'code'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="description" value="Displays the components produced by root project 'test'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="components" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles and tests this project and all projects that depend on it." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="buildDependents" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the sub-projects of root project 'code'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="description" value="Displays the sub-projects of root project 'test'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="projects" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles main classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="classes" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the dependent components of components in root project 'code'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="description" value="Displays the dependent components of components in root project 'test'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="dependentComponents" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays all buildscript dependencies declared in root project 'code'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="description" value="Displays all buildscript dependencies declared in root project 'test'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="buildEnvironment" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Generates Gradle wrapper files." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="wrapper" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles test classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="testClasses" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Generates Javadoc API documentation for the main source code." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="javadoc" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles a jar archive containing the main classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="jar" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the configuration model of root project 'code'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="description" value="Displays the configuration model of root project 'test'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="model" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Processes main resources." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="processResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the tasks runnable from root project 'code'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="description" value="Displays the tasks runnable from root project 'test'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="tasks" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Initializes a new Gradle build." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="init" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Runs the unit tests." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="test" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Compiles main Java source." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="compileJava" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the insight into a specific dependency in root project 'code'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="description" value="Displays the insight into a specific dependency in root project 'test'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="dependencyInsight" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Runs all checks." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="check" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles the outputs of this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="assemble" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Deletes the build directory." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="clean" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Compiles test Java source." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="compileTestJava" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays all dependencies declared in root project 'code'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="description" value="Displays all dependencies declared in root project 'test'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="dependencies" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Processes test resources." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="processTestResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Displays a help message." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="help" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles and tests this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="build" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles and tests this project and all projects it depends on." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="buildNeeded" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the properties of root project 'code'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code" />
+                <option name="description" value="Displays the properties of root project 'test'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/code/src/test" />
                 <option name="name" value="properties" />
               </ExternalTaskPojo>
             </list>
@@ -286,34 +305,28 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="9161854446000" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="3353534587" />
-        <entry key="$PROJECT_DIR$/code" value="6107902964000" />
-        <entry key="$PROJECT_DIR$/code/.gradle" value="0" />
-        <entry key="$PROJECT_DIR$/code/build.gradle" value="1943543070" />
-        <entry key="$PROJECT_DIR$/code/gradle/wrapper/gradle-wrapper.properties" value="1741342742" />
-        <entry key="$PROJECT_DIR$/code/settings.gradle" value="3693930081" />
-        <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="2083459160" />
-        <entry key="$PROJECT_DIR$/settings.gradle" value="1082011916" />
+        <entry key="$PROJECT_DIR$/code/src/test" value="6109046293000" />
+        <entry key="$PROJECT_DIR$/code/src/test/build.gradle" value="3907258962" />
+        <entry key="$PROJECT_DIR$/code/src/test/settings.gradle" value="736222066" />
       </map>
     </option>
     <option name="projectBuildClasspath">
       <map>
-        <entry key="$PROJECT_DIR$/code">
+        <entry key="$PROJECT_DIR$/code/src/test">
           <value>
             <ExternalProjectBuildClasspathPojo>
               <option name="modulesBuildClasspath">
                 <map>
-                  <entry key="$PROJECT_DIR$/code">
+                  <entry key="$PROJECT_DIR$/code/src/test">
                     <value>
                       <ExternalModuleBuildClasspathPojo>
-                        <option name="path" value="$PROJECT_DIR$/code" />
+                        <option name="path" value="$PROJECT_DIR$/code/src/test" />
                       </ExternalModuleBuildClasspathPojo>
                     </value>
                   </entry>
                 </map>
               </option>
-              <option name="name" value="code" />
+              <option name="name" value="test" />
               <option name="projectBuildClasspath">
                 <list>
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.4-bin/bgaq7vklkazwgxox0hdadxbvi/gradle-4.4/lib/gradle-wrapper-4.4.jar" />
@@ -390,8 +403,8 @@
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.4-bin/bgaq7vklkazwgxox0hdadxbvi/gradle-4.4/lib/plugins/ivy-2.2.0.jar" />
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.4-bin/bgaq7vklkazwgxox0hdadxbvi/gradle-4.4/lib/plugins/gradle-testing-base-4.4.jar" />
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.4-bin/bgaq7vklkazwgxox0hdadxbvi/gradle-4.4/lib/plugins/gradle-platform-jvm-4.4.jar" />
-                  <option value="$PROJECT_DIR$/code/buildSrc/src/main/java" />
-                  <option value="$PROJECT_DIR$/code/buildSrc/src/main/groovy" />
+                  <option value="$PROJECT_DIR$/code/src/test/buildSrc/src/main/java" />
+                  <option value="$PROJECT_DIR$/code/src/test/buildSrc/src/main/groovy" />
                 </list>
               </option>
             </ExternalProjectBuildClasspathPojo>
@@ -401,48 +414,35 @@
     </option>
     <option name="projectSyncType">
       <map>
-        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
-        <entry key="$PROJECT_DIR$/code" value="RE_IMPORT" />
+        <entry key="$PROJECT_DIR$/code/src/test" value="RE_IMPORT" />
       </map>
     </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/code/src/test/java/ATMTest.java" />
-        <option value="$PROJECT_DIR$/code/src/main/java/BankSystem/kb.txt" />
-        <option value="$PROJECT_DIR$/code/src/test/java/ATM/ATMTest.java" />
-        <option value="$PROJECT_DIR$/code/src/main/tests/ATM/ATMTest.java" />
-        <option value="$PROJECT_DIR$/code/src/test/java/ATM/ATMTest2.java" />
-        <option value="$PROJECT_DIR$/code/src/main/java/Item/TrafficCard.txt" />
-        <option value="$PROJECT_DIR$/code/src/main/java/Item/Card.java" />
         <option value="$PROJECT_DIR$/code/src/main/java/Item/Book.java" />
+        <option value="$PROJECT_DIR$/code/src/main/java/Item/Card.java" />
         <option value="$PROJECT_DIR$/code/src/main/java/Item/TrafficCard.java" />
-        <option value="$PROJECT_DIR$/code/src/main/java/BankSystem/AccountTest.java" />
-        <option value="$PROJECT_DIR$/code/src/main/java/BankSystem/shinhan.txt" />
-        <option value="$PROJECT_DIR$/code/src/main/java/BankSystem/BankTest.java" />
-        <option value="$PROJECT_DIR$/code/src/main/java/Item/BookTest.java" />
-        <option value="$PROJECT_DIR$/code/src/main/java/Item/CardTest.java" />
-        <option value="$PROJECT_DIR$/code/src/main/java/Item/TrafficCardTest.java" />
-        <option value="$PROJECT_DIR$/code/src/main/java/BankSystem/Account.java" />
+        <option value="$PROJECT_DIR$/code/src/main/java/ATM/management.txt" />
         <option value="$PROJECT_DIR$/code/src/main/java/BankSystem/Bank.java" />
-        <option value="$PROJECT_DIR$/code/src/main/java/ATM/ATM.java" />
         <option value="$PROJECT_DIR$/code/src/main/java/ATM/ATMTest.java" />
+        <option value="$PROJECT_DIR$/code/src/main/java/ATM/ATM.java" />
+        <option value="$PROJECT_DIR$/code/src/main/java/GUI/GUIController.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1260" />
-    <option name="height" value="693" />
+    <option name="width" value="1440" />
+    <option name="height" value="877" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -454,25 +454,25 @@
             <path>
               <item name="fantastic-disco" type="b2602c69:ProjectViewProjectNode" />
               <item name="fantastic-disco" type="462c0819:PsiDirectoryNode" />
-              <item name="code" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="fantastic-disco" type="b2602c69:ProjectViewProjectNode" />
               <item name="fantastic-disco" type="462c0819:PsiDirectoryNode" />
-              <item name="code" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="fantastic-disco" type="b2602c69:ProjectViewProjectNode" />
               <item name="fantastic-disco" type="462c0819:PsiDirectoryNode" />
-              <item name="code" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="fantastic-disco" type="b2602c69:ProjectViewProjectNode" />
               <item name="fantastic-disco" type="462c0819:PsiDirectoryNode" />
-              <item name="code" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -480,7 +480,7 @@
             <path>
               <item name="fantastic-disco" type="b2602c69:ProjectViewProjectNode" />
               <item name="fantastic-disco" type="462c0819:PsiDirectoryNode" />
-              <item name="code" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -489,7 +489,7 @@
             <path>
               <item name="fantastic-disco" type="b2602c69:ProjectViewProjectNode" />
               <item name="fantastic-disco" type="462c0819:PsiDirectoryNode" />
-              <item name="code" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -498,60 +498,41 @@
             <path>
               <item name="fantastic-disco" type="b2602c69:ProjectViewProjectNode" />
               <item name="fantastic-disco" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="GUI" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="fantastic-disco" type="b2602c69:ProjectViewProjectNode" />
               <item name="fantastic-disco" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fantastic-disco" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fantastic-disco" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="code_main_jar" type="462c0819:PsiDirectoryNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Item" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="SearchEverywhereHistoryKey" value=".jar&#9;PSI&#9;JAVA://sun.tools.jar.resources.jar" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="create.test.in.the.same.root" value="true" />
-    <property name="jdk.selected.JAVA_MODULE" value="9" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="ATM" />
-      <recent name="" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="ATM" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/code/src/main/java" />
-      <recent name="$PROJECT_DIR$/code/src/main" />
-      <recent name="$PROJECT_DIR$/code/src" />
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/src/ATM" />
+      <recent name="GUI" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -566,22 +547,33 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TrafficCardTest">
+  <component name="RunManager" selected="Application.GUIController">
+    <configuration name="GUIController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.GUIController" />
+      <module name="main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
-    <configuration name="AccountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="src_main" />
+    <configuration name="ATMTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="BankSystem.*" />
+          <option name="PATTERN" value="ATM.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="BankSystem" />
-      <option name="MAIN_CLASS_NAME" value="BankSystem.AccountTest" />
+      <option name="PACKAGE_NAME" value="ATM" />
+      <option name="MAIN_CLASS_NAME" value="ATM.ATMTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -593,18 +585,18 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="BankTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="src_main" />
+    <configuration name="ATMTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="BankSystem.*" />
+          <option name="PATTERN" value="ATM.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="BankSystem" />
-      <option name="MAIN_CLASS_NAME" value="BankSystem.BankTest" />
+      <option name="PACKAGE_NAME" value="ATM" />
+      <option name="MAIN_CLASS_NAME" value="ATM.ATMTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -616,66 +608,20 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="BookTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="src_main" />
+    <configuration name="ATMTest.printReceipt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Item.*" />
+          <option name="PATTERN" value="ATM.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="Item" />
-      <option name="MAIN_CLASS_NAME" value="Item.BookTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="CardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="src_main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Item.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="Item" />
-      <option name="MAIN_CLASS_NAME" value="Item.CardTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="TrafficCardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="src_main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Item.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="Item" />
-      <option name="MAIN_CLASS_NAME" value="Item.TrafficCardTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="ATM" />
+      <option name="MAIN_CLASS_NAME" value="ATM.ATMTest" />
+      <option name="METHOD_NAME" value="printReceipt" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -724,19 +670,17 @@
       <listeners />
     </configuration>
     <list>
-      <item itemvalue="JUnit.AccountTest" />
-      <item itemvalue="JUnit.BankTest" />
-      <item itemvalue="JUnit.BookTest" />
-      <item itemvalue="JUnit.CardTest" />
-      <item itemvalue="JUnit.TrafficCardTest" />
+      <item itemvalue="JUnit.ATMTest" />
+      <item itemvalue="JUnit.ATMTest (1)" />
+      <item itemvalue="Application.GUIController" />
+      <item itemvalue="JUnit.ATMTest.printReceipt" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TrafficCardTest" />
-        <item itemvalue="JUnit.CardTest" />
-        <item itemvalue="JUnit.BookTest" />
-        <item itemvalue="JUnit.BankTest" />
-        <item itemvalue="JUnit.AccountTest" />
+        <item itemvalue="Application.GUIController" />
+        <item itemvalue="JUnit.ATMTest" />
+        <item itemvalue="JUnit.ATMTest.printReceipt" />
+        <item itemvalue="JUnit.ATMTest (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -745,356 +689,468 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e7d44963-1af4-41a0-b7b2-d876c6fb1cf6" name="Default" comment="" />
-      <created>1526995511418</created>
+      <changelist id="48996a12-23b3-4854-9525-ded58a1521c9" name="Default" comment="" />
+      <created>1527255656278</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1526995511418</updated>
+      <updated>1527255656278</updated>
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="BankTest - 2018.05.24 at 21h 56m 30s.xml">
-      <configuration name="BankTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ATMTest - 2018.05.24 at 21h 59m 17s.xml">
+    <history-entry file="ATMTest - 2018.05.25 at 22h 45m 14s.xml">
       <configuration name="ATMTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BankTest - 2018.05.24 at 22h 01m 10s.xml">
-      <configuration name="BankTest" configurationId="JUnit" />
+    <history-entry file="ATMTest_printReceipt - 2018.05.25 at 23h 43m 31s.xml">
+      <configuration name="ATMTest.printReceipt" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BookTest - 2018.05.24 at 22h 08m 01s.xml">
-      <configuration name="BookTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="BookTest - 2018.05.24 at 22h 08m 32s.xml">
-      <configuration name="BookTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CardTest - 2018.05.24 at 22h 08m 48s.xml">
-      <configuration name="CardTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TrafficCardTest - 2018.05.24 at 22h 09m 15s.xml">
-      <configuration name="TrafficCardTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ATMTest_insertCash - 2018.05.25 at 17h 04m 49s.xml">
-      <configuration name="ATMTest.insertCash" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ATMTest - 2018.05.25 at 17h 06m 14s.xml">
+    <history-entry file="ATMTest - 2018.05.25 at 23h 44m 16s.xml">
       <configuration name="ATMTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ATMTest - 2018.05.25 at 17h 26m 25s.xml">
+    <history-entry file="ATMTest - 2018.05.25 at 23h 44m 32s.xml">
+      <configuration name="ATMTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ATMTest - 2018.05.25 at 23h 48m 35s.xml">
+      <configuration name="ATMTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ATMTest - 2018.05.25 at 23h 49m 37s.xml">
+      <configuration name="ATMTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ATMTest - 2018.05.25 at 23h 54m 50s.xml">
+      <configuration name="ATMTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ATMTest - 2018.05.25 at 23h 59m 19s.xml">
+      <configuration name="ATMTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ATMTest - 2018.05.25 at 23h 59m 41s.xml">
+      <configuration name="ATMTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ATMTest - 2018.05.26 at 00h 03m 24s.xml">
       <configuration name="ATMTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1260" height="693" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="877" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" order="5" />
-      <window_info anchor="bottom" id="TODO" order="12" />
-      <window_info anchor="bottom" id="Messages" order="5" weight="0.32956383" />
-      <window_info anchor="right" id="Palette&#9;" order="2" />
-      <window_info id="Image Layers" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.3085622" />
-      <window_info anchor="bottom" id="Version Control" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="1" />
-      <window_info id="Capture Tool" order="3" />
-      <window_info id="Designer" order="1" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.25" />
-      <window_info anchor="right" id="Gradle" order="1" />
-      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="FindBugs-IDEA" order="7" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32876712" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32876712" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info anchor="bottom" id="Build" weight="0.32876712" />
+      <window_info anchor="bottom" id="SonarQube" order="7" />
+      <window_info anchor="right" id="Gradle" order="3" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="7" weight="0.32956383" />
-      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
-      <window_info anchor="bottom" id="Build" order="4" weight="0.32956383" />
-      <window_info anchor="bottom" id="Thumbnails" order="0" weight="0.32956383" />
-      <window_info anchor="bottom" id="Message" order="6" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39975095" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="bottom" id="FindBugs-IDEA" order="8" />
+      <window_info anchor="bottom" id="Build" order="0" weight="0.32876712" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.32876712" />
+      <window_info id="Image Layers" order="3" />
+      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="right" id="Gradle" order="6" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32876712" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="bottom" id="SonarQube" order="13" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.39975095" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/code/src/main/java/GUI/GUIController.java</url>
+          <line>298</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="8" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="29" column="56" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/ATM/ATM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/ATM/ATMTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="15" lean-forward="true" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#210#211#0" expanded="true" />
-            <element signature="e#285#286#0" expanded="true" />
-            <element signature="e#344#345#0" expanded="true" />
-            <element signature="e#395#396#0" expanded="true" />
-            <element signature="e#449#450#0" expanded="true" />
-            <element signature="e#501#502#0" expanded="true" />
-            <element signature="e#1038#1039#0" expanded="true" />
-            <element signature="e#1092#1093#0" expanded="true" />
-            <element signature="e#1439#1440#0" expanded="true" />
-            <element signature="e#1475#1476#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/Card.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="28" column="40" lean-forward="true" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/kb.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/Bank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="29" column="56" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/ATM/ATM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4125">
-          <caret line="275" column="24" selection-start-line="275" selection-start-column="24" selection-end-line="275" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/Card.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="28" column="52" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/kb.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/Bank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="40" column="39" lean-forward="true" selection-start-line="40" selection-start-column="39" selection-end-line="40" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/ATM/ATMTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#210#211#0" expanded="true" />
-            <element signature="e#285#286#0" expanded="true" />
-            <element signature="e#344#345#0" expanded="true" />
-            <element signature="e#395#396#0" expanded="true" />
-            <element signature="e#449#450#0" expanded="true" />
-            <element signature="e#501#502#0" expanded="true" />
-            <element signature="e#1038#1039#0" expanded="true" />
-            <element signature="e#1092#1093#0" expanded="true" />
-            <element signature="e#1439#1440#0" expanded="true" />
-            <element signature="e#1475#1476#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/test/java/ATMTest.java" />
-    <entry file="file://$PROJECT_DIR$/code/src/test/java/ATM/ATM.java" />
-    <entry file="file://$PROJECT_DIR$/code/src/test/java/ATM/ATMTest2.java" />
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-9.0.4.jdk/Contents/Home/lib/src.zip!/jdk.jartool/sun/tools/jar/resources/jar.java">
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/BookTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/out/production/classes/ATM/ATM.class">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/out/production/classes/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/kb.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-9.0.4.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/Class.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="291" selection-start-line="291" selection-end-line="291" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/tests/ATM/ATMTest.java" />
-    <entry file="file://$PROJECT_DIR$/code/src/test/java/ATM/ATMTest2.java" />
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/kb_Book.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/citi_Card.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/ATM/management.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/Card.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+          <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/TrafficCard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/TrafficCard.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/shinhan_Card.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/shinhan.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18" selection-start-column="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/BankTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="39" column="59" selection-start-line="39" selection-start-column="59" selection-end-line="39" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/BookTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/TrafficCardTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/CardTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/AccountTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" column="21" lean-forward="true" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="823">
-          <caret line="88" column="18" lean-forward="true" selection-start-line="88" selection-start-column="18" selection-end-line="88" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/Bank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="161" column="48" selection-start-line="161" selection-start-column="48" selection-end-line="161" selection-end-column="48" />
+        <state relative-caret-position="555">
+          <caret line="40" column="26" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/src/main/java/ATM/ATM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="133" column="13" lean-forward="true" selection-start-line="133" selection-start-column="13" selection-end-line="133" selection-end-column="13" />
+        <state relative-caret-position="735">
+          <caret line="52" column="29" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+          <folding>
+            <element signature="method#ATM#0;class#ATM#0" />
+            <element signature="method#readItem#0;class#ATM#0" />
+            <element signature="method#selectService#0;class#ATM#0" />
+            <element signature="method#selectNation#0;class#ATM#0" />
+            <element signature="method#insertCash#0;class#ATM#0" />
+            <element signature="method#enterAmount#0;class#ATM#0" />
+            <element signature="method#printReceipt#0;class#ATM#0" />
+            <element signature="method#destAccount#0;class#ATM#0" />
+            <element signature="method#readManagementItem#0;class#ATM#0" />
+            <element signature="method#checkResource#0;class#ATM#0" />
+            <element signature="method#end#0;class#ATM#0" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/ATM/ATMTest.java">
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/Bank.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="37" column="10" lean-forward="true" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
+        <state relative-caret-position="345">
+          <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+          <folding>
+            <element signature="method#loadData#0;class#Bank#0" />
+            <element signature="method#WriteData#0;class#Bank#0" />
+            <element signature="method#validCheck#0;class#Bank#0" />
+            <element signature="method#confirm#0;class#Bank#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/Card.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding>
+            <element signature="e#881#882#0" expanded="true" />
+            <element signature="e#907#908#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/citi_Book.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/citi_Card.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/GUI/GUIController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3630">
+          <caret line="242" column="38" selection-start-line="242" selection-start-column="38" selection-end-line="242" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#210#211#0" expanded="true" />
-            <element signature="e#285#286#0" expanded="true" />
-            <element signature="e#344#345#0" expanded="true" />
-            <element signature="e#395#396#0" expanded="true" />
-            <element signature="e#449#450#0" expanded="true" />
-            <element signature="e#501#502#0" expanded="true" />
-            <element signature="e#1038#1039#0" expanded="true" />
-            <element signature="e#1092#1093#0" expanded="true" />
-            <element signature="e#1439#1440#0" expanded="true" />
-            <element signature="e#1475#1476#0" expanded="true" />
+            <element signature="method#main#0;class#GUIController#0" />
+            <element signature="method#readyReadCard#0;class#GUIController#0" />
+            <element signature="method#selectService#0;class#GUIController#0" />
+            <element signature="method#inputPassword#0;class#GUIController#0" />
+            <element signature="method#printReceipt#0;class#GUIController#0" />
+            <element signature="method#inputCash#0;class#GUIController#0" />
+            <element signature="method#selectNation#0;class#GUIController#0" />
+            <element signature="method#inputAmount#0;class#GUIController#0" />
+            <element signature="method#inputTransfer#0;class#GUIController#0" />
+            <element signature="method#inputDateRange#0;class#GUIController#0" />
+            <element signature="method#returnCard#0;class#GUIController#0" />
+            <element signature="method#getReceipt#0;class#GUIController#0" />
+            <element signature="method#canceled#0;class#GUIController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/BookTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/TrafficCard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="40" column="26" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/ATM/ATM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="52" column="29" lean-forward="true" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/Bank.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="32" column="37" lean-forward="true" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/Card.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/citi_Book.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/citi_Card.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/GUI/GUIController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3630">
+          <caret line="242" column="38" lean-forward="true" selection-start-line="242" selection-start-column="38" selection-end-line="242" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#main#0;class#GUIController#0" />
+            <element signature="method#readyReadCard#0;class#GUIController#0" />
+            <element signature="method#selectService#0;class#GUIController#0" />
+            <element signature="method#inputPassword#0;class#GUIController#0" />
+            <element signature="method#printReceipt#0;class#GUIController#0" />
+            <element signature="method#inputCash#0;class#GUIController#0" />
+            <element signature="method#selectNation#0;class#GUIController#0" />
+            <element signature="method#inputAmount#0;class#GUIController#0" />
+            <element signature="method#inputTransfer#0;class#GUIController#0" />
+            <element signature="method#inputDateRange#0;class#GUIController#0" />
+            <element signature="method#returnCard#0;class#GUIController#0" />
+            <element signature="method#getReceipt#0;class#GUIController#0" />
+            <element signature="method#canceled#0;class#GUIController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/BookTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/BookTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/TrafficCard.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/citi_Book.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/shinhan.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/test/build.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="51" column="26" lean-forward="true" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="26" />
+          <folding>
+            <element signature="e#881#882#0" expanded="true" />
+            <element signature="e#907#908#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="24" column="40" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/Card.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/TrafficCard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="40" column="40" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/shinhan_Card.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/citi_Card.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="24" lean-forward="true" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-9.0.4.jdk/Contents/Home/lib/src.zip!/java.desktop/java/awt/event/ActionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/ATM/management.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/Bank.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="183" selection-start-line="183" selection-end-line="183" />
+          <folding>
+            <element signature="method#loadData#0;class#Bank#0" />
+            <element signature="method#WriteData#0;class#Bank#0" />
+            <element signature="method#validCheck#0;class#Bank#0" />
+            <element signature="method#confirm#0;class#Bank#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/kb.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/citi.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/ATM/ATMTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="50" column="22" lean-forward="true" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/ATM/ATM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="322" lean-forward="true" selection-start-line="322" selection-end-line="322" />
+          <folding>
+            <element signature="method#ATM#0;class#ATM#0" />
+            <element signature="method#readItem#0;class#ATM#0" />
+            <element signature="method#selectService#0;class#ATM#0" />
+            <element signature="method#selectNation#0;class#ATM#0" />
+            <element signature="method#insertCash#0;class#ATM#0" />
+            <element signature="method#enterAmount#0;class#ATM#0" />
+            <element signature="method#printReceipt#0;class#ATM#0" />
+            <element signature="method#destAccount#0;class#ATM#0" />
+            <element signature="method#readManagementItem#0;class#ATM#0" />
+            <element signature="method#checkResource#0;class#ATM#0" />
+            <element signature="method#end#0;class#ATM#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/GUI/GUIController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="2106" column="17" lean-forward="true" selection-start-line="2106" selection-start-column="17" selection-end-line="2106" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#main#0;class#GUIController#0" />
+            <element signature="method#readyReadCard#0;class#GUIController#0" />
+            <element signature="method#selectService#0;class#GUIController#0" />
+            <element signature="method#inputPassword#0;class#GUIController#0" />
+            <element signature="method#printReceipt#0;class#GUIController#0" />
+            <element signature="method#inputCash#0;class#GUIController#0" />
+            <element signature="method#selectNation#0;class#GUIController#0" />
+            <element signature="method#inputAmount#0;class#GUIController#0" />
+            <element signature="method#inputTransfer#0;class#GUIController#0" />
+            <element signature="method#inputDateRange#0;class#GUIController#0" />
+            <element signature="method#returnCard#0;class#GUIController#0" />
+            <element signature="method#getReceipt#0;class#GUIController#0" />
+            <element signature="method#canceled#0;class#GUIController#0" />
           </folding>
         </state>
       </provider>
@@ -1105,12 +1161,10 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>code_main:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -1118,7 +1172,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited />
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1153,7 +1207,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>src_main|src</last-edited>
+          <last-edited>test_test|test</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1166,7 +1220,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited />
+          <last-edited>code_main</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

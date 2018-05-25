@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kusv2018t1.iml" filepath="$PROJECT_DIR$/.idea/modules/kusv2018t1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kusv2018t1_main.iml" filepath="$PROJECT_DIR$/.idea/modules/kusv2018t1_main.iml" group="kusv2018t1" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kusv2018t1_test.iml" filepath="$PROJECT_DIR$/.idea/modules/kusv2018t1_test.iml" group="kusv2018t1" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/code/src.iml" filepath="$PROJECT_DIR$/.idea/modules/code/src.iml" group="src" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/code/src_main.iml" filepath="$PROJECT_DIR$/.idea/modules/code/src_main.iml" group="src" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/code/src_test.iml" filepath="$PROJECT_DIR$/.idea/modules/code/src_test.iml" group="src" />
+      <module fileurl="file://$PROJECT_DIR$/fantastic-disco.iml" filepath="$PROJECT_DIR$/fantastic-disco.iml" />
+      <module fileurl="file://$PROJECT_DIR$/code/src/main/main.iml" filepath="$PROJECT_DIR$/code/src/main/main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/test.iml" filepath="$PROJECT_DIR$/.idea/modules/test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/test_main.iml" filepath="$PROJECT_DIR$/.idea/modules/test_main.iml" group="test" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/test_test.iml" filepath="$PROJECT_DIR$/.idea/modules/test_test.iml" group="test" />
     </modules>
   </component>
 </project>

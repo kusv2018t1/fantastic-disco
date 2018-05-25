@@ -14,37 +14,50 @@ public class ATM {
 	private BufferedReader br;
 	private Bank[] bank = new Bank[4];
 	private TrafficCard tCard = new TrafficCard();;
+	// ATM 소지 Item Amount
 	private int[] cashAmount = new int[4];
 	private int trafficCardAmount;
 	private int receiptAmount;
+	//거래 중인 Aid / Bank Id
 	private int usingAccountID;
 	private int usingBankID;
+
+	//거래 중인 서비스 (1 : check / 2 : deposit / 3 : withdraw / 4 : transfer / 5 : issueTrafficCard )
 	private int transactionAmount = 0;
+	//언어 0 : 한국 / 1 : 미국   -> 계좌 정보와 동일
 	private int languageMode;
+
+	//Admin ID
 	private int ATMadminID;
+	//환율
 	private int rate;
 	// 출금 원/달러인지 확인
 	private int ATMnation;
 
 	public ATM() {
 		try {
-			path = new File("java/ATM");
+			path = new File("code/src/main/java/ATM");
 			bootATM = new File(path.getAbsolutePath() + "/management.txt");
 			fr = new FileReader(bootATM);
 			br = new BufferedReader(fr);
 
+			br.readLine();
 			String getStr = br.readLine();
 			int cash = Integer.parseInt(getStr);
 			cashAmount[0] = cash;
 			cashAmount[1] = cash;
 			cashAmount[2] = cash;
 			cashAmount[3] = cash;
+
 			getStr = br.readLine();
 			receiptAmount = Integer.parseInt(getStr);
+
 			getStr = br.readLine();
 			trafficCardAmount = Integer.parseInt(getStr);
+
 			getStr = br.readLine();
 			ATMadminID = Integer.parseInt(getStr);
+
 			getStr = br.readLine();
 			rate = Integer.parseInt(getStr);
 		} catch (FileNotFoundException e) {
@@ -123,66 +136,74 @@ public class ATM {
 		return bank[usingBankID].confirm(pwd);
 	}
 
-	public boolean insertCash(String[] bill) {
+	public int insertCash(String[] bill) {
+
+		for(int i = 0; i < bill.length; i++){
+			System.out.println(bill[i]);
+		}
+
 		// insertCash를 통해 읽는 총 돈, deposit 하는 값
 		int money = 0;
 
 		// 들어온 bill의 갯수 만큼 돈다.
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < bill.length; i++) {
 			if(bill[i] == null){
 				break;
 			}
+
 			// bill의 1번쨰 자리가 0이면 한국 돈
-			if (bill[i].substring(0, 0).equals("0")) {
-				switch (Integer.parseInt(bill[i].substring(1, 2))) {
+			if (bill[i].substring(0, 1).equals("0")) {
+
+				switch (Integer.parseInt(bill[i].substring(1, 3))) {
 				// 1000원 bill
-				case 0:
+				case 00:
 					money += 1000;
 					break;
 				// 5000원 bill
-				case 1:
+				case 01:
 					money += 5000;
 					break;
 				// 10000원 bill cashAmount[0]- 10000원 양이 250보다 적으면 증가
-				case 2:
+				case 10:
 					money += 10000;
-					if (cashAmount[0] < 250)
+					if (cashAmount[0] < 2500)
 						cashAmount[0]++;
 					else
-						return false;// ATM안 돈이 가득 차서 더 못들어간다.
+						return -1;// ATM안 돈이 가득 차서 더 못들어간다.
 					break;
 				// 50000원 bill cashAmount[1]- 50000원 양이 250보다 적으면 증가
-				case 3:
+				case 11:
 					money += 50000;
-					if (cashAmount[1] < 250)
+					if (cashAmount[1] < 2500)
 						cashAmount[1]++;
 					else
-						return false;// ATM안 돈이 가득 차서 더 못들어간다.
+						return -1;// ATM안 돈이 가득 차서 더 못들어간다.
 					break;
 				}
 			}
 			// bill의 1번쨰 자리가 1이면 외국돈
-			else if (bill[i].substring(0, 0).equals("0")) {
-				switch (Integer.parseInt(bill[i].substring(1, 2))) {
+			else if (bill[i].substring(0, 1).equals("1")) {
+
+				switch (Integer.parseInt(bill[i].substring(1, 3))) {
 				// 10달러 bill cashAmount[2]- 10달러 양이 250보다 적으면 증가
-				case 0:
+				case 00:
 					money += 10 * rate;
-					if (cashAmount[2] < 250)
+					if (cashAmount[2] < 2500)
 						cashAmount[2]++;
 					else
-						return false;// ATM안 돈이 가득 차서 더 못들어간다.
+						return -1;// ATM안 돈이 가득 차서 더 못들어간다.
 					break;
 				// 20달러 bill
-				case 1:
-					money += 20 * rate;
+				case 01:
+					money += 50 * rate;
 					break;
 				// 100달러 bill cashAmount[3]- 100달러 양이 250보다 적으면 증가
-				case 2:
+				case 10:
 					money += 100 * rate;
-					if (cashAmount[3] < 250)
+					if (cashAmount[3] < 2500)
 						cashAmount[3]++;
 					else
-						return false; // ATM안 돈이 가득 차서 더 못들어간다.
+						return -1; // ATM안 돈이 가득 차서 더 못들어간다.
 					break;
 				}
 			}
@@ -191,73 +212,128 @@ public class ATM {
 		if (languageMode == 1)
 			money = money / rate;
 
-		// return 값 ok / deposit이 제대로 되었는가.
-		boolean ok;
-		ok = bank[usingBankID].deposit(money);
 
-		return ok;
+		// deposit try
+		if(bank[usingBankID].deposit(money)){
+			return money;
+		}
+		else{
+			return -1;
+		}
 
 	}
 
-	public boolean enterAmount(int money) {
+	public int enterAmount(int money) {
 
-		boolean ok;
-
+		//withdraw
 		if (transactionAmount == 3) {
+			//달러출금
 			if (ATMnation == 1) {
-				if (cashAmount[3] < money / 100 || cashAmount[2] < (money % 100) / 10)
-					return false;
-			} else if (ATMnation == 0) {
-				if (cashAmount[1] < money / 50000 || cashAmount[0] < (money % 50000) / 10000)
-					return false;
-			} else
-				return false;
+				System.out.println("doller");
+				if (cashAmount[3] < money / 100 || cashAmount[2] < (money % 100) / 10) {
+					System.out.println("withdraw / 달러 / 잔고부족?");
+					return -1;
+				}
+				else {
+					//한국 계좌
+					if(languageMode == 0){
+						if(bank[usingBankID].withdraw(money * rate)){
+							return money * rate;
+						}
+						return -1;
+					}
+					//해외 계좌
+					else{
+						if(bank[usingBankID].withdraw(money)){
+							return money;
+						}
+						return -1;
+					}
 
-			ok = bank[usingBankID].withdraw(money);
-		} else if (transactionAmount == 4) {
+				}
+			}//한화출금
+			else if (ATMnation == 0) {
+				System.out.println("won");
+				if (cashAmount[1] < money / 50000 || cashAmount[0] < (money % 50000) / 10000) {
+					System.out.println("withdraw / 원 / 잔고부족?");
+					return -1;
+				}
+				else {
+					//한국 계좌
+					if(languageMode == 0){
+						if(bank[usingBankID].withdraw(money)){
+							return money;
+						}
+						return -1;
+					}
+					//해외 계좌
+					else{
+						if(bank[usingBankID].withdraw(money / rate)){
+							return money / rate;
+						}
+						return -1;
+					}
+				}
+			}//ㅅㅂ?
+			else {
+				return -1;
+			}
+		} //transfer
+		else if (transactionAmount == 4) {
+			System.out.println("transfer");
 			// money는 송금의 경우 무조건 외국계좌면 달러를 입력하고 한국 계좌이면 한화를 입력한다
-			ok = bank[usingBankID].transfer(money);
-		} else
-			return false;
-
-		return ok;
+			if(bank[usingBankID].transfer(money)){
+				return money;
+			}
+			return -1;
+		} //error
+		else {
+			return -1;
+		}
 	}
 
 	public int printReceipt(boolean wants) {
 		int balance;
 		if (wants) {
 			balance = bank[usingBankID].getBalance();
+			receiptAmount--;
 		}
-
-		// gui
-		receiptAmount--;
-		return 0;
+		else{
+			balance = -1;
+		}
+		return balance;
 	}
 
 	public void setDataRange(int date_range) {
 		tCard.setDateRange(date_range);
-		return;
 	}
 
-	public boolean agreement(boolean approval) {
-		if(approval==false)
-			return false;
-
+	public boolean agreement() {
+		//linking
 		boolean ok = bank[usingBankID].linkAccount(tCard.getTcid());
-		if (ok == true) {
-			// 교통카드 비용 3000원
+
+		//링킹 성공 발급비
+		if (ok) {
+			//발급비 계산
 			if (languageMode == 0) {
 				ok = bank[usingBankID].chargeTrafficCard(3000);
 			} else {
 				ok = bank[usingBankID].chargeTrafficCard(3000 / rate);
 			}
+
+			//계산 성공
+			if(ok){
+				trafficCardAmount--;
+				return true;
+			}//계산 실패
+			else{
+				return false;
+			}
+		}//링킹 실패
+		else{
+			return false;
 		}
 
-		if (ok == true) {
-			trafficCardAmount--;
-			// 여기서 교통카드 발급 GUI
-		}
-		return true;
 	}
 
 	public String destAccount(String bankID, int accountID) {
@@ -329,6 +405,7 @@ public class ATM {
 			e.printStackTrace();
 		}
 	}
+
 }
 
 //	private int bankDataDownload() {
