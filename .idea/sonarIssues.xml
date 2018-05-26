@@ -3,6 +3,11 @@
   <component name="issues">
     <option name="index">
       <map>
+        <entry key="/fragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/code/src/main/java/ATM/ATM.java">
           <value>
             <set />
@@ -28,6 +33,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/code/src/main/java/BankSystem/kb.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/code/src/main/java/GUI/GUIController.java">
           <value>
             <set />
@@ -48,7 +58,7 @@
             <set />
           </value>
         </entry>
-        <entry key="$USER_HOME$/IdeaProjects/SoftwareAnalysisDesign/src/GUI/GUIController.java">
+        <entry key="$PROJECT_DIR$/../../SoftwareAnalysisDesign/src/GUI/GUIController.java">
           <value>
             <set />
           </value>

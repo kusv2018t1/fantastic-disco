@@ -23,7 +23,7 @@ public class Book {
 		//bpwd = shinhan_Book.txt ~-> indexing aid,index
 		try {
 			path = new File("code/src/main/java/Item");
-			book = new File(bank +"_Book.txt");//path.getAbsolutePath() +
+			book = new File(path+"/"+bank +"_Book.txt");//path.getAbsolutePath() +
 			fr = new FileReader(book);
 			br = new BufferedReader(fr);
 			
