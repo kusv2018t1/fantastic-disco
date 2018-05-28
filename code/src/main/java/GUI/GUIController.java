@@ -415,7 +415,13 @@ public class GUIController extends JFrame{
 		cancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				canceled();
+				if(mode == 0){
+					canceled("요청");
+				}
+				else{
+					canceled("asked");
+				}
+
 			}
 		});
 		select.add(cancel);
@@ -526,7 +532,13 @@ public class GUIController extends JFrame{
 									}
 									//non-pass
 									else{
-										canceled();
+										if(mode == 0){
+											canceled("잘못된 비밀번호 입력");
+										}
+										else{
+											canceled("Wrong Password");
+										}
+
 									}
 								}
 								else if(t_mode == 2){
@@ -543,7 +555,12 @@ public class GUIController extends JFrame{
 									}
 									//non-pass
 									else{
-										canceled();
+										if(mode == 0){
+											canceled("잘못된 비밀번호 입력");
+										}
+										else{
+											canceled("Wrong Password");
+										}
 									}
 								}
 								else if(t_mode == 4){
@@ -558,7 +575,12 @@ public class GUIController extends JFrame{
 									}
 									//non-pass
 									else{
-										canceled();
+										if(mode == 0){
+											canceled("잘못된 비밀번호 입력");
+										}
+										else{
+											canceled("Wrong Password");
+										}
 									}
 								}
 								else if(t_mode == 5){
@@ -573,7 +595,12 @@ public class GUIController extends JFrame{
 									}
 									//non-pass
 									else{
-										canceled();
+										if(mode == 0){
+											canceled("잘못된 비밀번호 입력");
+										}
+										else{
+											canceled("Wrong Password");
+										}
 									}
 								}
 								else{
@@ -641,7 +668,12 @@ public class GUIController extends JFrame{
 								}
 								//non-pass
 								else{
-									canceled();
+									if(mode == 0){
+										canceled("잘못된 비밀번호 입력");
+									}
+									else{
+										canceled("Wrong Password");
+									}
 								}
 							}
 							else if(t_mode == 2){
@@ -658,7 +690,12 @@ public class GUIController extends JFrame{
 								}
 								//non-pass
 								else{
-									canceled();
+									if(mode == 0){
+										canceled("잘못된 비밀번호 입력");
+									}
+									else{
+										canceled("Wrong Password");
+									}
 								}
 							}
 							else if(t_mode == 4){
@@ -673,7 +710,12 @@ public class GUIController extends JFrame{
 								}
 								//non-pass
 								else{
-									canceled();
+									if(mode == 0){
+										canceled("잘못된 비밀번호 입력");
+									}
+									else{
+										canceled("Wrong Password");
+									}
 								}
 							}
 							else if(t_mode == 5){
@@ -688,7 +730,12 @@ public class GUIController extends JFrame{
 								}
 								//non-pass
 								else{
-									canceled();
+									if(mode == 0){
+										canceled("잘못된 비밀번호 입력");
+									}
+									else{
+										canceled("Wrong Password");
+									}
 								}
 							}
 							else{
@@ -777,7 +824,13 @@ public class GUIController extends JFrame{
 		cancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				canceled();
+				if(mode == 0){
+					canceled("요청");
+				}
+				else{
+					canceled("asked");
+				}
+
 			}
 		});
 		insert_p.add(cancel);
@@ -1101,7 +1154,12 @@ public class GUIController extends JFrame{
 					printReceipt(amount, 0, atm.printReceipt(true));
 				}//atm cash full!
 				else{
-					canceled();
+					if(mode == 0){
+						canceled("ATM 현금이 꽉찼습니다.");
+					}
+					else{
+						canceled("Fulled of cash.");
+					}
 				}
 
 			}
@@ -1130,7 +1188,12 @@ public class GUIController extends JFrame{
 		cancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				canceled();
+				if(mode == 0){
+					canceled("요청");
+				}
+				else{
+					canceled("asked");
+				}
 			}
 		});
 		input_p.add(cancel);
@@ -1221,7 +1284,12 @@ public class GUIController extends JFrame{
 		cancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				canceled();
+				if(mode == 0){
+					canceled("요청");
+				}
+				else{
+					canceled("asked");
+				}
 			}
 		});
 		select_p.add(cancel);
@@ -1341,8 +1409,27 @@ public class GUIController extends JFrame{
 									if(amount > 0){
 										printReceipt(amount, 0, atm.printReceipt(true));
 									}//출금 실패
+									//ATM 현금 부족
+									else if(amount == -1){
+										if(mode == 0){
+											canceled("ATM 기기의 현금이 부족합니다.");
+										}
+										else{
+											canceled("Not enough cash in ATM");
+										}
+									}
+									//계좌 잔고 부족
+									else if(amount == -2){
+										if(mode == 0){
+											canceled("계좌 잔액이 부족합니다.");
+										}
+										else{
+											canceled("Not enough account balance");
+										}
+									}
+									//ㄴㄴ 이러지말자
 									else{
-										canceled();
+										canceled("FUCKKKKKKKLOLOLLLL");
 									}
 								}
 								//transfer
@@ -1369,8 +1456,18 @@ public class GUIController extends JFrame{
 										printReceipt(amount, 0, atm.printReceipt(true));
 									}
 									//송금 실패
+									//계좌 잔고 부족
+									else if(amount == -2){
+										if(mode == 0){
+											canceled("계좌 잔액이 부족합니다.");
+										}
+										else{
+											canceled("Not enough account balance");
+										}
+									}
+									//ㄴㄴ 이러지말자
 									else{
-										canceled();
+										canceled("FUCKKKKKKKLOLOLLLL");
 									}
 
 								}
@@ -1450,8 +1547,27 @@ public class GUIController extends JFrame{
 								if(amount > 0){
 									printReceipt(amount, 0, atm.printReceipt(true));
 								}//출금 실패
+								//ATM 현금 부족
+								else if(amount == -1){
+									if(mode == 0){
+										canceled("ATM 기기의 현금이 부족합니다.");
+									}
+									else{
+										canceled("Not enough cash in ATM");
+									}
+								}
+								//계좌 잔고 부족
+								else if(amount == -2){
+									if(mode == 0){
+										canceled("계좌 잔액이 부족합니다.");
+									}
+									else{
+										canceled("Not enough account balance");
+									}
+								}
+								//ㄴㄴ 이러지말자
 								else{
-									canceled();
+									canceled("FUCKKKKKKKLOLOLLLL");
 								}
 							}
 							//transfer
@@ -1477,8 +1593,18 @@ public class GUIController extends JFrame{
 									printReceipt(amount, 0, atm.printReceipt(true));
 								}
 								//송금 실패
+								//계좌 잔고 부족
+								else if(amount == -2){
+									if(mode == 0){
+										canceled("계좌 잔액이 부족합니다.");
+									}
+									else{
+										canceled("Not enough account balance");
+									}
+								}
+								//ㄴㄴ 이러지말자
 								else{
-									canceled();
+									canceled("FUCKKKKKKKLOLOLLLL");
 								}
 							}
 							else{
@@ -1568,7 +1694,12 @@ public class GUIController extends JFrame{
 		cancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				canceled();
+				if(mode == 0){
+					canceled("요청");
+				}
+				else{
+					canceled("asked");
+				}
 			}
 		});
 		input_p.add(cancel);
@@ -1700,7 +1831,12 @@ public class GUIController extends JFrame{
 
 								}//no exist
 								else{
-									canceled();
+									if(mode == 0){
+										canceled("해당 계좌가 존재하지 않습니다.");
+									}
+									else{
+										canceled("Wrong Account (bank or id)");
+									}
 								}
 							}
 
@@ -1767,7 +1903,12 @@ public class GUIController extends JFrame{
 
 							}//no exist
 							else{
-								canceled();
+								if(mode == 0){
+									canceled("해당 계좌가 존재하지 않습니다.");
+								}
+								else{
+									canceled("Wrong Account (bank or id)");
+								}
 							}
 						}
 
@@ -1855,7 +1996,12 @@ public class GUIController extends JFrame{
 		cancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				canceled();
+				if(mode == 0){
+					canceled("요청");
+				}
+				else{
+					canceled("asked");
+				}
 			}
 		});
 		select_p.add(cancel);
@@ -1949,8 +2095,20 @@ public class GUIController extends JFrame{
 								String str = new String(input_date, 0, input_date.length);
 
 								mainBox.dispose();
-								atm.setDataRange(Integer.parseInt(str));
-								agreement();
+								//
+								if(atm.setDataRange(Integer.parseInt(str))){
+									agreement();
+								}
+								//card 부족
+								else{
+									if(mode == 0){
+										canceled("ATM 기기의 소지 Traffic Card가 부족합니다.");
+									}
+									else{
+										canceled("Not enough Traffic Card in ATM");
+									}
+								}
+
 							}
 
 
@@ -2002,8 +2160,18 @@ public class GUIController extends JFrame{
 							String str = new String(input_date, 0, input_date.length);
 
 							mainBox.dispose();
-							atm.setDataRange(Integer.parseInt(str));
-							agreement();
+							if(atm.setDataRange(Integer.parseInt(str))){
+								agreement();
+							}
+							else{
+								if(mode == 0){
+									canceled("ATM 기기의 소지 Traffic Card가 부족합니다.");
+								}
+								else{
+									canceled("Not enough Traffic Card in ATM");
+								}
+							}
+
 						}
 
 						//print pressed amount
@@ -2086,7 +2254,12 @@ public class GUIController extends JFrame{
 		cancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				canceled();
+				if(mode == 0){
+					canceled("요청");
+				}
+				else{
+					canceled("asked");
+				}
 			}
 		});
 		button_p.add(cancel);
@@ -2159,8 +2332,14 @@ public class GUIController extends JFrame{
 						printReceipt(3, 0, atm.printReceipt(true));
 					}
 				}
+				//잔액 부족
 				else{
-					canceled();
+					if(mode == 0){
+						canceled("계좌의 잔액이 부족합니다.");
+					}
+					else{
+						canceled("Not enough Account Balance");
+					}
 				}
 
 			}
@@ -2169,7 +2348,12 @@ public class GUIController extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				mainBox.dispose();
-				canceled();
+				if(mode == 0){
+					canceled("거절되었습니다");
+				}
+				else{
+					canceled("Rejeceted");
+				}
 			}
 		});
 
@@ -2251,7 +2435,7 @@ public class GUIController extends JFrame{
 		//Frame visible set
 		rtnCard.setVisible(true);
 	}
-	public void canceled(){
+	public void canceled(String reason){
 		mainBox.dispose();
 		//Main Frame renew
 		{
@@ -2275,10 +2459,10 @@ public class GUIController extends JFrame{
 		//label set
 		JLabel notice;
 		if(mode == 0){
-			notice = new JLabel("거래가 취소 되었습니다 :(");
+			notice = new JLabel(reason + ") 거래가 취소 되었습니다 :(");
 		}
 		else{
-			notice = new JLabel("Canceled Transaction :0");
+			notice = new JLabel(reason + ") Canceled Transaction :0");
 		}
 		//label add on panel
 		notice_p.add(notice);
@@ -2324,7 +2508,7 @@ public class GUIController extends JFrame{
 		//Frame Layout set
 		subBox.setLayout(new GridLayout(1, 1,10,10));
 
-		int admin_id = this.atm.getAdminID();
+		int admin_id = this.atm.getATMadminID();
 
 		//Panel
 		JPanel panel = new JPanel();

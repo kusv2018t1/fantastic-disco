@@ -231,7 +231,7 @@ public class ATM {
 			if (ATMnation == 1) {
 				System.out.println("doller");
 				if (cashAmount[3] < money / 100 || cashAmount[2] < (money % 100) / 10) {
-					System.out.println("withdraw / 달러 / 잔고부족?");
+					//ATM 잔고 부족
 					return -1;
 				}
 				else {
@@ -240,14 +240,16 @@ public class ATM {
 						if(bank[usingBankID].withdraw(money * rate)){
 							return money * rate;
 						}
-						return -1;
+						//계좌 잔고 부족
+						return -2;
 					}
 					//해외 계좌
 					else{
 						if(bank[usingBankID].withdraw(money)){
 							return money;
 						}
-						return -1;
+						//계좌 잔고 부족
+						return -2;
 					}
 
 				}
@@ -255,7 +257,7 @@ public class ATM {
 			else if (ATMnation == 0) {
 				System.out.println("won");
 				if (cashAmount[1] < money / 50000 || cashAmount[0] < (money % 50000) / 10000) {
-					System.out.println("withdraw / 원 / 잔고부족?");
+					System.out.println("withdraw / 원 / ATM잔고부족?");
 					return -1;
 				}
 				else {
@@ -264,19 +266,19 @@ public class ATM {
 						if(bank[usingBankID].withdraw(money)){
 							return money;
 						}
-						return -1;
+						return -2;
 					}
 					//해외 계좌
 					else{
 						if(bank[usingBankID].withdraw(money / rate)){
 							return money / rate;
 						}
-						return -1;
+						return -2;
 					}
 				}
 			}//ㅅㅂ?
 			else {
-				return -1;
+				return -9999;
 			}
 		} //transfer
 		else if (transactionAmount == 4) {
@@ -285,12 +287,13 @@ public class ATM {
 			if(bank[usingBankID].transfer(money)){
 				return money;
 			}
-			return -1;
+			return -2;
 		} //error
 		else {
-			return -1;
+			return -999;
 		}
 	}
+
 
 	public int printReceipt(boolean wants) {
 		int balance;
@@ -304,8 +307,18 @@ public class ATM {
 		return balance;
 	}
 
-	public void setDataRange(int date_range) {
-		tCard.setDateRange(date_range);
+
+
+	public boolean setDataRange(int date_range) {
+		//카드 부족
+		if(this.trafficCardAmount < 1){
+			return false;
+		}
+		else{
+			tCard.setDateRange(date_range);
+			return true;
+		}
+
 	}
 
 	public boolean agreement() {
@@ -362,11 +375,7 @@ public class ATM {
 		// gui 이름이 떠야 한다.
 	}
 
-	public void readManagementItem(int adminID) {
-		if (adminID == ATMadminID) {
-			// 관리자 모드 시작
-		}
-	}
+
 
 	public void checkResource() {
 		//System.out.println("관리자 알람 ");
@@ -413,9 +422,10 @@ public class ATM {
 		}
 	}
 
-	public int getAdminID(){
+	public int getATMadminID(){
 		return this.ATMadminID;
 	}
+
 
 }
 

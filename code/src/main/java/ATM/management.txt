@@ -1,6 +1,6 @@
 cashAmount/receiptAmount/tccardAmount/admin/rate
 100
-100
-100
+0
+0
 9955
 1000
