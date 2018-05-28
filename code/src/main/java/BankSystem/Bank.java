@@ -40,7 +40,7 @@ public class Bank {
 		String[] splitedStr = null;
 
 		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(this.file), "euc-kr"));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("code/src/main/java/BankSystem/"+this.file), "euc-kr"));
 			String line = null;
 			splitedStr = null;
 
