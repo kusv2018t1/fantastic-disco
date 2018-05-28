@@ -143,10 +143,10 @@ public class GUIController extends JFrame{
 		notice_e = new JLabel("please insert Card or Book", SwingConstants.CENTER);
 
 
-		insert_ItemType = new JTextField("ItemType");
-		insert_ItemId = new JTextField("ItemId");
-		insert_ItemBank = new JTextField("ItemBank");
-		insert_ItemAccountId = new JTextField("ItemAccountId");
+		insert_ItemType = new JTextField("0");
+		insert_ItemId = new JTextField("7000");
+		insert_ItemBank = new JTextField("kb");
+		insert_ItemAccountId = new JTextField("2000");
 		insert_ItemType.setSize(100, 40);
 		insert_ItemId.setSize(100, 40);
 		insert_ItemBank.setSize(100, 40);
