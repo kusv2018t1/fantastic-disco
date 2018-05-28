@@ -30,7 +30,7 @@ public class Bank {
 		String bankName;
 		bankID = _bankName;
 		//code/src/main/java/BankSystem
-		bankName = bankID + ".txt";
+		bankName = "code/src/main/java/BankSystem/"+bankID + ".txt";
 		this.file = new File(bankName);
 		this.loadData();
 	}
@@ -40,7 +40,7 @@ public class Bank {
 		String[] splitedStr = null;
 
 		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("code/src/main/java/BankSystem/"+this.file), "euc-kr"));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(this.file), "euc-kr"));
 			String line = null;
 			splitedStr = null;
 
@@ -75,7 +75,7 @@ public class Bank {
 	public void WriteData() {
 		PrintWriter pw;
 		try {
-			pw = new PrintWriter(new BufferedWriter(new FileWriter(file)));
+			pw = new PrintWriter(new BufferedWriter(new FileWriter(this.file)));
 
 			for (Account value : accountInfo) {
 				pw.println(value.get_name() + "\t" + value.get_aid() + "\t" + value.get_balance() + "\t"

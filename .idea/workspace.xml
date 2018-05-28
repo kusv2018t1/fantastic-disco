@@ -7,18 +7,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="48996a12-23b3-4854-9525-ded58a1521c9" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/main_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/src/main/resource/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/test_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/test_main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/test_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/test_test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/main/java/ATM/ATM.java" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/main/java/ATM/ATM.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/code/src/main/java/BankSystem/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/main/java/BankSystem/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/main/java/Item/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/main/java/Item/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/main/java/Item/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/main/java/Item/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/main/java/Item/TrafficCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/main/java/Item/TrafficCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/main/main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/main/main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/main/BankSystem/citi.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/BankSystem/citi.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/ATM/ATM.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/ATM/ATM.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/ATM/ATMTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/BankSystem/AccountTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/BankSystem/Bank.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/BankSystem/Bank.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/BankSystem/BankTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController$17.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController$18.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController$19.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController$19.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController$20.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController$20.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController$21.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController$21.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController$27.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController$27.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController$28.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController$28.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController$29.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController$29.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController$33.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController$33.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController$34.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController$34.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController$35.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController$35.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController$38.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController$38.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController$39.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController$39.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController$40.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController$40.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController$9.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/main/GUI/GUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/GUI/GUIController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/Item/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/Item/Book.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/Item/BookTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/Item/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/Item/Card.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/Item/CardTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/Item/TrafficCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/main/Item/TrafficCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/main/Item/TrafficCardTest.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/code/src/test/.gradle/" />
@@ -48,7 +73,7 @@
       <file leaf-file-name="ATM.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/src/main/java/ATM/ATM.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
+            <state relative-caret-position="540">
               <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
               <folding>
                 <element signature="method#readItem#0;class#ATM#0" />
@@ -66,38 +91,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ATMTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/src/main/java/ATM/ATMTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="TrafficCard.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/TrafficCard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
+            <state relative-caret-position="570">
               <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CardTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/CardTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GUIController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GUIController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code/src/main/java/GUI/GUIController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1650">
-              <caret line="785" column="4" selection-start-line="785" selection-start-column="4" selection-end-line="785" selection-end-column="4" />
+            <state relative-caret-position="210">
+              <caret line="14" column="26" lean-forward="true" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#main#0;class#GUIController#0" />
@@ -118,14 +125,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Bank.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Bank.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/Bank.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+            <state relative-caret-position="690">
+              <caret line="46" column="34" lean-forward="true" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
               <folding>
-                <element signature="method#loadData#0;class#Bank#0" />
-                <element signature="method#WriteData#0;class#Bank#0" />
+                <element signature="imports" expanded="true" />
                 <element signature="method#validCheck#0;class#Bank#0" />
                 <element signature="method#confirm#0;class#Bank#0" />
               </folding>
@@ -137,7 +143,7 @@
         <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/Book.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
-              <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+              <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -145,8 +151,8 @@
       <file leaf-file-name="Card.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/Card.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="29" column="25" lean-forward="true" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+            <state relative-caret-position="390">
+              <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -342,7 +348,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$/code/src/test" value="6109046293000" />
+        <entry key="$PROJECT_DIR$/code/src/test" value="0" />
         <entry key="$PROJECT_DIR$/code/src/test/build.gradle" value="3907258962" />
         <entry key="$PROJECT_DIR$/code/src/test/settings.gradle" value="736222066" />
       </map>
@@ -480,7 +486,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -539,30 +544,22 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="GUI" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fantastic-disco" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fantastic-disco" type="462c0819:PsiDirectoryNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Item" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fantastic-disco" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fantastic-disco" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fantastic-disco" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fantastic-disco" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fantastic-disco" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fantastic-disco" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="main_jar" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
@@ -571,6 +568,7 @@
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -595,9 +593,11 @@
   </component>
   <component name="RunManager" selected="Application.GUIController">
     <configuration name="GUIController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="9" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="GUI.GUIController" />
       <module name="main" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="GUI.*" />
@@ -716,9 +716,9 @@
       <listeners />
     </configuration>
     <list>
+      <item itemvalue="Application.GUIController" />
       <item itemvalue="JUnit.ATMTest" />
       <item itemvalue="JUnit.ATMTest (1)" />
-      <item itemvalue="Application.GUIController" />
       <item itemvalue="JUnit.ATMTest.printReceipt" />
     </list>
     <recent_temporary>
@@ -786,15 +786,14 @@
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50069445" side_tool="true" weight="0.32876712" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32876712" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49930555" visible="true" weight="0.32876712" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
-      <window_info anchor="bottom" id="Build" weight="0.32876712" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="SonarQube" order="7" />
       <window_info anchor="right" id="Gradle" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -803,11 +802,12 @@
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39975095" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Build" order="8" weight="0.32876712" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
@@ -815,9 +815,8 @@
       <window_info anchor="bottom" id="Build" order="0" weight="0.32876712" />
       <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.32876712" />
       <window_info id="Image Layers" order="3" />
-      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.32876712" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -840,6 +839,7 @@
       <window_info anchor="bottom" id="SonarQube" order="13" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="2" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.39975095" />
     </layout-to-restore>
   </component>
@@ -866,13 +866,82 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/BookTest.java">
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/ATM/ATM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+        <state relative-caret-position="540">
+          <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
+          <folding>
+            <element signature="method#readItem#0;class#ATM#0" />
+            <element signature="method#selectService#0;class#ATM#0" />
+            <element signature="method#selectNation#0;class#ATM#0" />
+            <element signature="method#insertCash#0;class#ATM#0" />
+            <element signature="method#enterAmount#0;class#ATM#0" />
+            <element signature="method#printReceipt#0;class#ATM#0" />
+            <element signature="method#destAccount#0;class#ATM#0" />
+            <element signature="method#readManagementItem#0;class#ATM#0" />
+            <element signature="method#checkResource#0;class#ATM#0" />
+            <element signature="method#end#0;class#ATM#0" />
+          </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/TrafficCard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/GUI/GUIController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11775">
+          <caret line="785" column="4" selection-start-line="785" selection-start-column="4" selection-end-line="785" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#main#0;class#GUIController#0" />
+            <element signature="method#readyReadCard#0;class#GUIController#0" />
+            <element signature="method#selectService#0;class#GUIController#0" />
+            <element signature="method#inputPassword#0;class#GUIController#0" />
+            <element signature="method#printReceipt#0;class#GUIController#0" />
+            <element signature="method#inputCash#0;class#GUIController#0" />
+            <element signature="method#selectNation#0;class#GUIController#0" />
+            <element signature="method#inputAmount#0;class#GUIController#0" />
+            <element signature="method#inputTransfer#0;class#GUIController#0" />
+            <element signature="method#inputDateRange#0;class#GUIController#0" />
+            <element signature="method#returnCard#0;class#GUIController#0" />
+            <element signature="method#getReceipt#0;class#GUIController#0" />
+            <element signature="method#canceled#0;class#GUIController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/Card.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="29" column="25" lean-forward="true" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/Bank.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#validCheck#0;class#Bank#0" />
+            <element signature="method#confirm#0;class#Bank#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/BookTest.java" />
     <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/TrafficCard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
@@ -904,8 +973,7 @@
         <state relative-caret-position="345">
           <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
           <folding>
-            <element signature="method#loadData#0;class#Bank#0" />
-            <element signature="method#WriteData#0;class#Bank#0" />
+            <element signature="imports" expanded="true" />
             <element signature="method#validCheck#0;class#Bank#0" />
             <element signature="method#confirm#0;class#Bank#0" />
           </folding>
@@ -966,13 +1034,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/BookTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/BookTest.java" />
     <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/TrafficCard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
@@ -1044,20 +1106,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/BookTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/BookTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/BookTest.java" />
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/BookTest.java" />
     <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/TrafficCard.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1078,9 +1128,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/test/build.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/test/build.gradle" />
     <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/Account.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
@@ -1122,67 +1170,32 @@
     <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/citi.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/ATM/ATMTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="50" column="22" selection-start-line="50" selection-start-column="22" selection-end-line="50" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/GUI/GUIController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1650">
-          <caret line="785" column="4" selection-start-line="785" selection-start-column="4" selection-end-line="785" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#main#0;class#GUIController#0" />
-            <element signature="method#readyReadCard#0;class#GUIController#0" />
-            <element signature="method#selectService#0;class#GUIController#0" />
-            <element signature="method#inputPassword#0;class#GUIController#0" />
-            <element signature="method#printReceipt#0;class#GUIController#0" />
-            <element signature="method#inputCash#0;class#GUIController#0" />
-            <element signature="method#selectNation#0;class#GUIController#0" />
-            <element signature="method#inputAmount#0;class#GUIController#0" />
-            <element signature="method#inputTransfer#0;class#GUIController#0" />
-            <element signature="method#inputDateRange#0;class#GUIController#0" />
-            <element signature="method#returnCard#0;class#GUIController#0" />
-            <element signature="method#getReceipt#0;class#GUIController#0" />
-            <element signature="method#canceled#0;class#GUIController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/ATM/ATMTest.java" />
     <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/TrafficCard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
+        <state relative-caret-position="570">
           <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/CardTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/CardTest.java" />
     <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/Book.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
-          <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/src/main/java/Item/Card.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="29" column="25" lean-forward="true" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+        <state relative-caret-position="390">
+          <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/src/main/java/ATM/ATM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
+        <state relative-caret-position="540">
           <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
           <folding>
             <element signature="method#readItem#0;class#ATM#0" />
@@ -1201,13 +1214,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code/src/main/java/BankSystem/Bank.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
+        <state relative-caret-position="690">
+          <caret line="46" column="34" lean-forward="true" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
           <folding>
-            <element signature="method#loadData#0;class#Bank#0" />
-            <element signature="method#WriteData#0;class#Bank#0" />
+            <element signature="imports" expanded="true" />
             <element signature="method#validCheck#0;class#Bank#0" />
             <element signature="method#confirm#0;class#Bank#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/src/main/java/GUI/GUIController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="26" lean-forward="true" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#main#0;class#GUIController#0" />
+            <element signature="method#readyReadCard#0;class#GUIController#0" />
+            <element signature="method#selectService#0;class#GUIController#0" />
+            <element signature="method#inputPassword#0;class#GUIController#0" />
+            <element signature="method#printReceipt#0;class#GUIController#0" />
+            <element signature="method#inputCash#0;class#GUIController#0" />
+            <element signature="method#selectNation#0;class#GUIController#0" />
+            <element signature="method#inputAmount#0;class#GUIController#0" />
+            <element signature="method#inputTransfer#0;class#GUIController#0" />
+            <element signature="method#inputDateRange#0;class#GUIController#0" />
+            <element signature="method#returnCard#0;class#GUIController#0" />
+            <element signature="method#getReceipt#0;class#GUIController#0" />
+            <element signature="method#canceled#0;class#GUIController#0" />
           </folding>
         </state>
       </provider>
