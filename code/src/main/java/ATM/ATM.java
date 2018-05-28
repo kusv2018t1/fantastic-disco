@@ -383,20 +383,27 @@ public class ATM {
 	public void end() {
 		try {
 			path = new File("code/src/main/java/ATM");
-			bootATM = new File(path.getAbsolutePath() + "/management.txt");
+			bootATM = new File("code/src/main/java/ATM/management.txt");//path.getAbsolutePath() +
 			fr = new FileReader(bootATM);
 			br = new BufferedReader(fr);
 
+			br.readLine();
 			String getStr = br.readLine();
 			int cash = Integer.parseInt(getStr);
 			cashAmount[0] = cash;
 			cashAmount[1] = cash;
 			cashAmount[2] = cash;
 			cashAmount[3] = cash;
+
 			getStr = br.readLine();
 			receiptAmount = Integer.parseInt(getStr);
+
 			getStr = br.readLine();
 			trafficCardAmount = Integer.parseInt(getStr);
+
+			getStr = br.readLine();
+			ATMadminID = Integer.parseInt(getStr);
+
 			getStr = br.readLine();
 			rate = Integer.parseInt(getStr);
 		} catch (FileNotFoundException e) {
@@ -404,6 +411,10 @@ public class ATM {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public int getAdminID(){
+		return this.ATMadminID;
 	}
 
 }

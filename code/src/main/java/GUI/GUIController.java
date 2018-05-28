@@ -1,10 +1,13 @@
 package GUI;
 
+import ATM.ATM;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import ATM.ATM;
+import java.io.File;
+import java.io.IOException;
 
 public class GUIController extends JFrame{
 
@@ -13,6 +16,9 @@ public class GUIController extends JFrame{
 
 	//Main Frame
 	private JFrame mainBox;
+
+	//sub Frame :Management
+	private JFrame subBox;
 
 	//input password
 	private char [] input_pw = new char[4];
@@ -99,6 +105,7 @@ public class GUIController extends JFrame{
 	//GUI Main Frame initialization
 	public GUIController() {
 		readyReadCard();
+		managementGUI();
 	}
 
 	//level 0...
@@ -2305,5 +2312,90 @@ public class GUIController extends JFrame{
 		mainBox.setVisible(true);
 
 		returnCard();
+	}
+
+	public void managementGUI(){
+		//sub Box : Management GUI
+		//Frame set
+		subBox = new JFrame("Global ATM_management");
+		//Frame Setting
+		subBox.setSize(400,200);
+		subBox.setLocation(1400, 0);
+		//Frame Layout set
+		subBox.setLayout(new GridLayout(1, 1,10,10));
+
+		int admin_id = this.atm.getAdminID();
+
+		//Panel
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout(4, 1,10,10));
+
+		//Components
+		JLabel notice = new JLabel("admin ID");
+		JTextField input_adminID = new JTextField(Integer.toString(admin_id));
+		JButton btn = new JButton("Access");
+
+		btn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//admin access
+				if(input_adminID.getText().equals(Integer.toString(admin_id))){
+					if(Desktop.isDesktopSupported()){
+						try {
+							Desktop.getDesktop().open(new File("code/src/main/java/ATM/management.txt"));
+							end();
+							subBox.dispose();
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
+					}
+				}
+				//can't access
+				else{
+					notice.setText("Wrong ID");
+				}
+			}
+		});
+
+		//components add on panel
+		panel.add(notice);
+		panel.add(input_adminID);
+		panel.add(btn);
+
+		//panel add on frame
+		subBox.add(panel);
+		subBox.setVisible(true);
+
+	}
+
+	public void end(){
+		//Frame
+		JFrame push = new JFrame("Global ATM_push");
+		push.setSize(200, 100);
+		push.setLocation(1400,0);
+		push.setLayout(new GridLayout(1, 1, 10, 10));
+		//Panel
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout(3, 1, 10, 10));
+		//Components
+		JLabel notice = new JLabel("Management.txt 수정 후 push를 눌려주세요 :)");
+		JButton btn = new JButton("push");
+
+		btn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				atm.end();
+				push.dispose();
+				managementGUI();
+			}
+		});
+
+		//add on panel
+		panel.add(notice);
+		panel.add(btn);
+		//add on frame
+		push.add(panel);
+
+		push.setVisible(true);
 	}
 }
