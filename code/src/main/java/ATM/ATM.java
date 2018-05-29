@@ -39,11 +39,16 @@ public class ATM {
 	private int languageMode;
 
 	//Admin ID
-	private int ATMadminID;
+	private int adminID;
+	//Admin Email ID/PW
+	private String adminMailID;
+	private String adminMailPW;
+	private String getMailID;
+
 	//환율
 	private int rate;
 	// 출금 원/달러인지 확인
-	private int ATMnation;
+	private int nation;
 
 	public ATM() {
 		try {
@@ -70,7 +75,16 @@ public class ATM {
 			trafficCardAmount = Integer.parseInt(getStr);
 
 			getStr = br.readLine();
-			ATMadminID = Integer.parseInt(getStr);
+			adminID = Integer.parseInt(getStr);
+
+			getStr = br.readLine();
+			adminMailID = getStr;
+
+			getStr = br.readLine();
+			adminMailPW = getStr;
+
+			getStr = br.readLine();
+			getMailID = getStr;
 
 			getStr = br.readLine();
 			rate = Integer.parseInt(getStr);
@@ -139,7 +153,7 @@ public class ATM {
 	}
 
 	public int selectNation(int nation) {
-		ATMnation = nation;
+		this.nation = nation;
 		// gui
 		//System.out.println("Nation :" + nation);
 		// nation 1 = 달러 nation 0 = 한화
@@ -242,25 +256,75 @@ public class ATM {
 		//withdraw
 		if (transactionAmount == 3) {
 			//달러출금
-			if (ATMnation == 1) {
+			if (nation == 1) {
 				System.out.println("doller");
-				if (cashAmount[3] < money / 100 || cashAmount[2] < (money % 100) / 10) {
-					//ATM 잔고 부족
-					return -1;
+				int amount_100 = money / 100;
+				money = money - (amount_100 * 100);
+				int amount_10 = money / 10;
+
+
+				//큰 단위 + 작은 단위 부족한지
+				if (cashAmount[3] < amount_100 || cashAmount[2] < amount_10) {
+
+					//작은 단위로 아에 부족한지
+					if(cashAmount[2] < amount_10 + (amount_100*10) ) {
+						//ATM 잔고 부족
+						return -1;
+
+					}
+					else{
+						//정상 거래 (작은 단위로만)
+						//한국 계좌
+						if(languageMode == 0){
+							if(bank[usingBankID].withdraw((amount_10*10 + amount_100*100) * rate)){
+								//ATM 10$ 감소
+								this.cashAmount[2] -= amount_10 + (amount_100*10);
+
+								return (amount_10*10 + amount_100*100) * rate;
+							}
+							//계좌 잔고 부족
+							return -2;
+						}
+						//해외 계좌
+						else{
+							if(bank[usingBankID].withdraw((amount_10*10 + amount_100*100))){
+								//ATM 10$ 감소
+								this.cashAmount[2] -= amount_10 + (amount_100*10);
+
+								return (amount_10*10 + amount_100*100);
+							}
+							//계좌 잔고 부족
+							return -2;
+						}
+					}
+
 				}
+				//정상 거래 (큰 단위 + 작은 단위)
 				else {
 					//한국 계좌
 					if(languageMode == 0){
-						if(bank[usingBankID].withdraw(money * rate)){
-							return money * rate;
+						if(bank[usingBankID].withdraw((amount_10*10 + amount_100*100) * rate)){
+
+							//ATM 100$ 감소
+							this.cashAmount[3] -= amount_100;
+							//ATM 10$ 감소
+							this.cashAmount[2] -= amount_10;
+
+							return (amount_10*10 + amount_100*100) * rate;
 						}
 						//계좌 잔고 부족
 						return -2;
 					}
 					//해외 계좌
 					else{
-						if(bank[usingBankID].withdraw(money)){
-							return money;
+						if(bank[usingBankID].withdraw((amount_10*10 + amount_100*100))){
+
+							//ATM 100$ 감소
+							this.cashAmount[3] -= amount_100;
+							//ATM 10$ 감소
+							this.cashAmount[2] -= amount_10;
+
+							return (amount_10*10 + amount_100*100);
 						}
 						//계좌 잔고 부족
 						return -2;
@@ -268,29 +332,74 @@ public class ATM {
 
 				}
 			}//한화출금
-			else if (ATMnation == 0) {
+			else if (nation == 0) {
 				System.out.println("won");
-				if (cashAmount[1] < money / 50000 || cashAmount[0] < (money % 50000) / 10000) {
-					System.out.println("withdraw / 원 / ATM잔고부족?");
-					return -1;
+
+				int amount_50000 = money / 50000;
+				money = money - (amount_50000 * 50000);
+				int amount_10000 = money / 10000;
+
+
+				////큰 단위 + 작은 단위 부족한지
+				if (cashAmount[1] < amount_50000 || cashAmount[0] < amount_10000) {
+
+					//작은 단위로 아에 부족한지
+					if(cashAmount[0] < amount_10000 + (amount_50000 * 5)){
+						//ATM 잔고 부족
+						return -1;
+					}
+					//작은 단위로만 출금
+					else{
+						//한국 계좌
+						if(languageMode == 0){
+							if(bank[usingBankID].withdraw( (amount_10000*10000 + amount_50000*5) )){
+
+								//ATM 지폐 감소
+								cashAmount[0] -= (amount_10000 + amount_50000*5);
+
+								return (amount_10000*10000 + amount_50000*5);
+							}
+							return -2;
+						}
+						//해외 계좌
+						else{
+							if(bank[usingBankID].withdraw((amount_10000*10000 + amount_50000*5) / rate)){
+
+								//ATM 지폐 감소
+								cashAmount[0] -= (amount_10000 + amount_50000*5);
+								return (amount_10000*10000 + amount_50000*5) / rate;
+							}
+							return -2;
+						}
+					}
+
 				}
+				//큰 단위 + 작은 단위 출금
 				else {
 					//한국 계좌
 					if(languageMode == 0){
-						if(bank[usingBankID].withdraw(money)){
-							return money;
+						if(bank[usingBankID].withdraw((amount_10000*10000 + amount_50000*5))){
+							//ATM 지폐 감소
+							cashAmount[0] -= (amount_10000);
+							cashAmount[1] -= amount_50000;
+							return (amount_10000*10000 + amount_50000*5);
 						}
 						return -2;
 					}
 					//해외 계좌
 					else{
-						if(bank[usingBankID].withdraw(money / rate)){
-							return money / rate;
+						if(bank[usingBankID].withdraw((amount_10000*10000 + amount_50000*5) / rate)){
+
+							//ATM 지폐 감소
+							cashAmount[0] -= (amount_10000);
+							cashAmount[1] -= amount_50000;
+
+							return (amount_10000*10000 + amount_50000*5) / rate;
 						}
 						return -2;
 					}
 				}
-			}//ㅅㅂ?
+			}//ㅅㅂ? : 한화도 아니고 달라도 아니고?
 			else {
 				return -9999;
 			}
@@ -302,7 +411,7 @@ public class ATM {
 				return money;
 			}
 			return -2;
-		} //error
+		} //error : Withdraw 도 아니고 transfereh 아니고?
 		else {
 			return -999;
 		}
@@ -316,14 +425,20 @@ public class ATM {
 			pw = new PrintWriter(new BufferedWriter(new FileWriter(this.bootATM)));
 
 			//10,000 / 50,000 / 10$ / 100$ / receiptAmount / trafficCardAmount / adminID / rate
-			pw.println("10,000 / 50,000 / 10$ / 100$ / receiptAmount / trafficCardAmount / adminID / rate");
+			pw.println("10,000/50,000/10$/100$/receiptAmount/trafficCardAmount/adminID/mailID/mailPW/getMailID/");
 			for(int i = 0; i < 4; i++){
 				pw.println(cashAmount[i]);
+				System.out.println(cashAmount[i]);
 			}
 
 			pw.println(receiptAmount);
+			System.out.println(receiptAmount);
 			pw.println(trafficCardAmount);
-			pw.println(ATMadminID);
+			System.out.println(trafficCardAmount);
+			pw.println(adminID);
+			pw.println(adminMailID);
+			pw.println(adminMailPW);
+			pw.println(getMailID);
 			pw.println(rate);
 
 			pw.close();
@@ -352,10 +467,15 @@ public class ATM {
 			return false;
 		}
 		else{
-			tCard.setDateRange(date_range);
-			return true;
+			//can't set 0 day
+			if(date_range == 0){
+				return false;
+			}
+			else{
+				tCard.setDateRange(date_range);
+				return true;
+			}
 		}
-
 	}
 
 	public boolean agreement() {
@@ -452,8 +572,8 @@ public class ATM {
 
 		if (condition==1) {
 			// 관리자에게 알람
-			String mail = "jhun9409@gmail.com";
-			String pw = "davichi123";
+			String mail = adminMailID;
+			String pw = adminMailPW;
 
 			Properties pr = new Properties();
 			pr.put("mail.smtp.host", "smtp.gmail.com");
@@ -478,7 +598,7 @@ public class ATM {
 			Session session = Session.getInstance(pr, au);
 
 			// receiver
-			String receiver = "jhun9409@naver.com";
+			String receiver = getMailID;
 			String title = "Global ATM 알람";
 
 			try {
@@ -521,7 +641,16 @@ public class ATM {
 			trafficCardAmount = Integer.parseInt(getStr);
 
 			getStr = br.readLine();
-			ATMadminID = Integer.parseInt(getStr);
+			adminID = Integer.parseInt(getStr);
+
+			getStr = br.readLine();
+			adminMailID = getStr;
+
+			getStr = br.readLine();
+			adminMailPW = getStr;
+
+			getStr = br.readLine();
+			getMailID = getStr;
 
 			getStr = br.readLine();
 			rate = Integer.parseInt(getStr);
@@ -532,8 +661,8 @@ public class ATM {
 		}
 	}
 
-	public int getATMadminID(){
-		return this.ATMadminID;
+	public int getAdminID(){
+		return this.adminID;
 	}
 
 
@@ -569,7 +698,7 @@ public class ATM {
 //			getStr = br.readLine();
 //			trafficCardAmount = Integer.parseInt(getStr);
 //			getStr = br.readLine();
-//			ATMadminID = Integer.parseInt(getStr);
+//			adminID = Integer.parseInt(getStr);
 //			getStr = br.readLine();
 //			rate = Integer.parseInt(getStr);
 //		} catch (FileNotFoundException e) {

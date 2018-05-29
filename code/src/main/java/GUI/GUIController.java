@@ -918,8 +918,6 @@ public class GUIController extends JFrame{
 						canceled("Not enough Receipt");
 					}
 				}
-				readyReadCard();
-
 			}
 		});
 		skip.addActionListener(new ActionListener() {
@@ -1209,7 +1207,28 @@ public class GUIController extends JFrame{
 				}
 			}
 		});
+
+		//reset button
+		JButton reset = new JButton();
+		if(mode == 0){
+			reset.setText("재설정");
+		}
+		else{
+			reset.setText("reset");
+		}
+		reset.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				bill = new String[100];
+				bill_count = 0;
+				b = 0;
+				ptn_s = "";
+				ptn.setText(ptn_s);
+			}
+		});
+
 		input_p.add(cancel);
+		input_p.add(reset);
 
 		//add panel on Frame
 		mainBox.add(notice_p);
@@ -1419,7 +1438,7 @@ public class GUIController extends JFrame{
 									amount = atm.enterAmount(amount);
 
 									//출금 성공
-									if(amount > 0){
+									if(amount >= 0){
 										printReceipt(amount, 0, atm.getBalance());
 									}//출금 실패
 									//ATM 현금 부족
@@ -1441,8 +1460,14 @@ public class GUIController extends JFrame{
 										}
 									}
 									//ㄴㄴ 이러지말자
-									else{
+									else if(amount == -999){
 										canceled("FUCKKKKKKKLOLOLLLL");
+									}
+									else if(amount == -9999){
+										canceled("TTTQQQQQQQQ");
+									}
+									else{
+										canceled("????????");
 									}
 								}
 								//transfer
@@ -2115,10 +2140,10 @@ public class GUIController extends JFrame{
 								//card 부족
 								else{
 									if(mode == 0){
-										canceled("ATM 기기의 소지 Traffic Card가 부족합니다.");
+										canceled("교통 카드를 발급할 수 없습니다. 0일을 선택하셨거나, ATM기기에 카드가 부족합니다.");
 									}
 									else{
-										canceled("Not enough Traffic Card in ATM");
+										canceled("Can't issue Traffic Card. 0 day or not enough traffic Card in ATM ");
 									}
 								}
 
@@ -2521,7 +2546,7 @@ public class GUIController extends JFrame{
 		//Frame Layout set
 		subBox.setLayout(new GridLayout(1, 1,10,10));
 
-		int admin_id = this.atm.getATMadminID();
+		int admin_id = this.atm.getAdminID();
 
 		//Panel
 		JPanel panel = new JPanel();

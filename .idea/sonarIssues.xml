@@ -3,7 +3,7 @@
   <component name="issues">
     <option name="index">
       <map>
-        <entry key="/fragment.java">
+        <entry key="$PROJECT_DIR$/.idea/workspace.xml">
           <value>
             <set />
           </value>
@@ -59,6 +59,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../../SoftwareAnalysisDesign/src/GUI/GUIController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="/fragment.java">
           <value>
             <set />
           </value>
