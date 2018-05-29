@@ -10,6 +10,9 @@
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/opentest4j/opentest4j/1.0.0/opentest4j-1.0.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.0.0/junit-platform-commons-1.0.0.jar" path-in-jar="/" />
+      <element id="file-copy" path="$PROJECT_DIR$/code/src/main/libs/activation.jar" />
+      <element id="file-copy" path="$PROJECT_DIR$/code/src/main/libs/mail.jar" />
+      <element id="library" level="project" name="mail" />
     </root>
   </artifact>
 </component>

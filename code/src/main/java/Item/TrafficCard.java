@@ -38,8 +38,9 @@ public class TrafficCard {
 		//9011
 
 		try {
-			path = new File("code/src/main/java/Item");
+			//path = new File("code/src/main/java/Item");
 			trfc = new File("code/src/main/java/Item/TrafficCard.txt");//path.getAbsolutePath() +
+			//trfc = new File("TrafficCard.txt");//path.getAbsolutePath() +
 			fr = new FileReader(trfc);
 			br = new BufferedReader(fr);
 

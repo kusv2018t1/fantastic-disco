@@ -31,6 +31,7 @@ public class Bank {
 		bankID = _bankName;
 		//code/src/main/java/BankSystem
 		bankName = "code/src/main/java/BankSystem/"+bankID + ".txt";
+		//bankName = bankID + ".txt";
 		this.file = new File(bankName);
 		this.loadData();
 	}

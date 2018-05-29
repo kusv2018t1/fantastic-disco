@@ -40,6 +40,9 @@ public class GUIController extends JFrame{
 	//Language Mode (= bank nation)
 	private int mode; //0 : KOR  1: ENG
 
+	//destID
+	private String dest_name;
+
 	//Transaction Mode
 	/*
 	   0 : wait
@@ -908,6 +911,7 @@ public class GUIController extends JFrame{
 
 				if(atm.printReceipt()){
 					System.out.println("뽑혔습니당><");
+					readyReadCard();
 					getReceipt(_amount, _fee, _balance);
 				}
 				else{
@@ -1359,25 +1363,45 @@ public class GUIController extends JFrame{
 		JPanel input_p = new JPanel();
 
 		//Panel Layout set
-		notice_p.setLayout(new GridLayout(3, 1, 10, 10));
+		notice_p.setLayout(new FlowLayout());
 		input_p.setLayout(new GridLayout(6, 3, 10, 10));
 
 		//Label set
-		JLabel notice, ptn, p_unit;
+		JLabel notice, ptn, p_unit, destName;
 		if(mode == 0){
-			notice = new JLabel("거래 금액을 입력해주세요");
+			notice = new JLabel("거래 금액을 입력해주세요       ");
 		}
 		else{
-			notice = new JLabel("How much do you want?");
+			notice = new JLabel("How much do you want?        ");
 		}
 
 		ptn = new JLabel("_ _ _ ");
 
-		if(i_mode == 0){
-			p_unit = new JLabel("  만 원");
+		//withdraw
+		if(t_mode == 3) {
+			//한화 출금
+			if (i_mode == 0) {
+				p_unit = new JLabel("  만 원");
+			} else {
+				p_unit = new JLabel(" 0 $");
+			}
+		}//transfer
+		else if(t_mode == 4){
+			//수신인 표시
+
+
+			//한국 계좌
+			if (mode == 0){
+				p_unit = new JLabel(" 만 원");
+				destName = new JLabel("수신인 : " + dest_name + "\t\t");
+			} else {
+				p_unit = new JLabel(" 0 $");
+				destName = new JLabel("Receiver : " + dest_name + "\t");
+			}
+			notice_p.add(destName);
 		}
 		else{
-			p_unit = new JLabel(" 0 $");
+			p_unit = new JLabel("???");
 		}
 
 		//Label add on Panel
@@ -1392,7 +1416,6 @@ public class GUIController extends JFrame{
 		//1~9 pwd Buttons set & add on Panel
 		for(int i = 1; i < 10; i++){
 			btn[i-1] = new JButton(String.valueOf(i));
-			System.out.println(String.valueOf(i));
 
 			int finalI = i;
 
@@ -1439,7 +1462,13 @@ public class GUIController extends JFrame{
 
 									//출금 성공
 									if(amount >= 0){
-										printReceipt(amount, 0, atm.getBalance());
+										//한국 계좌
+										if(mode == 0){
+											printReceipt(amount, 1000, atm.getBalance());
+										}
+										else{
+											printReceipt(amount, 1, atm.getBalance());
+										}
 									}//출금 실패
 									//ATM 현금 부족
 									else if(amount == -1){
@@ -1491,7 +1520,13 @@ public class GUIController extends JFrame{
 
 									//송금 성공
 									if(amount > 0){
-										printReceipt(amount, 0, atm.getBalance());
+										//한국 계좌
+										if(mode == 0){
+											printReceipt(amount, 1000, atm.getBalance());
+										}
+										else{
+											printReceipt(amount, 1, atm.getBalance());
+										}
 									}
 									//송금 실패
 									//계좌 잔고 부족
@@ -1550,7 +1585,7 @@ public class GUIController extends JFrame{
 
 						String ptn_s = "";
 
-						//input password
+						//input cash
 						if(cash_i < 3){
 							input_cash[cash_i] = Character.forDigit(0, 10);
 							System.out.println(input_cash);
@@ -1563,6 +1598,7 @@ public class GUIController extends JFrame{
 
 						//next step
 						if(cash_i == 3){
+							//confirm()
 							mainBox.dispose();
 
 							//withdraw
@@ -1581,9 +1617,18 @@ public class GUIController extends JFrame{
 								}
 
 								amount = atm.enterAmount(amount);
+								System.out.println(amount);
+
+
 								//출금 성공
-								if(amount > 0){
-									printReceipt(amount, 0, atm.getBalance());
+								if(amount >= 0){
+									//한국 계좌
+									if(mode == 0){
+										printReceipt(amount, 1000, atm.getBalance());
+									}
+									else{
+										printReceipt(amount, 1, atm.getBalance());
+									}
 								}//출금 실패
 								//ATM 현금 부족
 								else if(amount == -1){
@@ -1604,8 +1649,14 @@ public class GUIController extends JFrame{
 									}
 								}
 								//ㄴㄴ 이러지말자
-								else{
+								else if(amount == -999){
 									canceled("FUCKKKKKKKLOLOLLLL");
+								}
+								else if(amount == -9999){
+									canceled("TTTQQQQQQQQ");
+								}
+								else{
+									canceled("????????");
 								}
 							}
 							//transfer
@@ -1616,7 +1667,7 @@ public class GUIController extends JFrame{
 								int amount = Integer.parseInt(str);
 
 								//한국 계좌
-								if(mode == 0) {
+								if(i_mode == 0) {
 									amount = amount * 10000;
 									System.out.println(amount);
 								}//해외 계좌
@@ -1624,11 +1675,18 @@ public class GUIController extends JFrame{
 									amount = amount * 10;
 									System.out.println(amount);
 								}
+
 								amount = atm.enterAmount(amount);
 
 								//송금 성공
 								if(amount > 0){
-									printReceipt(amount, 0, atm.getBalance());
+									//한국 계좌
+									if(mode == 0){
+										printReceipt(amount, 1000, atm.getBalance());
+									}
+									else{
+										printReceipt(amount, 1, atm.getBalance());
+									}
 								}
 								//송금 실패
 								//계좌 잔고 부족
@@ -1644,13 +1702,16 @@ public class GUIController extends JFrame{
 								else{
 									canceled("FUCKKKKKKKLOLOLLLL");
 								}
+
 							}
 							else{
 								//WTF?
-								System.out.println("Error : inputAmount");
+								System.out.println("Error : in inputAmount");
 							}
 
+
 						}
+
 
 						//print pressed amount
 						for(int j = 0; j < cash_i; j++){
@@ -1741,6 +1802,151 @@ public class GUIController extends JFrame{
 			}
 		});
 		input_p.add(cancel);
+
+		//enter Button
+		JButton enter = new JButton();
+		if(mode == 0){
+			enter.setText("확인");
+		}
+		else{
+			enter.setText("Enter");
+		}
+		enter.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				String ptn_s = "";
+
+				//next step
+				if(cash_i > 0){
+					//confirm()
+					mainBox.dispose();
+
+					//withdraw
+					if(t_mode == 3){
+						String str = new String(input_cash, 0, cash_i);
+						int amount = Integer.parseInt(str);
+						//만 원 단위
+						if(i_mode == 0){
+							amount = amount * 10000;
+							System.out.println(amount);
+						}
+						//10$ 단위
+						else{
+							amount = amount * 10;
+							System.out.println(amount);
+						}
+
+						amount = atm.enterAmount(amount);
+						System.out.println(amount);
+
+						//출금 성공
+						if(amount >= 0){
+							//한국 계좌
+							if(mode == 0){
+								printReceipt(amount, 1000, atm.getBalance());
+							}
+							else{
+								printReceipt(amount, 1, atm.getBalance());
+							}
+						}//출금 실패
+						//ATM 현금 부족
+						else if(amount == -1){
+							if(mode == 0){
+								canceled("ATM 기기의 현금이 부족합니다.");
+							}
+							else{
+								canceled("Not enough cash in ATM");
+							}
+						}
+						//계좌 잔고 부족
+						else if(amount == -2){
+							if(mode == 0){
+								canceled("계좌 잔액이 부족합니다.");
+							}
+							else{
+								canceled("Not enough account balance");
+							}
+						}
+						//ㄴㄴ 이러지말자
+						else if(amount == -999){
+							canceled("FUCKKKKKKKLOLOLLLL");
+						}
+						else if(amount == -9999){
+							canceled("TTTQQQQQQQQ");
+						}
+						else{
+							canceled("????????");
+						}
+					}
+					//transfer
+					else if(t_mode == 4){
+						mainBox.dispose();
+
+						String str = new String(input_cash, 0, cash_i);
+
+						int amount = Integer.parseInt(str);
+
+
+						//한국 계좌
+						if(i_mode == 0) {
+							amount = amount * 10000;
+							System.out.println(amount);
+						}//해외 계좌
+						else{
+							amount = amount * 10;
+							System.out.println(amount);
+						}
+
+						amount = atm.enterAmount(amount);
+
+						//송금 성공
+						if(amount > 0){
+							//한국 계좌
+							if(mode == 0){
+								printReceipt(amount, 1000, atm.getBalance());
+							}
+							else{
+								printReceipt(amount, 1, atm.getBalance());
+							}
+						}
+						//송금 실패
+						//계좌 잔고 부족
+						else if(amount == -2){
+							if(mode == 0){
+								canceled("계좌 잔액이 부족합니다.");
+							}
+							else{
+								canceled("Not enough account balance");
+							}
+						}
+						//ㄴㄴ 이러지말자
+						else{
+							canceled("FUCKKKKKKKLOLOLLLL");
+						}
+
+					}
+					else{
+						//WTF?
+						System.out.println("Error : in inputAmount");
+					}
+
+
+				}
+
+
+				//print pressed amount
+				for(int j = 0; j < cash_i; j++){
+					ptn_s += input_cash[j] + " ";
+				}
+				for(int j = 3; j > cash_i; j--){
+					ptn_s += "_" + " ";
+				}
+
+				ptn.setText(ptn_s);
+			}
+		});
+		input_p.add(enter);
 
 		//Panel add on Frame
 		mainBox.add(notice_p);
@@ -1857,7 +2063,8 @@ public class GUIController extends JFrame{
 								String id = new String(input_id, 0, input_id.length);
 
 								// destAccount check
-								if(atm.destAccount(bank, Integer.parseInt(id)) != null){
+								dest_name = atm.destAccount(bank, Integer.parseInt(id));
+								if(dest_name != null){
 									mainBox.dispose();
 
 									if(mode == 0){
@@ -1929,7 +2136,9 @@ public class GUIController extends JFrame{
 							String id = new String(input_id, 0, input_id.length);
 
 							// destAccount check
-							if(atm.destAccount(bank, Integer.parseInt(id)) != null){
+							dest_name = atm.destAccount(bank, Integer.parseInt(id));
+
+							if(dest_name != null){
 								mainBox.dispose();
 
 								if(mode == 0){
@@ -2565,6 +2774,7 @@ public class GUIController extends JFrame{
 					if(Desktop.isDesktopSupported()){
 						try {
 							Desktop.getDesktop().open(new File("code/src/main/java/ATM/management.txt"));
+							//Desktop.getDesktop().open(new File("management.txt"));
 							end();
 							subBox.dispose();
 						} catch (IOException e1) {

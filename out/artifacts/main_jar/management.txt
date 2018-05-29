@@ -1,6 +1,12 @@
-cashAmount/receiptAmount/tccardAmount/admin/rate
-100
-100
-100
-9999
+10,000/50,000/10$/100$/receiptAmount/trafficCardAmount/adminID/mailID/mailPW/getMailID/
+496
+462
+600
+690
+300
+298
+9955
+jhun9409@gmail.com
+davichi123
+t_aeom@naver.com
 1000

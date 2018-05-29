@@ -26,6 +26,7 @@ public class ATM {
 	// cashAmount[2] : 10$
 	// cashAmount[3] : 100$
 	private int[] cashAmount = new int[4];
+	private int max_cash = 1000;
 
 	private int trafficCardAmount;
 	private int receiptAmount;
@@ -52,7 +53,10 @@ public class ATM {
 
 	public ATM() {
 		try {
+			//IDE
 			bootATM = new File("code/src/main/java/ATM/management.txt");//path.getAbsolutePath() +
+			//.jar
+			//bootATM = new File("management.txt");//path.getAbsolutePath() +
 			fr = new FileReader(bootATM);
 			br = new BufferedReader(fr);
 
@@ -194,7 +198,7 @@ public class ATM {
 				// 10000원 bill cashAmount[0]- 10000원 양이 250보다 적으면 증가
 				case 10:
 					money += 10000;
-					if (cashAmount[0] < 2500)
+					if (cashAmount[0] < max_cash)
 						cashAmount[0]++;
 					else
 						return -1;// ATM안 돈이 가득 차서 더 못들어간다.
@@ -202,7 +206,7 @@ public class ATM {
 				// 50000원 bill cashAmount[1]- 50000원 양이 250보다 적으면 증가
 				case 11:
 					money += 50000;
-					if (cashAmount[1] < 2500)
+					if (cashAmount[1] < max_cash)
 						cashAmount[1]++;
 					else
 						return -1;// ATM안 돈이 가득 차서 더 못들어간다.
@@ -216,7 +220,7 @@ public class ATM {
 				// 10달러 bill cashAmount[2]- 10달러 양이 250보다 적으면 증가
 				case 00:
 					money += 10 * rate;
-					if (cashAmount[2] < 2500)
+					if (cashAmount[2] < max_cash)
 						cashAmount[2]++;
 					else
 						return -1;// ATM안 돈이 가득 차서 더 못들어간다.
@@ -228,7 +232,7 @@ public class ATM {
 				// 100달러 bill cashAmount[3]- 100달러 양이 250보다 적으면 증가
 				case 10:
 					money += 100 * rate;
-					if (cashAmount[3] < 2500)
+					if (cashAmount[3] < max_cash)
 						cashAmount[3]++;
 					else
 						return -1; // ATM안 돈이 가득 차서 더 못들어간다.
@@ -253,6 +257,9 @@ public class ATM {
 
 	public int enterAmount(int money) {
 
+		int fee_k = 1000;
+		int fee_e = 1;
+
 		//withdraw
 		if (transactionAmount == 3) {
 			//달러출금
@@ -276,7 +283,7 @@ public class ATM {
 						//정상 거래 (작은 단위로만)
 						//한국 계좌
 						if(languageMode == 0){
-							if(bank[usingBankID].withdraw((amount_10*10 + amount_100*100) * rate)){
+							if(bank[usingBankID].withdraw(((amount_10*10 + amount_100*100) * rate) + fee_k)){
 								//ATM 10$ 감소
 								this.cashAmount[2] -= amount_10 + (amount_100*10);
 
@@ -287,7 +294,7 @@ public class ATM {
 						}
 						//해외 계좌
 						else{
-							if(bank[usingBankID].withdraw((amount_10*10 + amount_100*100))){
+							if(bank[usingBankID].withdraw((amount_10*10 + amount_100*100) + fee_e)){
 								//ATM 10$ 감소
 								this.cashAmount[2] -= amount_10 + (amount_100*10);
 
@@ -303,7 +310,7 @@ public class ATM {
 				else {
 					//한국 계좌
 					if(languageMode == 0){
-						if(bank[usingBankID].withdraw((amount_10*10 + amount_100*100) * rate)){
+						if(bank[usingBankID].withdraw((amount_10*10 + amount_100*100) * rate + fee_k)){
 
 							//ATM 100$ 감소
 							this.cashAmount[3] -= amount_100;
@@ -317,7 +324,7 @@ public class ATM {
 					}
 					//해외 계좌
 					else{
-						if(bank[usingBankID].withdraw((amount_10*10 + amount_100*100))){
+						if(bank[usingBankID].withdraw((amount_10*10 + amount_100*100) + fee_e)){
 
 							//ATM 100$ 감소
 							this.cashAmount[3] -= amount_100;
@@ -352,22 +359,23 @@ public class ATM {
 					else{
 						//한국 계좌
 						if(languageMode == 0){
-							if(bank[usingBankID].withdraw( (amount_10000*10000 + amount_50000*5) )){
+							if(bank[usingBankID].withdraw( (amount_10000*10000 + amount_50000*50000)  + fee_k)){
 
 								//ATM 지폐 감소
 								cashAmount[0] -= (amount_10000 + amount_50000*5);
-
-								return (amount_10000*10000 + amount_50000*5);
+								//거래 금액
+								return (amount_10000*10000 + amount_50000*50000);
 							}
 							return -2;
 						}
 						//해외 계좌
 						else{
-							if(bank[usingBankID].withdraw((amount_10000*10000 + amount_50000*5) / rate)){
+							if(bank[usingBankID].withdraw(((amount_10000*10000 + amount_50000*50000) / rate)   + fee_e)){
 
 								//ATM 지폐 감소
 								cashAmount[0] -= (amount_10000 + amount_50000*5);
-								return (amount_10000*10000 + amount_50000*5) / rate;
+								//거래 금액
+								return ( (amount_10000*10000 + amount_50000*50000) / rate );
 							}
 							return -2;
 						}
@@ -378,23 +386,25 @@ public class ATM {
 				else {
 					//한국 계좌
 					if(languageMode == 0){
-						if(bank[usingBankID].withdraw((amount_10000*10000 + amount_50000*5))){
+						if(bank[usingBankID].withdraw((amount_10000*10000 + amount_50000*50000) + fee_k)){
 							//ATM 지폐 감소
 							cashAmount[0] -= (amount_10000);
 							cashAmount[1] -= amount_50000;
-							return (amount_10000*10000 + amount_50000*5);
+							//거래 금액
+							return (amount_10000*10000 + amount_50000*50000);
 						}
 						return -2;
 					}
 					//해외 계좌
 					else{
-						if(bank[usingBankID].withdraw((amount_10000*10000 + amount_50000*5) / rate)){
+						if(bank[usingBankID].withdraw(((amount_10000*10000 + amount_50000*50000) / rate) + fee_e)){
 
 							//ATM 지폐 감소
 							cashAmount[0] -= (amount_10000);
 							cashAmount[1] -= amount_50000;
+							//거래 금액
 
-							return (amount_10000*10000 + amount_50000*5) / rate;
+							return ( (amount_10000*10000 + amount_50000*50000) / rate);
 						}
 						return -2;
 					}
@@ -406,11 +416,20 @@ public class ATM {
 		} //transfer
 		else if (transactionAmount == 4) {
 			System.out.println("transfer");
-			// money는 송금의 경우 무조건 외국계좌면 달러를 입력하고 한국 계좌이면 한화를 입력한다
-			if(bank[usingBankID].transfer(money)){
-				return money;
+			// 한국 계좌
+			if(languageMode == 0){
+				if(bank[usingBankID].transfer(money + fee_k)){
+					return money;
+				}
+				return -2;
 			}
-			return -2;
+			//해외 계좌
+			else{
+				if(bank[usingBankID].transfer(money + fee_e)){
+					return money;
+				}
+				return -2;
+			}
 		} //error : Withdraw 도 아니고 transfereh 아니고?
 		else {
 			return -999;
@@ -536,10 +555,11 @@ public class ATM {
 
 	public void checkResource() {
 		String text = "";
-		int max=80,condition=0;
+		//max : ATM 소지 가능 제한
+		int max= (max_cash - 100), condition=0;
 
 		for(int i = 0 ; i<4 ; i++){
-			if ( cashAmount[i] < 20) {
+			if ( cashAmount[i] < 100) {
 				condition=1;
 				if (i == 0)
 					text = text+"만원권 : 부족함 (현재개수 : " + cashAmount[i] + ")\n";
@@ -561,11 +581,11 @@ public class ATM {
 					text = text+"100$ : 너무 많음 (현재개수 : " + cashAmount[i] + ")\n";
 			}
 		}
-		if(trafficCardAmount < 20) {
+		if(trafficCardAmount < 100) {
 			condition=1;
 			text=text+"교통카드 : 부족함 (현재개수 : "+trafficCardAmount+")\n";
 		}
-		if(receiptAmount < 20){
+		if(receiptAmount < 100){
 			condition=1;
 			text=text+"명세표 : 부족함 (현재개수 : "+receiptAmount+")\n";
 		}
@@ -619,6 +639,7 @@ public class ATM {
 	public void end() {
 		try {
 			bootATM = new File("code/src/main/java/ATM/management.txt");//path.getAbsolutePath() +
+			//bootATM = new File("management.txt");//path.getAbsolutePath() +
 			fr = new FileReader(bootATM);
 			br = new BufferedReader(fr);
 
