@@ -4,6 +4,12 @@ import BankSystem.Bank;
 import Item.TrafficCard;
 
 import java.io.*;
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.Authenticator;
+import javax.mail.PasswordAuthentication;
+import java.util.Properties;
 
 //전체적으로 바뀐 것은 ok를 모두 boolean type으로 해서 method의 타입이 바뀌었다.
 
@@ -409,14 +415,84 @@ public class ATM {
 
 
 	public void checkResource() {
-		//System.out.println("관리자 알람 ");
-		for (int i = 0; i < 4; i++) {
-			if (cashAmount[i] < 10 || cashAmount[i] > 200) {
-				// 관리자에게 알람
+		String text = "";
+		int max=80,condition=0;
+
+		for(int i = 0 ; i<4 ; i++){
+			if ( cashAmount[i] < 20) {
+				condition=1;
+				if (i == 0)
+					text = text+"만원권 : 부족함 (현재개수 : " + cashAmount[i] + ")\n";
+				else if (i == 1)
+					text = text+"오원권 : 부족함 (현재개수 : " + cashAmount[i] + ")\n";
+				else if (i == 2)
+					text = text+"10$ : 부족함 (현재개수 : " + cashAmount[i] + ")\n";
+				else
+					text = text+"100$ : 부족함 (현재개수 : " + cashAmount[i] + ")\n";
+			} else if(cashAmount[i] > max){
+				condition=1;
+				if (i == 0)
+					text = text+"만원권 : 너무 많음 (현재개수 : " + cashAmount[i] + ")\n";
+				else if (i == 1)
+					text = text+"오원권 : 너무 많음 (현재개수 : " + cashAmount[i] + ")\n";
+				else if (i == 2)
+					text = text+"10$ : 너무 많음 (현재개수 : " + cashAmount[i] + ")\n";
+				else
+					text = text+"100$ : 너무 많음 (현재개수 : " + cashAmount[i] + ")\n";
 			}
 		}
-		if (trafficCardAmount < 2 || receiptAmount < 10) {
+		if(trafficCardAmount < 20) {
+			condition=1;
+			text=text+"교통카드 : 부족함 (현재개수 : "+trafficCardAmount+")\n";
+		}
+		if(receiptAmount < 20){
+			condition=1;
+			text=text+"명세표 : 부족함 (현재개수 : "+receiptAmount+")\n";
+		}
+
+		if (condition==1) {
 			// 관리자에게 알람
+			String mail = "jhun9409@gmail.com";
+			String pw = "davichi123";
+
+			Properties pr = new Properties();
+			pr.put("mail.smtp.host", "smtp.gmail.com");
+			pr.put("mail.smtp.port", "587");
+			pr.put("mail.smtp.auth", "true");
+			pr.put("mail.smtp.starttls.enable", "true");
+
+			class Authentication_SMTP extends Authenticator {
+
+				PasswordAuthentication pa;
+
+				public Authentication_SMTP(String mail, String pw) {
+
+					pa = new PasswordAuthentication(mail, pw);
+				}
+
+				public PasswordAuthentication getPasswordAuthentication() {
+					return pa;
+				}
+			}
+			Authenticator au = new Authentication_SMTP(mail, pw);
+			Session session = Session.getInstance(pr, au);
+
+			// receiver
+			String receiver = "jhun9409@naver.com";
+			String title = "Global ATM 알람";
+
+			try {
+				Message message = new MimeMessage(session);
+				message.setFrom(new InternetAddress(mail));
+				message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(receiver));
+				message.setSubject(title);
+				message.setText(text);
+				Transport.send(message);
+				System.out.println("success");
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
