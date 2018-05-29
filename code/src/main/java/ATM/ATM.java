@@ -9,13 +9,18 @@ import java.io.*;
 
 public class ATM {
 
-	private File bootATM, path;
+	private File bootATM;
 	private FileReader fr;
 	private BufferedReader br;
 	private Bank[] bank = new Bank[4];
 	private TrafficCard tCard = new TrafficCard();;
 	// ATM 소지 Item Amount
+	// cashAmount[0] : 10,000
+	// cashAmount[1] : 50,000
+	// cashAmount[2] : 10$
+	// cashAmount[3] : 100$
 	private int[] cashAmount = new int[4];
+
 	private int trafficCardAmount;
 	private int receiptAmount;
 	//거래 중인 Aid / Bank Id
@@ -36,18 +41,21 @@ public class ATM {
 
 	public ATM() {
 		try {
-			path = new File("code/src/main/java/ATM");
 			bootATM = new File("code/src/main/java/ATM/management.txt");//path.getAbsolutePath() +
 			fr = new FileReader(bootATM);
 			br = new BufferedReader(fr);
 
+			//mention delete
 			br.readLine();
-			String getStr = br.readLine();
-			int cash = Integer.parseInt(getStr);
-			cashAmount[0] = cash;
-			cashAmount[1] = cash;
-			cashAmount[2] = cash;
-			cashAmount[3] = cash;
+
+			//declare getStr
+			String getStr;
+
+			//10,000 / 50,000 / 10$ / 100$ Amount
+			for(int i = 0; i < 4; i++){
+				getStr = br.readLine();
+				cashAmount[i] = Integer.parseInt(getStr);
+			}
 
 			getStr = br.readLine();
 			receiptAmount = Integer.parseInt(getStr);
@@ -294,19 +302,42 @@ public class ATM {
 		}
 	}
 
+	public int getBalance() {
 
-	public int printReceipt(boolean wants) {
-		int balance;
-		if (wants) {
-			balance = bank[usingBankID].getBalance();
-			receiptAmount--;
+		PrintWriter pw;
+
+		try {
+			pw = new PrintWriter(new BufferedWriter(new FileWriter(this.bootATM)));
+
+			//10,000 / 50,000 / 10$ / 100$ / receiptAmount / trafficCardAmount / adminID / rate
+			pw.println("10,000 / 50,000 / 10$ / 100$ / receiptAmount / trafficCardAmount / adminID / rate");
+			for(int i = 0; i < 4; i++){
+				pw.println(cashAmount[i]);
+			}
+
+			pw.println(receiptAmount);
+			pw.println(trafficCardAmount);
+			pw.println(ATMadminID);
+			pw.println(rate);
+
+			pw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return bank[usingBankID].getBalance();
+	}
+	//
+	public boolean printReceipt(){
+		receiptAmount--;
+
+		if(receiptAmount > 0){
+			return true;
 		}
 		else{
-			balance = -1;
+			return false;
 		}
-		return balance;
 	}
-
 
 
 	public boolean setDataRange(int date_range) {
@@ -391,18 +422,21 @@ public class ATM {
 
 	public void end() {
 		try {
-			path = new File("code/src/main/java/ATM");
 			bootATM = new File("code/src/main/java/ATM/management.txt");//path.getAbsolutePath() +
 			fr = new FileReader(bootATM);
 			br = new BufferedReader(fr);
 
+			//mention delete
 			br.readLine();
-			String getStr = br.readLine();
-			int cash = Integer.parseInt(getStr);
-			cashAmount[0] = cash;
-			cashAmount[1] = cash;
-			cashAmount[2] = cash;
-			cashAmount[3] = cash;
+
+			//declare getStr
+			String getStr;
+
+			//10,000 / 50,000 / 10$ / 100$ Amount
+			for(int i = 0; i < 4; i++){
+				getStr = br.readLine();
+				cashAmount[i] = Integer.parseInt(getStr);
+			}
 
 			getStr = br.readLine();
 			receiptAmount = Integer.parseInt(getStr);

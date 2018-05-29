@@ -61,30 +61,30 @@ public class GUIController extends JFrame{
 	 * level 1 - select Service
 	 * level 2 - check
 	 *       2.1 - inputPassword
-	 *       2.2 - printReceipt
+	 *       2.2 - getBalance
 	 *       2.3 - returnItem
  	 * level 3 - deposit
  	 *       3.1 - inputCash
- 	 *       3.2 - printReceipt
+ 	 *       3.2 - getBalance
  	 *       3.3 - returnItem
 	 * level 4 - withdraw
 	 *       4.1 - inputPassword
 	 *       4.2 - selectNation
 	 *       4.3 - inputAmount
 	 *       4.4 - returnItem
-	 *       4.5 - printReceipt
+	 *       4.5 - getBalance
 	 * level 5 - transfer
 	 *       5.1 - inputPassword
 	 *       5.2 - inputTransfer
 	 *       5.3 - inputAmount
-	 *       5.4 - printReceipt
+	 *       5.4 - getBalance
 	 *       5.5 - returnItem
 	 * level 6 - issue Traffic Card
 	 * 		6.1 - inputPassword
 	 * 	   6.2 - inputDateRange //
 	 * 	   6.3 - agreement      //
 	 * 	   6.4 - returnItem
-	 * 	   6.5 - printReceipt
+	 * 	   6.5 - getBalance
 	 *
 	 *	Exception 1. - CancelTransaction
 	 *	Exception 2. - returnItem
@@ -438,7 +438,7 @@ public class GUIController extends JFrame{
 
 /*	level 2 - check
  *       2.1 - inputPassword
- *       2.2 - printReceipt (거래금액 / 수수료 / 잔액)
+ *       2.2 - getBalance (거래금액 / 수수료 / 잔액)
  *       2.3 - returnItem
  */
 	//level 2.1 - inputPassword
@@ -528,7 +528,7 @@ public class GUIController extends JFrame{
 
 									//pass
 									if(atm.confirm(Integer.parseInt(pw))){
-										printReceipt(0,0, atm.printReceipt(true));
+										printReceipt(0,0, atm.getBalance());
 									}
 									//non-pass
 									else{
@@ -664,7 +664,7 @@ public class GUIController extends JFrame{
 
 								//pass
 								if(atm.confirm(Integer.parseInt(pw))){
-									printReceipt(0,0, atm.printReceipt(true));
+									printReceipt(0,0, atm.getBalance());
 								}
 								//non-pass
 								else{
@@ -845,7 +845,7 @@ public class GUIController extends JFrame{
 
 	}
 
-	//level 2.2 - printReceipt (거래금액 / 수수료 / 잔액)
+	//level 2.2 - getBalance (거래금액 / 수수료 / 잔액)
 	public void printReceipt(int _amount, int _fee, int _balance){
 
 		//Main Frame renew
@@ -887,7 +887,6 @@ public class GUIController extends JFrame{
 		print_p.add(fee);
 		print_p.add(balance);
 
-
 		//components - button
 		JButton print, skip;
 		//KOR
@@ -904,10 +903,23 @@ public class GUIController extends JFrame{
 		print.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("뽑혔습니당><");
+
 				mainBox.dispose();
+
+				if(atm.printReceipt()){
+					System.out.println("뽑혔습니당><");
+					getReceipt(_amount, _fee, _balance);
+				}
+				else{
+					if(mode == 0){
+						canceled("명세표 용지가 부족합니다.");
+					}
+					else{
+						canceled("Not enough Receipt");
+					}
+				}
 				readyReadCard();
-				getReceipt(_amount, _fee, _balance);
+
 			}
 		});
 		skip.addActionListener(new ActionListener() {
@@ -932,6 +944,7 @@ public class GUIController extends JFrame{
 
 		//Return card
 		returnCard();
+		atm.checkResource();
 	}
 
 
@@ -1151,7 +1164,7 @@ public class GUIController extends JFrame{
 
 				if(amount > 0){
 					mainBox.dispose();
-					printReceipt(amount, 0, atm.printReceipt(true));
+					printReceipt(amount, 0, atm.getBalance());
 				}//atm cash full!
 				else{
 					if(mode == 0){
@@ -1407,7 +1420,7 @@ public class GUIController extends JFrame{
 
 									//출금 성공
 									if(amount > 0){
-										printReceipt(amount, 0, atm.printReceipt(true));
+										printReceipt(amount, 0, atm.getBalance());
 									}//출금 실패
 									//ATM 현금 부족
 									else if(amount == -1){
@@ -1453,7 +1466,7 @@ public class GUIController extends JFrame{
 
 									//송금 성공
 									if(amount > 0){
-										printReceipt(amount, 0, atm.printReceipt(true));
+										printReceipt(amount, 0, atm.getBalance());
 									}
 									//송금 실패
 									//계좌 잔고 부족
@@ -1545,7 +1558,7 @@ public class GUIController extends JFrame{
 								amount = atm.enterAmount(amount);
 								//출금 성공
 								if(amount > 0){
-									printReceipt(amount, 0, atm.printReceipt(true));
+									printReceipt(amount, 0, atm.getBalance());
 								}//출금 실패
 								//ATM 현금 부족
 								else if(amount == -1){
@@ -1590,7 +1603,7 @@ public class GUIController extends JFrame{
 
 								//송금 성공
 								if(amount > 0){
-									printReceipt(amount, 0, atm.printReceipt(true));
+									printReceipt(amount, 0, atm.getBalance());
 								}
 								//송금 실패
 								//계좌 잔고 부족
@@ -2325,11 +2338,11 @@ public class GUIController extends JFrame{
 				if(atm.agreement()){
 					//한국 계좌
 					if(mode == 0){
-						printReceipt(3000, 0, atm.printReceipt(true));
+						printReceipt(3000, 0, atm.getBalance());
 					}
 					//해외 계좌
 					else{
-						printReceipt(3, 0, atm.printReceipt(true));
+						printReceipt(3, 0, atm.getBalance());
 					}
 				}
 				//잔액 부족

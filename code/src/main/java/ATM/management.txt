@@ -1,4 +1,7 @@
-cashAmount/receiptAmount/tccardAmount/admin/rate
+10,000 / 50,000 / 10$ / 100$ / receiptAmount / trafficCardAmount / adminID / rate
+100
+0
+100
 100
 0
 0
