@@ -1,8 +1,8 @@
 10,000/50,000/10$/100$/receiptAmount/trafficCardAmount/adminID/mailID/mailPW/getMailID/
 496
-462
+362
 600
-690
+640
 300
 298
 9955

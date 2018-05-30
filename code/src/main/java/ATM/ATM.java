@@ -54,9 +54,9 @@ public class ATM {
 	public ATM() {
 		try {
 			//IDE
-			bootATM = new File("code/src/main/java/ATM/management.txt");//path.getAbsolutePath() +
+			//bootATM = new File("code/src/main/java/ATM/management.txt");//path.getAbsolutePath() +
 			//.jar
-			//bootATM = new File("management.txt");//path.getAbsolutePath() +
+			bootATM = new File("management.txt");//path.getAbsolutePath() +
 			fr = new FileReader(bootATM);
 			br = new BufferedReader(fr);
 
@@ -638,8 +638,8 @@ public class ATM {
 
 	public void end() {
 		try {
-			bootATM = new File("code/src/main/java/ATM/management.txt");//path.getAbsolutePath() +
-			//bootATM = new File("management.txt");//path.getAbsolutePath() +
+			//bootATM = new File("code/src/main/java/ATM/management.txt");//path.getAbsolutePath() +
+			bootATM = new File("management.txt");//path.getAbsolutePath() +
 			fr = new FileReader(bootATM);
 			br = new BufferedReader(fr);
 

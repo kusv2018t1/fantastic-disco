@@ -2747,8 +2747,8 @@ public class GUIController extends JFrame{
 				if(input_adminID.getText().equals(Integer.toString(admin_id))){
 					if(Desktop.isDesktopSupported()){
 						try {
-							Desktop.getDesktop().open(new File("code/src/main/java/ATM/management.txt"));
-							//Desktop.getDesktop().open(new File("management.txt"));
+							//Desktop.getDesktop().open(new File("code/src/main/java/ATM/management.txt"));
+							Desktop.getDesktop().open(new File("management.txt"));
 							end();
 							subBox.dispose();
 						} catch (IOException e1) {
