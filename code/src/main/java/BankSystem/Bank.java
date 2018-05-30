@@ -182,8 +182,24 @@ public class Bank {
 
 	// transfer [modified] boolean
 	public boolean transfer(int _money) {
+		int changedMoney = 0;
+
+		if(this.bankID.equals("citi") || this.bankID.equals("bankofamerica")){
+			if(Dest.bankID.equals("kb") || Dest.bankID.equals("shinhan")){
+				changedMoney = (_money * 1000)-1000;
+			} else{
+				changedMoney = _money-1;
+			}
+		} else{
+			if(Dest.bankID.equals("citi") || Dest.bankID.equals("bankofamerica")){
+				changedMoney = (_money / 1000)-1;
+			} else{
+				changedMoney = _money-1000;
+			}
+		}
+
 		// renew my Balance & Dest Balance
-		if ((this.withdraw(_money)) && (Dest.deposit(_money))) {
+		if ((this.withdraw(_money)) && (Dest.deposit(changedMoney))) {
 			if (this.bankID.equals(Dest.bankID)) {
 				for (Account value : accountInfo) {
 					if (value.get_name().equals(Dest.A.get_name()))

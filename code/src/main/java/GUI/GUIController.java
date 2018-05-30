@@ -175,7 +175,8 @@ public class GUIController extends JFrame{
 						String ItemBank;
 
 						//first exception handle
-						if(insert_ItemType.getText().length() > 1){
+						//test length
+						if(insert_ItemType.getText().length() != 1){
 							insert_ItemType.setText("1");
 							insert_ItemBank.setText("citi");
 							insert_ItemId.setText("90000");
@@ -183,7 +184,7 @@ public class GUIController extends JFrame{
 							notice_k.setText("다른 카드나 통장을 넣어주세욥...");
 							notice_e.setText("plz insert another card or book");
 						}
-						else if(insert_ItemId.getText().length() > 5){
+						else if(insert_ItemId.getText().length() != 4 && insert_ItemId.getText().length() != 5){
 							insert_ItemType.setText("1");
 							insert_ItemBank.setText("citi");
 							insert_ItemId.setText("90000");
@@ -191,7 +192,16 @@ public class GUIController extends JFrame{
 							notice_k.setText("다른 카드나 통장을 넣어주세욥...");
 							notice_e.setText("plz insert another card or book");
 						}
-						else if(insert_ItemAccountId.getText().length() > 4){
+						else if(insert_ItemAccountId.getText().length() != 4){
+							insert_ItemType.setText("1");
+							insert_ItemBank.setText("citi");
+							insert_ItemId.setText("90000");
+							insert_ItemAccountId.setText("4000");
+							notice_k.setText("다른 카드나 통장을 넣어주세욥...");
+							notice_e.setText("plz insert another card or book");
+						}
+						//bank name
+						else if(!(insert_ItemBank.getText().equals("kb") || insert_ItemBank.getText().equals("shinhan") || insert_ItemBank.getText().equals("citi") || insert_ItemBank.getText().equals("bankofamerica"))){
 							insert_ItemType.setText("1");
 							insert_ItemBank.setText("citi");
 							insert_ItemId.setText("90000");
@@ -200,52 +210,12 @@ public class GUIController extends JFrame{
 							notice_e.setText("plz insert another card or book");
 						}
 						else{
-							ItemType = Integer.parseInt(insert_ItemType.getText());
-							ItemId = Integer.parseInt(insert_ItemId.getText());
-							ItemBank = insert_ItemBank.getText();
-							ItemAccountId = Integer.parseInt(insert_ItemAccountId.getText());
+							try {
+								ItemType = Integer.parseInt(insert_ItemType.getText());
+								ItemId = Integer.parseInt(insert_ItemId.getText());
+								ItemBank = insert_ItemBank.getText();
+								ItemAccountId = Integer.parseInt(insert_ItemAccountId.getText());
 
-							System.out.println(ItemType + " " + ItemId + " " + ItemBank + " " + ItemAccountId);
-
-
-							//second Exceptional handle
-							//0 아니면 1
-							if(!(ItemType == 0 || ItemType == 1)){
-								insert_ItemType.setText("1");
-								insert_ItemBank.setText("citi");
-								insert_ItemId.setText("90000");
-								insert_ItemAccountId.setText("4000");
-								notice_k.setText("다른 카드나 통장을 넣어주세욥...");
-								notice_e.setText("plz insert another card or book");
-							}
-							//5자리
-							else if(ItemId < 0 || ItemId > 99999){
-								insert_ItemType.setText("1");
-								insert_ItemBank.setText("citi");
-								insert_ItemId.setText("90000");
-								insert_ItemAccountId.setText("4000");
-								notice_k.setText("다른 카드나 통장을 넣어주세욥...");
-								notice_e.setText("plz insert another card or book");
-							}
-							//bank 4개
-							else if(!(ItemBank.equals("kb") || ItemBank.equals("shinhan") || ItemBank.equals("citi") || ItemBank.equals("bankofamerica"))){
-								insert_ItemType.setText("1");
-								insert_ItemBank.setText("citi");
-								insert_ItemId.setText("90000");
-								insert_ItemAccountId.setText("4000");
-								notice_k.setText("다른 카드나 통장을 넣어주세욥...");
-								notice_e.setText("plz insert another card or book");
-							}
-							//account id 4자리
-							else if(ItemAccountId < 0 || ItemAccountId > 9999){
-								insert_ItemType.setText("1");
-								insert_ItemBank.setText("citi");
-								insert_ItemId.setText("90000");
-								insert_ItemAccountId.setText("4000");
-								notice_k.setText("다른 카드나 통장을 넣어주세욥...");
-								notice_e.setText("plz insert another card or book");
-							}
-							else{
 								//pass
 								int result = atm.readItem(ItemType, ItemId, ItemBank, ItemAccountId);
 								if(result < 0){
@@ -273,11 +243,16 @@ public class GUIController extends JFrame{
 								else{
 									System.out.println("WTF??");
 								}
-
+							}
+							catch(NumberFormatException nfe){
+								insert_ItemType.setText("1");
+								insert_ItemBank.setText("citi");
+								insert_ItemId.setText("90000");
+								insert_ItemAccountId.setText("4000");
+								notice_k.setText("다른 카드나 통장을 넣어주세욥...");
+								notice_e.setText("plz insert another card or book");
 							}
 						}
-
-
 					}
 				}
 		);
@@ -496,7 +471,6 @@ public class GUIController extends JFrame{
 		//1~9 pwd Buttons set & add on Panel
 		for(int i = 1; i < 10; i++){
 			btn[i-1] = new JButton(String.valueOf(i));
-			System.out.println(String.valueOf(i));
 
 			int finalI = i;
 
@@ -2033,7 +2007,6 @@ public class GUIController extends JFrame{
 		//1~9 pwd Buttons set & add on Panel
 		for(int i = 1; i < 10; i++){
 			btn[i-1] = new JButton(String.valueOf(i));
-			System.out.println(String.valueOf(i));
 
 			int finalI = i;
 
@@ -2060,6 +2033,7 @@ public class GUIController extends JFrame{
 							if(id_i == 4){
 								//confirm()
 								String bank = ptn_b.getText();
+								System.out.println(bank);
 								String id = new String(input_id, 0, input_id.length);
 
 								// destAccount check
@@ -2542,10 +2516,10 @@ public class GUIController extends JFrame{
 		//TextField set
 		String note;
 		if(mode == 0){
-			note = "카드 발급 비용 : 3000원(0.3$) 동의하시겠습니까? \n ....... 약관 .......";
+			note = "카드 발급 비용 : 3000원(3$) 동의하시겠습니까? \n ....... 약관 .......";
 		}
 		else{
-			note = "Issue charge : 3000원(0.3$) do you agree? \n ....... Agreement .......";
+			note = "Issue charge : 3000원(3$) do you agree? \n ....... Agreement .......";
 		}
 		JTextField agreementNote = new JTextField(note);
 		agreementNote.setEnabled(false);

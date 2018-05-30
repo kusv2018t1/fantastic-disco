@@ -416,14 +416,14 @@ public class ATM {
 		} //transfer
 		else if (transactionAmount == 4) {
 			System.out.println("transfer");
-			// 한국 계좌
+			// 한국 계좌 원으로 보냄   //money : ~만원
 			if(languageMode == 0){
 				if(bank[usingBankID].transfer(money + fee_k)){
 					return money;
 				}
 				return -2;
 			}
-			//해외 계좌
+			//해외 계좌 달러로 보냄   // money : ~0$
 			else{
 				if(bank[usingBankID].transfer(money + fee_e)){
 					return money;
@@ -540,7 +540,7 @@ public class ATM {
 				id = 2;
 			}
 			// bankofAmerican (usingBankID 3) 외국 은행
-			else if (bankID.equals("bankofAmerican")) {
+			else if (bankID.equals("bankofamerica")) {
 				id = 3;
 			} else {
 				return null;
