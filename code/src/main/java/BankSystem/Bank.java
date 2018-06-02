@@ -25,14 +25,27 @@ public class Bank {
 	// card number
 	private int cardNum;
 
+	//path mode
+	private boolean path = true;
+	//path_1 : IDE
+	private String path_1 = "code/src/main/java/BankSystem/";
+	//path_2 : .jar
+	private String path_2 = "";
+
 	// Bank init
 	public Bank(String _bankName) {
-		String bankName;
+		String bankFile_path;
 		bankID = _bankName;
-		//code/src/main/java/BankSystem
-		//bankName = "code/src/main/java/BankSystem/"+bankID + ".txt";
-		bankName = bankID + ".txt";
-		this.file = new File(bankName);
+
+		if(path){
+			bankFile_path = path_1 + bankID + ".txt";
+			this.file = new File(bankFile_path);
+		}
+		else{
+			bankFile_path = path_2 + bankID + ".txt";
+			this.file = new File(bankFile_path);
+		}
+
 		this.loadData();
 	}
 
@@ -58,15 +71,28 @@ public class Bank {
 				this.accountInfo.add(new Account(bankID, splitedStr[0], Integer.valueOf(splitedStr[1]),
 						Integer.valueOf(splitedStr[2]), Integer.valueOf(splitedStr[3])));
 
-				// // test code
-				// System.out.println("Name : " + splitedStr[0]);
-				// System.out.println("AccountID : " + splitedStr[1]);
-				// System.out.println("Balance : " + splitedStr[2] + "\n");
-				// // test code
 			}
 			reader.close();
 		} catch (FileNotFoundException fnf) {
-			fnf.printStackTrace();
+			//mistake! path setting
+			if(!path) {
+				System.out.println("mistake! path setting");
+
+				path = !path;
+
+				String bankFile_path;
+
+				if(path){
+					bankFile_path = path_1 + bankID + ".txt";
+					this.file = new File(bankFile_path);
+				}
+				else{
+					bankFile_path = path_2 + bankID + ".txt";
+					this.file = new File(bankFile_path);
+				}
+
+				this.loadData();
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -151,7 +177,7 @@ public class Bank {
 		int bal;
 		// verify sufficient fund
 
-		System.out.println(A.get_balance());
+		System.out.println("Account Balance : " + A.get_balance());
 		bal = A.get_balance() - _money;
 		if (bal >= 0) {
 			A.set_balance(bal);

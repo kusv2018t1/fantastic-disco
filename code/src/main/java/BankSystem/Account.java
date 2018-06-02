@@ -3,15 +3,17 @@ package BankSystem;
 import Item.*;
 
 public class Account {
-	// id -> aid
+	//Account ID
 	private int aid;
 	private int balance;
 	private String name;
+	//linked Traffic Card
 	private int tcid;
 	// card
-	Card[] card = new Card[2];
+	private Card[] card = new Card[2];
 	// book
-	Book book;
+	private Book book;
+
 	// card amount
 	private int cardAmount = 2;
 
@@ -20,6 +22,8 @@ public class Account {
 		name = _name;
 		aid = _aid;
 		balance = _bal;
+		//get already linked Traffic Card ID.
+		// if is Nothing? maybe will be null;
 		tcid = _tcid;
 
 		// card & book
@@ -42,7 +46,7 @@ public class Account {
 	public int get_balance() {
 		return balance;
 	}
-
+	//get linked Traffic Card
 	public int get_tcid() {
 		return tcid;
 	}
@@ -85,7 +89,7 @@ public class Account {
 		}
 	}
 
-	// link Traffic Card and Account
+	// linking Traffic Card and Account
 	public boolean addLink(int _tcid) {
 		this.tcid = _tcid;
 		return true;

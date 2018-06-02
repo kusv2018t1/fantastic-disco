@@ -15,11 +15,18 @@ import java.util.Properties;
 
 public class ATM {
 
+	//path mode
+	private boolean path = false;
+	//true : path_1 : IDE
+	private String path_1 = "code/src/main/java/ATM/management.txt";
+	//false : path_2 : .jar
+	private String path_2 = "management.txt";
+
 	private File bootATM;
 	private FileReader fr;
 	private BufferedReader br;
 	private Bank[] bank = new Bank[4];
-	private TrafficCard tCard = new TrafficCard();;
+	private TrafficCard tCard;
 	// ATM 소지 Item Amount
 	// cashAmount[0] : 10,000
 	// cashAmount[1] : 50,000
@@ -53,10 +60,12 @@ public class ATM {
 
 	public ATM() {
 		try {
-			//IDE
-			//bootATM = new File("code/src/main/java/ATM/management.txt");//path.getAbsolutePath() +
-			//.jar
-			bootATM = new File("management.txt");//path.getAbsolutePath() +
+			if(path){
+				bootATM = new File(path_1);
+			}
+			else{
+				bootATM = new File(path_2);
+			}
 			fr = new FileReader(bootATM);
 			br = new BufferedReader(fr);
 
@@ -75,8 +84,9 @@ public class ATM {
 			getStr = br.readLine();
 			receiptAmount = Integer.parseInt(getStr);
 
-			getStr = br.readLine();
-			trafficCardAmount = Integer.parseInt(getStr);
+			tCard = new TrafficCard();
+			trafficCardAmount = tCard.getCardAmount();
+			System.out.println("trafficCard Amount in ATM " + trafficCardAmount);
 
 			getStr = br.readLine();
 			adminID = Integer.parseInt(getStr);
@@ -93,7 +103,59 @@ public class ATM {
 			getStr = br.readLine();
 			rate = Integer.parseInt(getStr);
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			//mistake! path setting
+			if(!path){
+				System.out.println("mistake! path setting");
+
+				path = !path;
+
+				try{
+					if(path){
+						bootATM = new File(path_1);
+					}
+					else{
+						bootATM = new File(path_2);
+					}
+					fr = new FileReader(bootATM);
+					br = new BufferedReader(fr);
+
+					//mention delete
+					br.readLine();
+
+					//declare getStr
+					String getStr;
+
+					//10,000 / 50,000 / 10$ / 100$ Amount
+					for(int i = 0; i < 4; i++){
+						getStr = br.readLine();
+						cashAmount[i] = Integer.parseInt(getStr);
+					}
+
+					getStr = br.readLine();
+					receiptAmount = Integer.parseInt(getStr);
+
+					tCard = new TrafficCard();
+					trafficCardAmount = tCard.getCardAmount();
+					System.out.println("trafficCard Amount in ATM " + trafficCardAmount);
+
+					getStr = br.readLine();
+					adminID = Integer.parseInt(getStr);
+
+					getStr = br.readLine();
+					adminMailID = getStr;
+
+					getStr = br.readLine();
+					adminMailPW = getStr;
+
+					getStr = br.readLine();
+					getMailID = getStr;
+
+					getStr = br.readLine();
+					rate = Integer.parseInt(getStr);
+				}catch (IOException e_e){
+					e.printStackTrace();
+				}
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -171,7 +233,7 @@ public class ATM {
 	public int insertCash(String[] bill) {
 
 		for(int i = 0; i < bill.length; i++){
-			System.out.println(bill[i]);
+			System.out.println("billCode : " + bill[i]);
 		}
 
 		// insertCash를 통해 읽는 총 돈, deposit 하는 값
@@ -264,7 +326,7 @@ public class ATM {
 		if (transactionAmount == 3) {
 			//달러출금
 			if (nation == 1) {
-				System.out.println("doller");
+				System.out.println("doller withDraw");
 				int amount_100 = money / 100;
 				money = money - (amount_100 * 100);
 				int amount_10 = money / 10;
@@ -340,7 +402,7 @@ public class ATM {
 				}
 			}//한화출금
 			else if (nation == 0) {
-				System.out.println("won");
+				System.out.println("won withDraw");
 
 				int amount_50000 = money / 50000;
 				money = money - (amount_50000 * 50000);
@@ -436,6 +498,7 @@ public class ATM {
 		}
 	}
 
+	//at that time, update management.txt
 	public int getBalance() {
 
 		PrintWriter pw;
@@ -443,17 +506,15 @@ public class ATM {
 		try {
 			pw = new PrintWriter(new BufferedWriter(new FileWriter(this.bootATM)));
 
-			//10,000 / 50,000 / 10$ / 100$ / receiptAmount / trafficCardAmount / adminID / rate
-			pw.println("10,000/50,000/10$/100$/receiptAmount/trafficCardAmount/adminID/mailID/mailPW/getMailID/");
+			//10,000 / 50,000 / 10$ / 100$ / receiptAmount / adminID / rate
+			pw.println("10,000/50,000/10$/100$/receiptAmount/adminID/mailID/mailPW/getMailID/");
 			for(int i = 0; i < 4; i++){
 				pw.println(cashAmount[i]);
-				System.out.println(cashAmount[i]);
+				System.out.println(" billAmount in ATM["+i+"] : "+cashAmount[i]);
 			}
 
 			pw.println(receiptAmount);
-			System.out.println(receiptAmount);
-			pw.println(trafficCardAmount);
-			System.out.println(trafficCardAmount);
+			System.out.println("receiptAmount in ATM : "+receiptAmount);
 			pw.println(adminID);
 			pw.println(adminMailID);
 			pw.println(adminMailPW);
@@ -481,8 +542,10 @@ public class ATM {
 
 
 	public boolean setDataRange(int date_range) {
+
 		//카드 부족
-		if(this.trafficCardAmount < 1){
+		if(tCard.getTcid() <= 0){
+			System.out.println("카드 부족");
 			return false;
 		}
 		else{
@@ -498,27 +561,39 @@ public class ATM {
 	}
 
 	public boolean agreement() {
+		//first link after charge???WTf
+		//plz first charge after link........ done
+		boolean ok;
+
+		//charge!
+		if (languageMode == 0) {
+			ok = bank[usingBankID].chargeTrafficCard(3000);
+			System.out.println("3000won charge");
+		} else {
+			ok = bank[usingBankID].chargeTrafficCard(3000 / rate);
+			System.out.println("3$ charge");
+		}
+
 		//linking
-		boolean ok = bank[usingBankID].linkAccount(tCard.getTcid());
-
-		//링킹 성공 발급비
 		if (ok) {
-			//발급비 계산
-			if (languageMode == 0) {
-				ok = bank[usingBankID].chargeTrafficCard(3000);
-			} else {
-				ok = bank[usingBankID].chargeTrafficCard(3000 / rate);
-			}
-
-			//계산 성공
+			 ok = bank[usingBankID].linkAccount(tCard.getTcid());
+			//link 성공
 			if(ok){
-				trafficCardAmount--;
+
+				tCard.setAccountID(usingAccountID);
+
+				System.out.println("발급 카드 tcid : "+tCard.getTcid());
+				//새로운 카드 뽑기
+				tCard = new TrafficCard();
+				trafficCardAmount = tCard.getCardAmount();
+				System.out.println("다음 대기중인 카드 tcid : "+tCard.getTcid());
+
 				return true;
-			}//계산 실패
+			}//link 실패
 			else{
 				return false;
 			}
-		}//링킹 실패
+		}//비용 부족
 		else{
 			return false;
 		}
@@ -628,18 +703,25 @@ public class ATM {
 				message.setSubject(title);
 				message.setText(text);
 				Transport.send(message);
-				System.out.println("success");
+				System.out.println("alarm success");
 
+			} catch (AuthenticationFailedException ae){
+				System.out.println("Wrong Mail Account...! plz correcting id/pw in management.txt");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 	}
 
+	//when called end of management ATM
 	public void end() {
 		try {
-			//bootATM = new File("code/src/main/java/ATM/management.txt");//path.getAbsolutePath() +
-			bootATM = new File("management.txt");//path.getAbsolutePath() +
+			if(path){
+				bootATM = new File(path_1);
+			}
+			else {
+				bootATM = new File(path_1);
+			}
 			fr = new FileReader(bootATM);
 			br = new BufferedReader(fr);
 
@@ -658,8 +740,8 @@ public class ATM {
 			getStr = br.readLine();
 			receiptAmount = Integer.parseInt(getStr);
 
-			getStr = br.readLine();
-			trafficCardAmount = Integer.parseInt(getStr);
+			trafficCardAmount = tCard.getCardAmount();
+			System.out.println("trafficCard Amount in ATM " + trafficCardAmount);
 
 			getStr = br.readLine();
 			adminID = Integer.parseInt(getStr);
@@ -688,48 +770,4 @@ public class ATM {
 
 
 }
-
-//	private int bankDataDownload() {
-//		// bank생성
-//		// 한국 은행 생성
-//		bank[0] = new Bank("kb");
-//		bank[1] = new Bank("shinhan");
-//		// 외국 은행 생성
-//		bank[2] = new Bank("city");
-//		bank[3] = new Bank("bankofAmerican");
-//		return 0;
-//	}
-
-//	private void bootATM() {
-//		// txt파일로 부터 ATM안 현금, 교통카드 . 명세표 용지 량을 받아온다.
-//		try {
-//			path = new File("src/ATM");
-//			bootATM = new File(path.getAbsolutePath() + "/management.txt");
-//			fr = new FileReader(bootATM);
-//			br = new BufferedReader(fr);
-//
-//			String getStr = br.readLine();
-//			int cash = Integer.parseInt(getStr);
-//			cashAmount[0] = cash;
-//			cashAmount[1] = cash;
-//			cashAmount[2] = cash;
-//			cashAmount[3] = cash;
-//			getStr = br.readLine();
-//			receiptAmount = Integer.parseInt(getStr);
-//			getStr = br.readLine();
-//			trafficCardAmount = Integer.parseInt(getStr);
-//			getStr = br.readLine();
-//			adminID = Integer.parseInt(getStr);
-//			getStr = br.readLine();
-//			rate = Integer.parseInt(getStr);
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
-
-//	public int getBalance(){
-//		return bank[usingBankID].getBalance();
-//	}
 

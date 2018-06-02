@@ -28,6 +28,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/code/src/main/java/BankSystem/Account.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/code/src/main/java/BankSystem/Bank.java">
           <value>
             <set />
@@ -59,6 +64,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/code/src/main/java/Item/TrafficCard.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/code/src/main/java/Item/TrafficCard.txt">
           <value>
             <set />
           </value>

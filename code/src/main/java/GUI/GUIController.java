@@ -11,6 +11,12 @@ import java.io.IOException;
 
 public class GUIController extends JFrame{
 
+	//path mode
+	private boolean path = true;
+	//path_1 : IDE
+	private String path_1 = "code/src/main/java/ATM/management.txt";
+	//path_2 : .jar
+	private String path_2 = "management.txt";
 	//atm system
 	private ATM atm;
 
@@ -1136,7 +1142,7 @@ public class GUIController extends JFrame{
 				bill[bill_count] = null;
 
 				int amount = atm.insertCash(bill);
-				System.out.println(amount);
+				System.out.println("insertCash Amount : "+amount);
 
 				if(amount > 0){
 					mainBox.dispose();
@@ -1404,11 +1410,9 @@ public class GUIController extends JFrame{
 							//input cash
 							if(cash_i < 3){
 								input_cash[cash_i] = Character.forDigit(finalI, 10);
-								System.out.println(input_cash);
 								for(int j = 0; j < input_cash.length; j++){
 									System.out.print(input_cash[j]);
 								}
-								System.out.println();
 								cash_i++;
 							}
 
@@ -1424,12 +1428,12 @@ public class GUIController extends JFrame{
 									//만 원 단위
 									if(i_mode == 0){
 										amount = amount * 10000;
-										System.out.println(amount);
+										System.out.println("withdraw amount : "+amount);
 									}
 									//10$ 단위
 									else{
 										amount = amount * 10;
-										System.out.println(amount);
+										System.out.println("withdraw amount : "+amount);
 									}
 
 									amount = atm.enterAmount(amount);
@@ -1483,11 +1487,11 @@ public class GUIController extends JFrame{
 									//한국 계좌
 									if(i_mode == 0) {
 										amount = amount * 10000;
-										System.out.println(amount);
+										System.out.println("transfer amount : "+amount);
 									}//해외 계좌
 									else{
 										amount = amount * 10;
-										System.out.println(amount);
+										System.out.println("transfer amount : "+amount);
 									}
 
 									amount = atm.enterAmount(amount);
@@ -1562,11 +1566,9 @@ public class GUIController extends JFrame{
 						//input cash
 						if(cash_i < 3){
 							input_cash[cash_i] = Character.forDigit(0, 10);
-							System.out.println(input_cash);
 							for(int j = 0; j < input_cash.length; j++){
 								System.out.print(input_cash[j]);
 							}
-							System.out.println();
 							cash_i++;
 						}
 
@@ -1582,16 +1584,14 @@ public class GUIController extends JFrame{
 								//만 원 단위
 								if(i_mode == 0){
 									amount = amount * 10000;
-									System.out.println(amount);
 								}
 								//10$ 단위
 								else{
 									amount = amount * 10;
-									System.out.println(amount);
 								}
 
 								amount = atm.enterAmount(amount);
-								System.out.println(amount);
+								System.out.println("withdraw amount : "+amount);
 
 
 								//출금 성공
@@ -1643,14 +1643,13 @@ public class GUIController extends JFrame{
 								//한국 계좌
 								if(i_mode == 0) {
 									amount = amount * 10000;
-									System.out.println(amount);
 								}//해외 계좌
 								else{
 									amount = amount * 10;
-									System.out.println(amount);
 								}
 
 								amount = atm.enterAmount(amount);
+								System.out.println("transfer amount : "+amount);
 
 								//송금 성공
 								if(amount > 0){
@@ -1803,16 +1802,14 @@ public class GUIController extends JFrame{
 						//만 원 단위
 						if(i_mode == 0){
 							amount = amount * 10000;
-							System.out.println(amount);
 						}
 						//10$ 단위
 						else{
 							amount = amount * 10;
-							System.out.println(amount);
 						}
 
 						amount = atm.enterAmount(amount);
-						System.out.println(amount);
+						System.out.println("withdraw amount : "+amount);
 
 						//출금 성공
 						if(amount >= 0){
@@ -1865,14 +1862,13 @@ public class GUIController extends JFrame{
 						//한국 계좌
 						if(i_mode == 0) {
 							amount = amount * 10000;
-							System.out.println(amount);
 						}//해외 계좌
 						else{
 							amount = amount * 10;
-							System.out.println(amount);
 						}
 
 						amount = atm.enterAmount(amount);
+						System.out.println("transfer amount : "+amount);
 
 						//송금 성공
 						if(amount > 0){
@@ -2021,11 +2017,9 @@ public class GUIController extends JFrame{
 							//input cash
 							if(id_i < 4){
 								input_id[id_i] = Character.forDigit(finalI, 10);
-								System.out.println(input_id);
 								for(int j = 0; j < input_id.length; j++){
 									System.out.print(input_id[j]);
 								}
-								System.out.println();
 								id_i++;
 							}
 
@@ -2095,11 +2089,9 @@ public class GUIController extends JFrame{
 						//input password
 						if(id_i < 4){
 							input_id[id_i] = Character.forDigit(0, 10);
-							System.out.println(input_id);
 							for(int j = 0; j < input_id.length; j++){
 								System.out.print(input_id[j]);
 							}
-							System.out.println();
 							id_i++;
 						}
 
@@ -2288,7 +2280,6 @@ public class GUIController extends JFrame{
 		//1~9 pwd Buttons set & add on Panel
 		for(int i = 1; i < 10; i++){
 			btn[i-1] = new JButton(String.valueOf(i));
-			System.out.println(String.valueOf(i));
 
 			int finalI = i;
 
@@ -2303,11 +2294,9 @@ public class GUIController extends JFrame{
 							//input cash
 							if(date_i < 2){
 								input_date[date_i] = Character.forDigit(finalI, 10);
-								System.out.println(input_date);
 								for(int j = 0; j < input_date.length; j++){
 									System.out.print(input_date[j]);
 								}
-								System.out.println();
 								date_i++;
 							}
 
@@ -2368,11 +2357,9 @@ public class GUIController extends JFrame{
 						//input password
 						if(date_i < 2){
 							input_date[date_i] = Character.forDigit(0, 10);
-							System.out.println(input_date);
 							for(int j = 0; j < input_date.length; j++){
 								System.out.print(input_date[j]);
 							}
-							System.out.println();
 							date_i++;
 						}
 
@@ -2747,12 +2734,35 @@ public class GUIController extends JFrame{
 				if(input_adminID.getText().equals(Integer.toString(admin_id))){
 					if(Desktop.isDesktopSupported()){
 						try {
-							//Desktop.getDesktop().open(new File("code/src/main/java/ATM/management.txt"));
-							Desktop.getDesktop().open(new File("management.txt"));
+							if(path){
+								Desktop.getDesktop().open(new File(path_1));
+							}else{
+								Desktop.getDesktop().open(new File(path_2));
+							}
+
 							end();
 							subBox.dispose();
 						} catch (IOException e1) {
-							e1.printStackTrace();
+							System.out.println("IOException File open. in Desktop");
+							//mistake! path setting
+							if(!path) {
+								System.out.println("mistake! path setting");
+
+								path = !path;
+
+								try{
+									if(path){
+										Desktop.getDesktop().open(new File(path_1));
+									}else{
+										Desktop.getDesktop().open(new File(path_2));
+									}
+
+									end();
+									subBox.dispose();
+								}catch (Exception e_e){
+									System.out.println("Fuck..!!!!!!!!!!!");
+								}
+							}
 						}
 					}
 				}

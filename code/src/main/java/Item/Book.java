@@ -1,18 +1,24 @@
 package Item;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class Book {
 	private int bid;
 	private int bpwd;
 	//file I/O // diagram no exist
-	private File book, path;
+	private File book;
 	private FileReader fr;
 	private BufferedReader br;
 	//int aid -> diagram 수정 필
+
+	//path mode
+	private boolean path = true;
+	//path_1 : IDE
+	private String path_1 = "code/src/main/java/Item/";
+	//path_2 : .jar
+	private  String path_2 = "";
+
+
 	public Book(String bank, int aid) {
 		String getStr = null;
 		bid = 0000;
@@ -21,31 +27,66 @@ public class Book {
 		//format : Accountid	Bookid	Bookpwd
 		//bid = shinhan_Book.txt ~-> indexing aid,index
 		//bpwd = shinhan_Book.txt ~-> indexing aid,index
+
 		try {
-			//path = new File("code/src/main/java/Item");
-			//book = new File(path+"/"+bank +"_Book.txt");//path.getAbsolutePath() +
-			book = new File(bank +"_Book.txt");//path.getAbsolutePath() +
+			if(path){
+				book = new File(path_1+bank +"_Book.txt");
+			}
+			else{
+				book = new File(path_2 + bank +"_Book.txt");
+			}
+
 			fr = new FileReader(book);
 			br = new BufferedReader(fr);
-			
-			//System.out.println("linked file success");
+
 			
 			while((getStr = br.readLine()) != null) {
 				//finding..
-				//System.out.println(String.valueOf(aid));
 				if(getStr.substring(0, 4).equals(String.valueOf(aid))) {
-					//System.out.println("bid : " + getStr.substring(6, 10));
 					bid = Integer.parseInt(getStr.substring(6, 10));
-					//System.out.println("bpwd : " + getStr.substring(12, 16));
 					bpwd = Integer.parseInt(getStr.substring(12, 16));
 					break;
 				}
 			}
 			//exception
 			if(bid == 0000) {
-				//System.out.println("Error: No book...");
+				System.out.println("Error: No book...");
 			}
 			
+		}catch(FileNotFoundException fne){
+			if(!path) {
+				System.out.println("mistake! path setting");
+
+				path = !path;
+
+				try{
+					if(path){
+						book = new File(path_1+bank +"_Book.txt");
+					}
+					else{
+						book = new File(path_2 + bank +"_Book.txt");
+					}
+
+					fr = new FileReader(book);
+					br = new BufferedReader(fr);
+
+
+					while((getStr = br.readLine()) != null) {
+						//finding..
+						if(getStr.substring(0, 4).equals(String.valueOf(aid))) {
+							bid = Integer.parseInt(getStr.substring(6, 10));
+							bpwd = Integer.parseInt(getStr.substring(12, 16));
+							break;
+						}
+					}
+					//exception
+					if(bid == 0000) {
+						System.out.println("Error: No book...");
+					}
+				}catch (Exception e_e){
+					System.out.println("...T .. T");
+				}
+			}
 		}catch(IOException e){
 			e.printStackTrace();
 		}
