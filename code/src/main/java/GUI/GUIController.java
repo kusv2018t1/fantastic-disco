@@ -1072,7 +1072,7 @@ public class GUIController extends JFrame{
 					bill_count++;
 					b = 1;
 
-					ptn_s += " 5000원";
+					ptn_s += " 50000원";
 					ptn.setText(ptn_s);
 				}
 
