@@ -2,6 +2,13 @@ package Item;
 
 import java.io.*;
 
+/* Book.java
+ * : 통장 객체
+ * : Account 마다 1개의 객체를 가지고 있음
+ * : 은행정보와 계좌정보를 인자값으로 생성자메소드를 지니고 있음
+ * : txt파일로 미리 저장된 정보를 읽고, 전달한다.
+ */
+
 public class Book {
 	private int bid;
 	private int bpwd;
@@ -18,7 +25,19 @@ public class Book {
 	//path_2 : .jar
 	private  String path_2 = "";
 
+	//parsing index Accountid	Bookid	Bookpwd
+	private final int PARSING_AID = 4;
+	private final int TAB_SIZE = 2;
+	private final int ID_SIZE = 4;
+	private final int PWD_SIZE = 4;
+	private final int PARSING_BID = PARSING_AID + TAB_SIZE + ID_SIZE;
+	private final int PARSING_BPWD = PARSING_BID + TAB_SIZE + PWD_SIZE;
 
+
+	/*
+	 * Book()
+	 *
+	 */
 	public Book(String bank, int aid) {
 		String getStr = null;
 		bid = 0000;
@@ -42,9 +61,9 @@ public class Book {
 			
 			while((getStr = br.readLine()) != null) {
 				//finding..
-				if(getStr.substring(0, 4).equals(String.valueOf(aid))) {
-					bid = Integer.parseInt(getStr.substring(6, 10));
-					bpwd = Integer.parseInt(getStr.substring(12, 16));
+				if(getStr.substring(0, PARSING_AID).equals(String.valueOf(aid))) {
+					bid = Integer.parseInt(getStr.substring(PARSING_AID + TAB_SIZE, PARSING_BID));
+					bpwd = Integer.parseInt(getStr.substring(PARSING_BID + TAB_SIZE, PARSING_BPWD));
 					break;
 				}
 			}
@@ -73,9 +92,9 @@ public class Book {
 
 					while((getStr = br.readLine()) != null) {
 						//finding..
-						if(getStr.substring(0, 4).equals(String.valueOf(aid))) {
-							bid = Integer.parseInt(getStr.substring(6, 10));
-							bpwd = Integer.parseInt(getStr.substring(12, 16));
+						if(getStr.substring(0, PARSING_AID).equals(String.valueOf(aid))) {
+							bid = Integer.parseInt(getStr.substring(PARSING_AID + TAB_SIZE, PARSING_BID));
+							bpwd = Integer.parseInt(getStr.substring(PARSING_BID + TAB_SIZE, PARSING_BPWD));
 							break;
 						}
 					}
@@ -88,7 +107,7 @@ public class Book {
 				}
 			}
 		}catch(IOException e){
-			e.printStackTrace();
+			System.out.println("can't read textFile (Book.txt) please check path.");
 		}
 	}
 	//bid = shinhan_Book.txt ~-> indexing aid.

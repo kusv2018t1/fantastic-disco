@@ -48,6 +48,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/code/src/main/java/BankSystem/shinhan.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/code/src/main/java/GUI/GUIController.java">
           <value>
             <set />
@@ -69,6 +74,46 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/code/src/main/java/Item/TrafficCard.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/code/src/main/java/Item/bankofamerica_Book.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/code/src/main/java/Item/bankofamerica_Card.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/code/src/main/java/Item/citi_Book.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/code/src/main/java/Item/citi_Card.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/code/src/main/java/Item/kb_Book.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/code/src/main/java/Item/kb_Card.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/code/src/main/java/Item/shinhan_Book.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/code/src/main/java/Item/shinhan_Card.txt">
           <value>
             <set />
           </value>

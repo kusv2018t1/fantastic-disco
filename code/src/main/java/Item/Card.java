@@ -17,7 +17,15 @@ public class Card {
 	private String path_1 = "code/src/main/java/Item/";
 	//path_2 : .jar
 	private  String path_2 = "";
-	
+
+	//parsing index Accountid	Bookid	Bookpwd
+	private final int PARSING_AID = 4;
+	private final int TAB_SIZE = 2;
+	private final int ID_SIZE = 5;
+	private final int PWD_SIZE = 4;
+	private final int PARSING_CID = PARSING_AID + TAB_SIZE + ID_SIZE; // 4 + 2 + 5 = 11
+	private final int PARSING_CPWD = PARSING_CID + TAB_SIZE + PWD_SIZE; // 10 + 2 + 4 = 17
+
 	//int aid / int idex 수정 필
 	public Card(String bank, int aid, int index) {
 		String getStr = null;
@@ -39,13 +47,12 @@ public class Card {
 			fr = new FileReader(card);
 			br = new BufferedReader(fr);
 
-
 			while((getStr = br.readLine()) != null) {
 				//finding..
-				if(getStr.substring(0, 4).equals(String.valueOf(aid))) {
+				if(getStr.substring(0, PARSING_AID).equals(String.valueOf(aid))) {
 					if(index == count) {
-						cid = Integer.parseInt(getStr.substring(6, 11));
-						cpwd = Integer.parseInt(getStr.substring(12, 16));
+						cid = Integer.parseInt(getStr.substring(PARSING_AID + TAB_SIZE, PARSING_CID));
+						cpwd = Integer.parseInt(getStr.substring(PARSING_CID + TAB_SIZE, PARSING_CPWD));
 						break;
 					}
 					count++;
@@ -74,10 +81,10 @@ public class Card {
 
 					while((getStr = br.readLine()) != null) {
 						//finding..
-						if(getStr.substring(0, 4).equals(String.valueOf(aid))) {
+						if(getStr.substring(0, PARSING_AID).equals(String.valueOf(aid))) {
 							if(index == count) {
-								cid = Integer.parseInt(getStr.substring(6, 11));
-								cpwd = Integer.parseInt(getStr.substring(12, 16));
+								cid = Integer.parseInt(getStr.substring(PARSING_AID + TAB_SIZE, PARSING_CID));
+								cpwd = Integer.parseInt(getStr.substring(PARSING_CID + TAB_SIZE, PARSING_CPWD));
 								break;
 							}
 							count++;
@@ -93,7 +100,7 @@ public class Card {
 			}
 		}
 		catch(IOException e){
-			e.printStackTrace();
+			System.out.println("can't read textFile (Card.txt) please check path.");
 		}
 	}
 	public int getCid() {

@@ -28,8 +28,11 @@ public class Account {
 
 		// card & book
 		card[0] = new Card(_bankID,_aid,0);
+		System.out.println("1");
 		card[1] = new Card(_bankID,_aid,1);
+		System.out.println("2");
 		book = new Book(_bankID,_aid);
+		System.out.println("3");
 	}
 	
 	// get name

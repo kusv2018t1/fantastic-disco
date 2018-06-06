@@ -122,7 +122,7 @@ public class TrafficCard {
 				}
 			}
 		}catch(IOException e){
-			e.printStackTrace();
+			System.out.println("can't read textFile (TrafficCard.txt) please check path.");
 		}
 	}
 
@@ -148,7 +148,7 @@ public class TrafficCard {
 
 			pw.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("can't write textFile (TrafficCard.txt) please check path.");
 		}
 	}
 	public int getCardAmount(){
@@ -176,9 +176,9 @@ public class TrafficCard {
 			return Acount;
 
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("can't read textFile (TrafficCard.txt) please check path.");
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("can't read textFile (TrafficCard.txt) please check path.");
 		}
 
 		//Error

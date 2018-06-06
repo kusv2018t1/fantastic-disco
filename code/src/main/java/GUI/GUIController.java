@@ -2,14 +2,63 @@ package GUI;
 
 import ATM.ATM;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Desktop;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.io.File;
 import java.io.IOException;
 
+
+/* level 0 - read Item
+ * level 1 - select Service
+ * level 2 - check
+ *       2.1 - inputPassword
+ *       2.2 - getBalance
+ *       2.3 - returnItem
+ * level 3 - deposit
+ *       3.1 - inputCash
+ *       3.2 - getBalance
+ *       3.3 - returnItem
+ * level 4 - withdraw
+ *       4.1 - inputPassword
+ *       4.2 - selectNation
+ *       4.3 - inputAmount
+ *       4.4 - returnItem
+ *       4.5 - getBalance
+ * level 5 - transfer
+ *       5.1 - inputPassword
+ *       5.2 - inputTransfer
+ *       5.3 - inputAmount
+ *       5.4 - getBalance
+ *       5.5 - returnItem
+ * level 6 - issue Traffic Card
+ * 		6.1 - inputPassword
+ * 	   6.2 - inputDateRange //
+ * 	   6.3 - agreement      //
+ * 	   6.4 - returnItem
+ * 	   6.5 - getBalance
+ *
+ *	Exception 1. - CancelTransaction
+ *	Exception 2. - returnItem
+ */
+
 public class GUIController extends JFrame{
+   //Size
+   private final int PWD_SIZE = 4;
+   private final int CASH_STRING = 3;
+   private final int AID_SIZE = 4;
+   private final int TC_DATE_SIZE = 2;
+
 
 	//path mode
 	private boolean path = true;
@@ -27,38 +76,38 @@ public class GUIController extends JFrame{
 	private JFrame subBox;
 
 	//input password
-	private char [] input_pw = new char[4];
+	private char [] input_pw = new char[PWD_SIZE];
 	private int pw_i;
 
 	//insert cash
-	private char [] input_cash = new char[3];
+	private char [] input_cash = new char[CASH_STRING];
 	private int cash_i;
 	private String ptn_s;
 
 	//input Transfer accountid
-	private char [] input_id = new char[4];
+	private char [] input_id = new char[AID_SIZE];
 	private int id_i;
 
 	//input Date Range
-	private char [] input_date = new char[2];
+	private char [] input_date = new char[TC_DATE_SIZE];
 	private int date_i;
 
 	//Language Mode (= bank nation)
-	private int mode; //0 : KOR  1: ENG
+   private final int MODE_KOR = 0;
+   private final int MODE_ENG = 1;
+	private int mode;
 
 	//destID
 	private String dest_name;
 
 	//Transaction Mode
-	/*
-	   0 : wait
-		1 : check
-		2 : deposit
-		3 : withdraw
-		4 : transfer
-		5 : issue Traffic Card
-		9 : admin
-	 */
+	private final int MODE_WAIT = 0;
+	private final int MODE_CHECK = 1;
+   private final int MODE_DEPOSIT = 2;
+   private final int MODE_WITHDRAW = 3;
+   private final int MODE_TRANSFER = 4;
+   private final int MODE_ISSUE = 5;
+   private final int MODE_ADMIN = 9;
 	private int t_mode;
 
 	//insert cash
@@ -66,38 +115,7 @@ public class GUIController extends JFrame{
 	private String [] bill;
 	private int b;
 
-	/* level 0 - read Item
-	 * level 1 - select Service
-	 * level 2 - check
-	 *       2.1 - inputPassword
-	 *       2.2 - getBalance
-	 *       2.3 - returnItem
- 	 * level 3 - deposit
- 	 *       3.1 - inputCash
- 	 *       3.2 - getBalance
- 	 *       3.3 - returnItem
-	 * level 4 - withdraw
-	 *       4.1 - inputPassword
-	 *       4.2 - selectNation
-	 *       4.3 - inputAmount
-	 *       4.4 - returnItem
-	 *       4.5 - getBalance
-	 * level 5 - transfer
-	 *       5.1 - inputPassword
-	 *       5.2 - inputTransfer
-	 *       5.3 - inputAmount
-	 *       5.4 - getBalance
-	 *       5.5 - returnItem
-	 * level 6 - issue Traffic Card
-	 * 		6.1 - inputPassword
-	 * 	   6.2 - inputDateRange //
-	 * 	   6.3 - agreement      //
-	 * 	   6.4 - returnItem
-	 * 	   6.5 - getBalance
-	 *
-	 *	Exception 1. - CancelTransaction
-	 *	Exception 2. - returnItem
-	 */
+
 
 
 
@@ -120,7 +138,7 @@ public class GUIController extends JFrame{
 	//level 0...
 	//Exception 1. 자릿 수
 	public void readyReadCard() {
-		t_mode = 0;
+		t_mode = MODE_WAIT;
 		atm = new ATM();
 
 		//Main Frame renew
@@ -308,7 +326,7 @@ public class GUIController extends JFrame{
 		select.setLayout(new GridLayout( 2, 3, 3, 3));
 
 		//components.
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			check = new JButton("예금 조회");
 			deposit = new JButton("입금");
 			withdraw = new JButton("출금");
@@ -330,8 +348,8 @@ public class GUIController extends JFrame{
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						mainBox.dispose();
-						t_mode = 1;
-						atm.selectService(1);
+						t_mode = MODE_CHECK;
+						atm.selectService(MODE_CHECK);
 						inputPassword();
 					}
 				}
@@ -341,8 +359,8 @@ public class GUIController extends JFrame{
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						mainBox.dispose();
-						t_mode = 2;
-						atm.selectService(2);
+						t_mode = MODE_DEPOSIT;
+						atm.selectService(MODE_DEPOSIT);
 						inputCash();
 					}
 				}
@@ -352,8 +370,8 @@ public class GUIController extends JFrame{
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						mainBox.dispose();
-						t_mode = 3;
-						atm.selectService(3);
+						t_mode = MODE_WITHDRAW;
+						atm.selectService(MODE_WITHDRAW);
 						inputPassword();
 					}
 				}
@@ -363,8 +381,8 @@ public class GUIController extends JFrame{
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						mainBox.dispose();
-						t_mode = 4;
-						atm.selectService(4);
+						t_mode = MODE_TRANSFER;
+						atm.selectService(MODE_TRANSFER);
 						inputPassword();
 					}
 				}
@@ -374,8 +392,8 @@ public class GUIController extends JFrame{
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						mainBox.dispose();
-						t_mode = 5;
-						atm.selectService(5);
+						t_mode = MODE_ISSUE;
+						atm.selectService(MODE_ISSUE);
 						inputPassword();
 					}
 				}
@@ -390,7 +408,7 @@ public class GUIController extends JFrame{
 
 		//cancel button
 		JButton cancel = new JButton();
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			cancel.setText("거래 취소");
 		}
 		else{
@@ -399,7 +417,7 @@ public class GUIController extends JFrame{
 		cancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(mode == 0){
+				if(mode == MODE_KOR){
 					canceled("요청");
 				}
 				else{
@@ -460,7 +478,7 @@ public class GUIController extends JFrame{
 		JButton [] btn = new JButton[9];
 
 		//Label set
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			notice = new JLabel("비 밀 번 호 :)", SwingConstants.CENTER);
 		}
 		else{
@@ -489,9 +507,8 @@ public class GUIController extends JFrame{
 							String ptn_s = "";
 
 							//input password
-							if(pw_i < 4){
+							if(pw_i < PWD_SIZE){
 								input_pw[pw_i] = Character.forDigit(finalI, 10);
-								System.out.println(input_pw);
 								for(int j = 0; j < input_pw.length; j++){
 									System.out.print(input_pw[j]);
 								}
@@ -500,11 +517,11 @@ public class GUIController extends JFrame{
 							}
 
 							//next step
-							if(pw_i == 4){
+							if(pw_i == PWD_SIZE){
 								//confirm()
 								mainBox.dispose();
 
-								if(t_mode == 1){
+								if(t_mode == MODE_CHECK){
 									String pw = new String(input_pw, 0, input_pw.length);
 
 									System.out.println(Integer.parseInt(pw));
@@ -515,7 +532,7 @@ public class GUIController extends JFrame{
 									}
 									//non-pass
 									else{
-										if(mode == 0){
+										if(mode == MODE_KOR){
 											canceled("잘못된 비밀번호 입력");
 										}
 										else{
@@ -524,10 +541,10 @@ public class GUIController extends JFrame{
 
 									}
 								}
-								else if(t_mode == 2){
+								else if(t_mode == MODE_DEPOSIT){
 									//can't
 								}
-								else if(t_mode == 3){
+								else if(t_mode == MODE_WITHDRAW){
 									String pw = new String(input_pw, 0, input_pw.length);
 
 									System.out.println(Integer.parseInt(pw));
@@ -538,7 +555,7 @@ public class GUIController extends JFrame{
 									}
 									//non-pass
 									else{
-										if(mode == 0){
+										if(mode == MODE_KOR){
 											canceled("잘못된 비밀번호 입력");
 										}
 										else{
@@ -546,7 +563,7 @@ public class GUIController extends JFrame{
 										}
 									}
 								}
-								else if(t_mode == 4){
+								else if(t_mode == MODE_TRANSFER){
 
 									String pw = new String(input_pw, 0, input_pw.length);
 
@@ -558,7 +575,7 @@ public class GUIController extends JFrame{
 									}
 									//non-pass
 									else{
-										if(mode == 0){
+										if(mode == MODE_KOR){
 											canceled("잘못된 비밀번호 입력");
 										}
 										else{
@@ -566,7 +583,7 @@ public class GUIController extends JFrame{
 										}
 									}
 								}
-								else if(t_mode == 5){
+								else if(t_mode == MODE_ISSUE){
 
 									String pw = new String(input_pw, 0, input_pw.length);
 
@@ -578,7 +595,7 @@ public class GUIController extends JFrame{
 									}
 									//non-pass
 									else{
-										if(mode == 0){
+										if(mode == MODE_KOR){
 											canceled("잘못된 비밀번호 입력");
 										}
 										else{
@@ -636,11 +653,11 @@ public class GUIController extends JFrame{
 						}
 
 						//next step
-						if(pw_i == 4){
+						if(pw_i == PWD_SIZE){
 							//confirm()
 							mainBox.dispose();
 
-							if(t_mode == 1){
+							if(t_mode == MODE_CHECK){
 								String pw = new String(input_pw, 0, input_pw.length);
 
 								System.out.println(Integer.parseInt(pw));
@@ -651,7 +668,7 @@ public class GUIController extends JFrame{
 								}
 								//non-pass
 								else{
-									if(mode == 0){
+									if(mode == MODE_KOR){
 										canceled("잘못된 비밀번호 입력");
 									}
 									else{
@@ -659,10 +676,10 @@ public class GUIController extends JFrame{
 									}
 								}
 							}
-							else if(t_mode == 2){
+							else if(t_mode == MODE_DEPOSIT){
 								//can't
 							}
-							else if(t_mode == 3){
+							else if(t_mode == MODE_WITHDRAW){
 								String pw = new String(input_pw, 0, input_pw.length);
 
 								System.out.println(Integer.parseInt(pw));
@@ -673,7 +690,7 @@ public class GUIController extends JFrame{
 								}
 								//non-pass
 								else{
-									if(mode == 0){
+									if(mode == MODE_KOR){
 										canceled("잘못된 비밀번호 입력");
 									}
 									else{
@@ -681,7 +698,7 @@ public class GUIController extends JFrame{
 									}
 								}
 							}
-							else if(t_mode == 4){
+							else if(t_mode == MODE_TRANSFER){
 
 								String pw = new String(input_pw, 0, input_pw.length);
 
@@ -693,7 +710,7 @@ public class GUIController extends JFrame{
 								}
 								//non-pass
 								else{
-									if(mode == 0){
+									if(mode == MODE_KOR){
 										canceled("잘못된 비밀번호 입력");
 									}
 									else{
@@ -701,7 +718,7 @@ public class GUIController extends JFrame{
 									}
 								}
 							}
-							else if(t_mode == 5){
+							else if(t_mode == MODE_ISSUE){
 
 								String pw = new String(input_pw, 0, input_pw.length);
 
@@ -713,7 +730,7 @@ public class GUIController extends JFrame{
 								}
 								//non-pass
 								else{
-									if(mode == 0){
+									if(mode == MODE_KOR){
 										canceled("잘못된 비밀번호 입력");
 									}
 									else{
@@ -798,7 +815,7 @@ public class GUIController extends JFrame{
 
 		//cancel button
 		JButton cancel = new JButton();
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			cancel.setText("거래 취소");
 		}
 		else{
@@ -807,7 +824,7 @@ public class GUIController extends JFrame{
 		cancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(mode == 0){
+				if(mode == MODE_KOR){
 					canceled("요청");
 				}
 				else{
@@ -854,7 +871,7 @@ public class GUIController extends JFrame{
 		//components - label
 		JLabel amount, fee, balance;
 		//KOR
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			    amount = new JLabel("거 래  금 액 : " + Integer.toString(_amount) + " 원");
 			       fee = new JLabel("수   수   료 : " + Integer.toString(_fee) + " 원");
 			   balance = new JLabel("거래 후  잔액 : " + Integer.toString(_balance) + " 원");
@@ -873,7 +890,7 @@ public class GUIController extends JFrame{
 		//components - button
 		JButton print, skip;
 		//KOR
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			print = new JButton("명세표 출력");
 			skip = new JButton("메인 화면으로");
 		}//ENG
@@ -895,7 +912,7 @@ public class GUIController extends JFrame{
 					getReceipt(_amount, _fee, _balance);
 				}
 				else{
-					if(mode == 0){
+					if(mode == MODE_KOR){
 						canceled("명세표 용지가 부족합니다.");
 					}
 					else{
@@ -978,7 +995,7 @@ public class GUIController extends JFrame{
 		ptn_s = "";
 
 		//KOR
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			notice = new JLabel("현금을 넣어주세욥");
 		} //ENG
 		else {
@@ -989,7 +1006,7 @@ public class GUIController extends JFrame{
 		JButton [] input_kor = new JButton[4];	//1000, 5000, 10000, 50000 원
 		JButton [] input_eng = new JButton[3]; //10, 50, 100 $
 		JButton enter;
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			enter = new JButton("닫기");
 		}
 		else{
@@ -1149,7 +1166,7 @@ public class GUIController extends JFrame{
 					printReceipt(amount, 0, atm.getBalance());
 				}//atm cash full!
 				else{
-					if(mode == 0){
+					if(mode == MODE_KOR){
 						canceled("ATM 현금이 꽉찼습니다.");
 					}
 					else{
@@ -1174,7 +1191,7 @@ public class GUIController extends JFrame{
 
 		//cancel button
 		JButton cancel = new JButton();
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			cancel.setText("거래 취소");
 		}
 		else{
@@ -1183,7 +1200,7 @@ public class GUIController extends JFrame{
 		cancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(mode == 0){
+				if(mode == MODE_KOR){
 					canceled("요청");
 				}
 				else{
@@ -1194,7 +1211,7 @@ public class GUIController extends JFrame{
 
 		//reset button
 		JButton reset = new JButton();
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			reset.setText("재설정");
 		}
 		else{
@@ -1247,7 +1264,7 @@ public class GUIController extends JFrame{
 
 		//Label set
 		JLabel notice;
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			notice = new JLabel("뽑으실 현금의 종류를 선택해주세요. :)");
 		}
 		else{
@@ -1258,7 +1275,7 @@ public class GUIController extends JFrame{
 
 		//Button set
 		JButton select_k, select_e;
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			select_k = new JButton("원");
 			select_e = new JButton("달러");
 		}
@@ -1291,7 +1308,7 @@ public class GUIController extends JFrame{
 
 		//cancel button
 		JButton cancel = new JButton();
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			cancel.setText("거래 취소");
 		}
 		else{
@@ -1300,7 +1317,7 @@ public class GUIController extends JFrame{
 		cancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(mode == 0){
+				if(mode == MODE_KOR){
 					canceled("요청");
 				}
 				else{
@@ -1320,7 +1337,7 @@ public class GUIController extends JFrame{
 	}
 
 	//inputAmount
-	public void inputAmount(int i_mode){
+	public void inputAmount(int withdrawType){
 
 		input_cash[0] = '_';
 		input_cash[0] = '_';
@@ -1348,7 +1365,7 @@ public class GUIController extends JFrame{
 
 		//Label set
 		JLabel notice, ptn, p_unit, destName;
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			notice = new JLabel("거래 금액을 입력해주세요       ");
 		}
 		else{
@@ -1358,20 +1375,20 @@ public class GUIController extends JFrame{
 		ptn = new JLabel("_ _ _ ");
 
 		//withdraw
-		if(t_mode == 3) {
+		if(t_mode == MODE_WITHDRAW) {
 			//한화 출금
-			if (i_mode == 0) {
+			if (withdrawType == 0) {
 				p_unit = new JLabel("  만 원");
 			} else {
 				p_unit = new JLabel(" 0 $");
 			}
 		}//transfer
-		else if(t_mode == 4){
+		else if(t_mode == MODE_TRANSFER){
 			//수신인 표시
 
 
 			//한국 계좌
-			if (mode == 0){
+			if (mode == MODE_KOR){
 				p_unit = new JLabel(" 만 원");
 				destName = new JLabel("수신인 : " + dest_name + "\t\t");
 			} else {
@@ -1422,11 +1439,11 @@ public class GUIController extends JFrame{
 								mainBox.dispose();
 
 								//withdraw
-								if(t_mode == 3){
+								if(t_mode == MODE_WITHDRAW){
 									String str = new String(input_cash, 0, input_cash.length);
 									int amount = Integer.parseInt(str);
 									//만 원 단위
-									if(i_mode == 0){
+									if(withdrawType == 0){
 										amount = amount * 10000;
 										System.out.println("withdraw amount : "+amount);
 									}
@@ -1441,7 +1458,7 @@ public class GUIController extends JFrame{
 									//출금 성공
 									if(amount >= 0){
 										//한국 계좌
-										if(mode == 0){
+										if(mode == MODE_KOR){
 											printReceipt(amount, 1000, atm.getBalance());
 										}
 										else{
@@ -1450,7 +1467,7 @@ public class GUIController extends JFrame{
 									}//출금 실패
 									//ATM 현금 부족
 									else if(amount == -1){
-										if(mode == 0){
+										if(mode == MODE_KOR){
 											canceled("ATM 기기의 현금이 부족합니다.");
 										}
 										else{
@@ -1459,7 +1476,7 @@ public class GUIController extends JFrame{
 									}
 									//계좌 잔고 부족
 									else if(amount == -2){
-										if(mode == 0){
+										if(mode == MODE_KOR){
 											canceled("계좌 잔액이 부족합니다.");
 										}
 										else{
@@ -1468,24 +1485,24 @@ public class GUIController extends JFrame{
 									}
 									//ㄴㄴ 이러지말자
 									else if(amount == -999){
-										canceled("FUCKKKKKKKLOLOLLLL");
+										canceled("LOLOLLLL");
 									}
 									else if(amount == -9999){
-										canceled("TTTQQQQQQQQ");
+										canceled("!!!!!!!!!");
 									}
 									else{
 										canceled("????????");
 									}
 								}
 								//transfer
-								else if(t_mode == 4){
+								else if(t_mode == MODE_TRANSFER){
 									mainBox.dispose();
 
 									String str = new String(input_cash, 0, input_cash.length);
 									int amount = Integer.parseInt(str);
 
 									//한국 계좌
-									if(i_mode == 0) {
+									if(withdrawType == 0) {
 										amount = amount * 10000;
 										System.out.println("transfer amount : "+amount);
 									}//해외 계좌
@@ -1499,7 +1516,7 @@ public class GUIController extends JFrame{
 									//송금 성공
 									if(amount > 0){
 										//한국 계좌
-										if(mode == 0){
+										if(mode == MODE_KOR){
 											printReceipt(amount, 1000, atm.getBalance());
 										}
 										else{
@@ -1509,7 +1526,7 @@ public class GUIController extends JFrame{
 									//송금 실패
 									//계좌 잔고 부족
 									else if(amount == -2){
-										if(mode == 0){
+										if(mode == MODE_KOR){
 											canceled("계좌 잔액이 부족합니다.");
 										}
 										else{
@@ -1518,7 +1535,7 @@ public class GUIController extends JFrame{
 									}
 									//ㄴㄴ 이러지말자
 									else{
-										canceled("FUCKKKKKKKLOLOLLLL");
+										canceled("impossibleLOLOLLLL");
 									}
 
 								}
@@ -1578,11 +1595,11 @@ public class GUIController extends JFrame{
 							mainBox.dispose();
 
 							//withdraw
-							if(t_mode == 3){
+							if(t_mode == MODE_WITHDRAW){
 								String str = new String(input_cash, 0, input_cash.length);
 								int amount = Integer.parseInt(str);
 								//만 원 단위
-								if(i_mode == 0){
+								if(withdrawType == 0){
 									amount = amount * 10000;
 								}
 								//10$ 단위
@@ -1597,7 +1614,7 @@ public class GUIController extends JFrame{
 								//출금 성공
 								if(amount >= 0){
 									//한국 계좌
-									if(mode == 0){
+									if(mode == MODE_KOR){
 										printReceipt(amount, 1000, atm.getBalance());
 									}
 									else{
@@ -1606,7 +1623,7 @@ public class GUIController extends JFrame{
 								}//출금 실패
 								//ATM 현금 부족
 								else if(amount == -1){
-									if(mode == 0){
+									if(mode == MODE_KOR){
 										canceled("ATM 기기의 현금이 부족합니다.");
 									}
 									else{
@@ -1615,7 +1632,7 @@ public class GUIController extends JFrame{
 								}
 								//계좌 잔고 부족
 								else if(amount == -2){
-									if(mode == 0){
+									if(mode == MODE_KOR){
 										canceled("계좌 잔액이 부족합니다.");
 									}
 									else{
@@ -1624,7 +1641,7 @@ public class GUIController extends JFrame{
 								}
 								//ㄴㄴ 이러지말자
 								else if(amount == -999){
-									canceled("FUCKKKKKKKLOLOLLLL");
+									canceled("impossibleLOLOLLLL");
 								}
 								else if(amount == -9999){
 									canceled("TTTQQQQQQQQ");
@@ -1634,14 +1651,14 @@ public class GUIController extends JFrame{
 								}
 							}
 							//transfer
-							else if(t_mode == 4){
+							else if(t_mode == MODE_TRANSFER){
 								mainBox.dispose();
 
 								String str = new String(input_cash, 0, input_cash.length);
 								int amount = Integer.parseInt(str);
 
 								//한국 계좌
-								if(i_mode == 0) {
+								if(withdrawType == 0) {
 									amount = amount * 10000;
 								}//해외 계좌
 								else{
@@ -1654,7 +1671,7 @@ public class GUIController extends JFrame{
 								//송금 성공
 								if(amount > 0){
 									//한국 계좌
-									if(mode == 0){
+									if(mode == MODE_KOR){
 										printReceipt(amount, 1000, atm.getBalance());
 									}
 									else{
@@ -1664,7 +1681,7 @@ public class GUIController extends JFrame{
 								//송금 실패
 								//계좌 잔고 부족
 								else if(amount == -2){
-									if(mode == 0){
+									if(mode == MODE_KOR){
 										canceled("계좌 잔액이 부족합니다.");
 									}
 									else{
@@ -1673,7 +1690,7 @@ public class GUIController extends JFrame{
 								}
 								//ㄴㄴ 이러지말자
 								else{
-									canceled("FUCKKKKKKKLOLOLLLL");
+									canceled("impossibleLOLOLLLL");
 								}
 
 							}
@@ -1757,7 +1774,7 @@ public class GUIController extends JFrame{
 
 		//cancel button
 		JButton cancel = new JButton();
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			cancel.setText("거래 취소");
 		}
 		else{
@@ -1766,7 +1783,7 @@ public class GUIController extends JFrame{
 		cancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(mode == 0){
+				if(mode == MODE_KOR){
 					canceled("요청");
 				}
 				else{
@@ -1778,7 +1795,7 @@ public class GUIController extends JFrame{
 
 		//enter Button
 		JButton enter = new JButton();
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			enter.setText("확인");
 		}
 		else{
@@ -1796,11 +1813,11 @@ public class GUIController extends JFrame{
 					mainBox.dispose();
 
 					//withdraw
-					if(t_mode == 3){
+					if(t_mode == MODE_WITHDRAW){
 						String str = new String(input_cash, 0, cash_i);
 						int amount = Integer.parseInt(str);
 						//만 원 단위
-						if(i_mode == 0){
+						if(withdrawType == 0){
 							amount = amount * 10000;
 						}
 						//10$ 단위
@@ -1814,7 +1831,7 @@ public class GUIController extends JFrame{
 						//출금 성공
 						if(amount >= 0){
 							//한국 계좌
-							if(mode == 0){
+							if(mode == MODE_KOR){
 								printReceipt(amount, 1000, atm.getBalance());
 							}
 							else{
@@ -1823,7 +1840,7 @@ public class GUIController extends JFrame{
 						}//출금 실패
 						//ATM 현금 부족
 						else if(amount == -1){
-							if(mode == 0){
+							if(mode == MODE_KOR){
 								canceled("ATM 기기의 현금이 부족합니다.");
 							}
 							else{
@@ -1832,7 +1849,7 @@ public class GUIController extends JFrame{
 						}
 						//계좌 잔고 부족
 						else if(amount == -2){
-							if(mode == 0){
+							if(mode == MODE_KOR){
 								canceled("계좌 잔액이 부족합니다.");
 							}
 							else{
@@ -1841,7 +1858,7 @@ public class GUIController extends JFrame{
 						}
 						//ㄴㄴ 이러지말자
 						else if(amount == -999){
-							canceled("FUCKKKKKKKLOLOLLLL");
+							canceled("impossibleLOLOLLLL");
 						}
 						else if(amount == -9999){
 							canceled("TTTQQQQQQQQ");
@@ -1851,7 +1868,7 @@ public class GUIController extends JFrame{
 						}
 					}
 					//transfer
-					else if(t_mode == 4){
+					else if(t_mode == MODE_TRANSFER){
 						mainBox.dispose();
 
 						String str = new String(input_cash, 0, cash_i);
@@ -1860,7 +1877,7 @@ public class GUIController extends JFrame{
 
 
 						//한국 계좌
-						if(i_mode == 0) {
+						if(withdrawType == 0) {
 							amount = amount * 10000;
 						}//해외 계좌
 						else{
@@ -1873,7 +1890,7 @@ public class GUIController extends JFrame{
 						//송금 성공
 						if(amount > 0){
 							//한국 계좌
-							if(mode == 0){
+							if(mode == MODE_KOR){
 								printReceipt(amount, 1000, atm.getBalance());
 							}
 							else{
@@ -1883,7 +1900,7 @@ public class GUIController extends JFrame{
 						//송금 실패
 						//계좌 잔고 부족
 						else if(amount == -2){
-							if(mode == 0){
+							if(mode == MODE_KOR){
 								canceled("계좌 잔액이 부족합니다.");
 							}
 							else{
@@ -1892,7 +1909,7 @@ public class GUIController extends JFrame{
 						}
 						//ㄴㄴ 이러지말자
 						else{
-							canceled("FUCKKKKKKKLOLOLLLL");
+							canceled("impossibleLOLOLLLL");
 						}
 
 					}
@@ -1965,7 +1982,7 @@ public class GUIController extends JFrame{
 		ptn_b = new JLabel("kb");
 		ptn_a = new JLabel("account id");
 
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			notice_b = new JLabel("수신 계좌 은행");
 			notice_a = new JLabel("수신 계좌 번호");
 		}
@@ -2035,7 +2052,7 @@ public class GUIController extends JFrame{
 								if(dest_name != null){
 									mainBox.dispose();
 
-									if(mode == 0){
+									if(mode == MODE_KOR){
 										inputAmount(0);
 									}
 									else{
@@ -2044,7 +2061,7 @@ public class GUIController extends JFrame{
 
 								}//no exist
 								else{
-									if(mode == 0){
+									if(mode == MODE_KOR){
 										canceled("해당 계좌가 존재하지 않습니다.");
 									}
 									else{
@@ -2107,7 +2124,7 @@ public class GUIController extends JFrame{
 							if(dest_name != null){
 								mainBox.dispose();
 
-								if(mode == 0){
+								if(mode == MODE_KOR){
 									inputAmount(0);
 								}
 								else{
@@ -2116,7 +2133,7 @@ public class GUIController extends JFrame{
 
 							}//no exist
 							else{
-								if(mode == 0){
+								if(mode == MODE_KOR){
 									canceled("해당 계좌가 존재하지 않습니다.");
 								}
 								else{
@@ -2200,7 +2217,7 @@ public class GUIController extends JFrame{
 
 		//cancel button
 		JButton cancel = new JButton();
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			cancel.setText("거래 취소");
 		}
 		else{
@@ -2209,7 +2226,7 @@ public class GUIController extends JFrame{
 		cancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(mode == 0){
+				if(mode == MODE_KOR){
 					canceled("요청");
 				}
 				else{
@@ -2258,7 +2275,7 @@ public class GUIController extends JFrame{
 		//Label set
 		JLabel notice_L, ptn, notice_R;
 
-		if(mode == 0 ){
+		if(mode == MODE_KOR ){
 			notice_L = new JLabel("사용 기한(1~99) :");
 			ptn = new JLabel("_ _ ");
 			notice_R = new JLabel( " 일 (ex : 오늘 하루는 1일)");
@@ -2311,7 +2328,7 @@ public class GUIController extends JFrame{
 								}
 								//card 부족
 								else{
-									if(mode == 0){
+									if(mode == MODE_KOR){
 										canceled("교통 카드를 발급할 수 없습니다. 0일을 선택하셨거나, ATM기기에 카드가 부족합니다.");
 									}
 									else{
@@ -2372,7 +2389,7 @@ public class GUIController extends JFrame{
 								agreement();
 							}
 							else{
-								if(mode == 0){
+								if(mode == MODE_KOR){
 									canceled("ATM 기기의 소지 Traffic Card가 부족합니다.");
 								}
 								else{
@@ -2453,7 +2470,7 @@ public class GUIController extends JFrame{
 
 		//cancel button
 		JButton cancel = new JButton();
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			cancel.setText("거래 취소");
 		}
 		else{
@@ -2462,7 +2479,7 @@ public class GUIController extends JFrame{
 		cancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(mode == 0){
+				if(mode == MODE_KOR){
 					canceled("요청");
 				}
 				else{
@@ -2502,7 +2519,7 @@ public class GUIController extends JFrame{
 
 		//TextField set
 		String note;
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			note = "카드 발급 비용 : 3000원(3$) 동의하시겠습니까? \n ....... 약관 .......";
 		}
 		else{
@@ -2516,7 +2533,7 @@ public class GUIController extends JFrame{
 
 		//Button set
 		JButton btn_y, btn_n;
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			btn_y = new JButton("동의");
 			btn_n = new JButton("동의안함");
 		}
@@ -2532,7 +2549,7 @@ public class GUIController extends JFrame{
 				mainBox.dispose();
 				if(atm.agreement()){
 					//한국 계좌
-					if(mode == 0){
+					if(mode == MODE_KOR){
 						printReceipt(3000, 0, atm.getBalance());
 					}
 					//해외 계좌
@@ -2542,7 +2559,7 @@ public class GUIController extends JFrame{
 				}
 				//잔액 부족
 				else{
-					if(mode == 0){
+					if(mode == MODE_KOR){
 						canceled("계좌의 잔액이 부족합니다.");
 					}
 					else{
@@ -2556,7 +2573,7 @@ public class GUIController extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				mainBox.dispose();
-				if(mode == 0){
+				if(mode == MODE_KOR){
 					canceled("거절되었습니다");
 				}
 				else{
@@ -2575,16 +2592,6 @@ public class GUIController extends JFrame{
 		//Frame visible set
 		mainBox.setVisible(true);
 	}
-
-	//Panel set
-	//Panel Layout set
-	//Label set
-	//Label add on Panel
-	//Button set
-	//Button add Action
-	//Button add on Panel
-	//Panel add on Frame
-	//Frame visible set
 
 	//Exceptional Case
 	public void returnCard(){
@@ -2606,6 +2613,7 @@ public class GUIController extends JFrame{
 		//Frame visible set
 		rtnCard.setVisible(true);
 	}
+
 	public void getReceipt(int _amount, int _fee, int _balance){
 		//Frame set
 		JFrame rtnCard = new JFrame("return Card");
@@ -2618,7 +2626,7 @@ public class GUIController extends JFrame{
 		String result1, result2, result3;
 
 		//Label set
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			result1 = "거 래 금 액 : " +  Integer.toString(_amount) + " 원";
 			result2 = "수  수  료 : " +  Integer.toString(_fee) + " 원";
 			result3	= "거래 후 잔액 : " +  Integer.toString(_balance) + " 원";
@@ -2643,6 +2651,7 @@ public class GUIController extends JFrame{
 		//Frame visible set
 		rtnCard.setVisible(true);
 	}
+
 	public void canceled(String reason){
 		mainBox.dispose();
 		//Main Frame renew
@@ -2666,7 +2675,7 @@ public class GUIController extends JFrame{
 
 		//label set
 		JLabel notice;
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			notice = new JLabel(reason + ") 거래가 취소 되었습니다 :(");
 		}
 		else{
@@ -2677,7 +2686,7 @@ public class GUIController extends JFrame{
 
 		//Button set
 		JButton btn;
-		if(mode == 0){
+		if(mode == MODE_KOR){
 			btn = new JButton("메인 화면으로");
 		}
 		else{
@@ -2760,7 +2769,7 @@ public class GUIController extends JFrame{
 									end();
 									subBox.dispose();
 								}catch (Exception e_e){
-									System.out.println("Fuck..!!!!!!!!!!!");
+									System.out.println("gg..!!!!!!!!!!!");
 								}
 							}
 						}
